@@ -4,95 +4,111 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Satyam Kumar | Software Engineer</title>
+
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<!-- ===== HERO ===== -->
-<header class="hero">
-  <nav class="navbar">
-    <h1 class="logo">Satyam</h1>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="hire-btn">Hire Me</button>
+<header class="navbar">
+  <div class="logo">Satyam</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </nav>
-
-  <div class="hero-content">
-    <div class="hero-text">
-      <h2 class="hero-title">
-        Hi, I'm <span>Satyam Kumar</span>
-      </h2>
-      <h3>Full Stack Developer</h3>
-      <p>
-        I design and build secure, scalable, and high-performance software
-        solutions using clean architecture and modern technologies.
-      </p>
-      <div class="hero-actions">
-        <button class="primary">Hire Me</button>
-        <button class="secondary">View Portfolio</button>
-      </div>
-    </div>
-
-    <div class="hero-image">
-      <img src="Image/character.png" alt="Developer Character" />
-    </div>
-  </div>
+  <a class="hire-btn" href="#contact">Hire Me</a>
 </header>
 
-<!-- ===== ABOUT ===== -->
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content reveal">
+    <h1>Hi, I’m <span>Satyam Kumar</span></h1>
+    <h2>Full Stack Software Engineer</h2>
+    <p>
+      I design and build secure, scalable, and high-performance software systems
+      using clean architecture and modern technologies.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="primary">Hire Me</a>
+      <a href="#projects" class="secondary">View Work</a>
+    </div>
+  </div>
+
+  <div class="hero-visual tilt">
+    <img src="Image/character.png" alt="AI Developer Character">
+  </div>
+</section>
+
+<!-- ABOUT -->
 <section id="about" class="section reveal">
-  <h2 class="section-title">About Me</h2>
-  <p class="section-text">
-    I am a motivated Information Technology undergraduate with a strong
-    foundation in full-stack development, system design, and problem solving.
-    Currently working as a <strong>Software Engineer at Gyanyug RIG Innovation</strong>,
-    where I contribute to building real-world, scalable software solutions.
-    <br><br>
-    I enjoy working on projects that emphasize performance, security, and clean
-    architecture, and I continuously improve my skills through hands-on
-    development and learning modern tools.
+  <h3>About Me</h3>
+  <p>
+    I am an Information Technology undergraduate with a strong foundation in
+    full-stack development, system design, and problem solving.
+    I currently work as a <strong>Software Engineer at Gyanyug RIG Innovation</strong>,
+    contributing to real-world, scalable software solutions.
+  </p>
+
+  <p>
+    I focus on performance, security, and clean architecture while continuously
+    improving my skills through hands-on development and learning modern tools.
   </p>
 </section>
 
-<!-- ===== PROJECTS ===== -->
-<section id="projects" class="section reveal">
-  <h2 class="section-title">Projects</h2>
+<!-- EXPERIENCE -->
+<section id="experience" class="section reveal">
+  <h3>Experience</h3>
 
-  <div class="projects-grid">
-    <div class="project-card">
-      <h3>Automatic Water Pump Control (IoT)</h3>
-      <p>Smart automation system using sensors to prevent overflow and save water.</p>
+  <div class="experience-card">
+    <h4>Software Engineer</h4>
+    <span>Gyanyug RIG Innovation</span>
+    <p>
+      Building and maintaining scalable software systems, contributing to
+      production-grade applications, and collaborating on system design,
+      performance optimization, and real-world problem solving.
+    </p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <h3 class="reveal">Projects</h3>
+
+  <div class="project-grid">
+    <div class="project-card tilt reveal">
+      <h4>Automatic Water Pump Control (IoT)</h4>
+      <p>Smart automation system preventing overflow and conserving water.</p>
     </div>
 
-    <div class="project-card">
-      <h3>Automatic Security Alert System</h3>
-      <p>Real-time detection and alert system for enhanced security monitoring.</p>
+    <div class="project-card tilt reveal">
+      <h4>Automatic Security Alert System</h4>
+      <p>Real-time detection and alerting for enhanced monitoring.</p>
     </div>
 
-    <div class="project-card">
-      <h3>Thermoelectric Generator</h3>
-      <p>Energy generation project converting heat gradients into electricity.</p>
+    <div class="project-card tilt reveal">
+      <h4>Thermoelectric Generator</h4>
+      <p>Energy generation by converting heat gradients into electricity.</p>
     </div>
 
-    <div class="project-card">
-      <h3>Task Management Web App</h3>
-      <p>Clean and efficient task manager with CRUD operations.</p>
+    <div class="project-card tilt reveal">
+      <h4>Task Management Web App</h4>
+      <p>Clean, efficient CRUD-based task management system.</p>
     </div>
 
-    <div class="project-card">
-      <h3>Personal Portfolio Website</h3>
+    <div class="project-card tilt reveal">
+      <h4>Personal Portfolio Website</h4>
       <p>High-performance portfolio with modern UI and animations.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
+<!-- CONTACT -->
 <section id="contact" class="section reveal">
-  <h2 class="section-title">Contact</h2>
+  <h3>Contact</h3>
   <p>Email: satya.myt77629@gmail.com</p>
 </section>
 
