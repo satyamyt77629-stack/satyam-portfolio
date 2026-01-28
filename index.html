@@ -1,267 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>JARVIS | Satyam Kumar</title>
-
-<!-- FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-
-<style>
-/* ================= ROOT ================= */
-:root {
-  --bg: #050914;
-  --panel: #0b1220;
-  --cyan: #4fc3ff;
-  --text: #dbe9f5;
-  --muted: #8faec9;
-}
-
-/* ================= RESET ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* ================= BODY ================= */
-body {
-  background: radial-gradient(circle at top, #0b1630, #050914 70%);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-}
-
-/* ================= LAYOUT ================= */
-.app {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  min-height: 100vh;
-}
-
-/* ================= SIDEBAR ================= */
-.sidebar {
-  background: linear-gradient(180deg, #050914, #080f1f);
-  padding: 30px 20px;
-  border-right: 1px solid rgba(79,195,255,.15);
-}
-
-.logo {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 26px;
-  color: var(--cyan);
-  margin-bottom: 30px;
-}
-
-.menu a {
-  display: block;
-  color: var(--muted);
-  text-decoration: none;
-  margin: 12px 0;
-  transition: .3s;
-}
-
-.menu a:hover {
-  color: var(--cyan);
-}
-
-/* ================= MAIN ================= */
-.main {
-  padding: 40px;
-  position: relative;
-}
-
-/* ================= HEADER ================= */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.title {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 28px;
-  color: var(--cyan);
-}
-
-.subtitle {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* ================= CARD ================= */
-.card {
-  background: linear-gradient(180deg, #0b1220, #070c18);
-  border: 1px solid rgba(79,195,255,.15);
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 24px;
-  box-shadow: 0 0 30px rgba(79,195,255,.05);
-}
-
-.card h2 {
-  color: var(--cyan);
-  margin-bottom: 12px;
-}
-
-/* ================= IDLE AI CORE ================= */
-.ai-core {
-  position: fixed;
-  right: 25px;
-  bottom: 25px;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 2px solid rgba(79,195,255,.3);
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-  opacity: .9;
-}
-
-/* Pulsing Ring */
-.ai-core::before {
-  content: "";
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  border: 2px solid rgba(79,195,255,.2);
-  animation: pulse 2.5s infinite;
-}
-
-/* Center Dot */
-.core-dot {
-  width: 10px;
-  height: 10px;
-  background: var(--cyan);
-  border-radius: 50%;
-  box-shadow: 0 0 12px var(--cyan);
-}
-
-/* Thinking State */
-.thinking {
-  animation: think 1.5s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: .4; }
-  100% { transform: scale(1.4); opacity: 0; }
-}
-
-@keyframes think {
-  0%,100% { opacity: .6; }
-  50% { opacity: 1; }
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
-  .app {
-    grid-template-columns: 1fr;
-  }
-  .sidebar {
-    display: none;
-  }
-}
-</style>
+  <meta charset="UTF-8" />
+  <title>JARVIS | Satyam Kumar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<div class="app">
+<!-- ================= BOOT SCREEN ================= -->
+<div id="boot">
+  <div class="boot-text" id="bootText"></div>
+</div>
+
+<!-- ================= MAIN INTERFACE ================= -->
+<div id="app" class="hidden">
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="logo">JARVIS</div>
-    <nav class="menu">
-      <a href="#about">ABOUT</a>
-      <a href="#philosophy">PHILOSOPHY</a>
-      <a href="#projects">PROJECTS</a>
-      <a href="#experience">EXPERIENCE</a>
-      <a href="#contact">CONTACT</a>
+    <h1 class="logo">JARVIS</h1>
+    <nav>
+      <button data-slide="0">ABOUT</button>
+      <button data-slide="1">PHILOSOPHY</button>
+      <button data-slide="2">PROJECTS</button>
+      <button data-slide="3">EXPERIENCE</button>
+      <button data-slide="4">CONTACT</button>
     </nav>
   </aside>
 
-  <!-- MAIN -->
-  <main class="main">
-    <div class="header">
-      <div>
-        <div class="title">INTERFACE: SATYAM KUMAR</div>
-        <div class="subtitle">Full Stack Developer · Software Engineer</div>
+  <!-- SLIDES -->
+  <main class="slides">
+
+    <!-- ABOUT -->
+    <section class="slide active">
+      <header class="header">
+        <h2>INTERFACE: <span>SATYAM KUMAR</span></h2>
+        <p>Full Stack Developer · Software Engineer</p>
+      </header>
+
+      <div class="card">
+        <h3>About Me</h3>
+        <p>
+          I am an Information Technology undergraduate focused on building reliable,
+          scalable, and maintainable software systems.
+        </p>
+        <p>
+          My interests lie in full-stack development, backend architecture,
+          and solving real-world problems through clean system design.
+        </p>
       </div>
-    </div>
 
-    <section id="about" class="card">
-      <h2>About Me</h2>
-      <p>
-        I am an Information Technology undergraduate with a strong focus on building reliable,
-        scalable, and maintainable software systems. My interests lie in full-stack development,
-        backend architecture, and solving real-world problems through clean system design.
-      </p>
+      <img src="assets/character.png" class="character" alt="Satyam AI" />
     </section>
 
-    <section id="philosophy" class="card">
-      <h2>Engineering Philosophy</h2>
-      <p>
-        Great engineering is silent, reliable, and intentional. Every line of code should earn its
-        place. I prioritize clean architecture, predictable systems, and long-term maintainability
-        over short-term solutions.
-      </p>
+    <!-- PHILOSOPHY -->
+    <section class="slide">
+      <div class="card">
+        <h3>Engineering Philosophy</h3>
+
+        <ul class="philosophy">
+          <li>
+            <strong>Clarity over cleverness</strong>
+            <span>Readable systems scale better than smart hacks.</span>
+          </li>
+          <li>
+            <strong>Predictability under pressure</strong>
+            <span>Systems should behave the same in calm and chaos.</span>
+          </li>
+          <li>
+            <strong>Architecture earns performance</strong>
+            <span>Optimization follows structure, not shortcuts.</span>
+          </li>
+          <li>
+            <strong>Long-term thinking</strong>
+            <span>Maintainability beats short-term velocity.</span>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <section id="projects" class="card">
-      <h2>Projects</h2>
-      <ul>
-        <li>Automatic Water Pump Control (IoT)</li>
-        <li>Automatic Security Alert System</li>
-        <li>Thermoelectric Generator</li>
-        <li>Task Management Web App</li>
-        <li>Personal Portfolio Interface</li>
-      </ul>
+    <!-- PROJECTS -->
+    <section class="slide">
+      <div class="card">
+        <h3>Projects</h3>
+        <ul class="projects">
+          <li>Automatic Water Pump Control (IoT)</li>
+          <li>Automatic Security Alert System</li>
+          <li>Thermoelectric Generator</li>
+          <li>Task Management Web App</li>
+          <li>Personal Portfolio Interface</li>
+        </ul>
+      </div>
     </section>
 
-    <section id="experience" class="card">
-      <h2>Experience</h2>
-      <p><strong>Software Engineer</strong> — Gyanyug RIG Innovation</p>
-      <p>
-        Building production-grade software systems with focus on scalability, performance
-        optimization, and secure backend architecture.
-      </p>
+    <!-- EXPERIENCE -->
+    <section class="slide">
+      <div class="card">
+        <h3>Experience</h3>
+        <p class="role">Software Engineer — Gyanyug RIG Innovation</p>
+        <p>
+          Building production-grade software systems with focus on scalability,
+          performance optimization, and secure backend architecture.
+        </p>
+      </div>
     </section>
 
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <p>Email: satya.myt77629@gmail.com</p>
+    <!-- CONTACT -->
+    <section class="slide">
+      <div class="card">
+        <h3>Contact</h3>
+        <p>Email: satya.myt77629@gmail.com</p>
+      </div>
     </section>
+
   </main>
 </div>
 
-<!-- IDLE THINKING AI -->
-<div class="ai-core thinking" id="aiCore">
-  <div class="core-dot"></div>
-</div>
-
-<script>
-/* ================= IDLE DETECTION ================= */
-let idleTimer;
-
-function setIdle() {
-  document.getElementById('aiCore').classList.add('thinking');
-}
-
-function setActive() {
-  document.getElementById('aiCore').classList.remove('thinking');
-  clearTimeout(idleTimer);
-  idleTimer = setTimeout(setIdle, 2000);
-}
-
-['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(evt => {
-  window.addEventListener(evt, setActive);
-});
-
-setIdle();
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
