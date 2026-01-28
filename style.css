@@ -2,46 +2,61 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
-  background: linear-gradient(120deg, #020617, #020617, #020617);
-  color: #e5e7eb;
-  scroll-behavior: smooth;
+  background: linear-gradient(120deg, #050b1f, #0b163a, #050b1f);
+  background-size: 300% 300%;
+  animation: gradientMove 15s ease infinite;
+  color: #e6e6e6;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* NAVBAR */
 .navbar {
   position: fixed;
-  width: 100%;
   top: 0;
-  padding: 18px 60px;
+  width: 100%;
+  padding: 18px 50px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: rgba(2,6,23,0.7);
-  backdrop-filter: blur(12px);
+  justify-content: space-between;
+  backdrop-filter: blur(20px);
+  background: rgba(10, 15, 40, 0.6);
   z-index: 1000;
+}
+
+.navbar nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #cfd8ff;
 }
 
 .logo {
   font-size: 22px;
-  font-weight: 600;
-  color: #60a5fa;
+  font-weight: 700;
+  color: #7aa2ff;
 }
 
-nav a {
-  margin: 0 15px;
+.btn-primary {
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #7a5cff, #ff6fd8);
+  color: #fff;
+  border-radius: 30px;
   text-decoration: none;
-  color: #cbd5f5;
 }
 
-.hire-btn {
-  background: linear-gradient(135deg,#7c3aed,#ec4899);
-  padding: 10px 20px;
-  border-radius: 25px;
-  color: white;
+.btn-secondary {
+  padding: 10px 22px;
+  border: 1px solid #7aa2ff;
+  border-radius: 30px;
+  color: #7aa2ff;
   text-decoration: none;
 }
 
@@ -50,85 +65,96 @@ nav a {
   min-height: 100vh;
   padding: 140px 80px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
-.hero h1 span {
-  color: #60a5fa;
+.hero-left h1 span {
+  color: #7aa2ff;
 }
 
-.hero-buttons {
-  margin-top: 25px;
+.hero-left h2 {
+  margin-top: 10px;
+  font-weight: 500;
 }
 
-.btn {
-  padding: 12px 26px;
-  border-radius: 30px;
-  margin-right: 10px;
-  text-decoration: none;
+.hero-left p {
+  max-width: 520px;
+  margin: 25px 0;
+  color: #bfc7ff;
 }
 
-.primary {
-  background: linear-gradient(135deg,#7c3aed,#ec4899);
-  color: white;
+.hero-buttons a {
+  margin-right: 15px;
 }
 
-.outline {
-  border: 1px solid #60a5fa;
-  color: #60a5fa;
+.hero-right {
+  perspective: 1200px;
 }
 
-/* CHARACTER */
-.hero-image img {
-  width: 320px;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+.hero-character {
+  width: 360px;
+  filter: drop-shadow(0 40px 80px rgba(0,0,0,0.7));
+  transition: transform 0.15s ease;
 }
 
 /* SECTIONS */
 .section {
   padding: 120px 80px;
-  max-width: 1100px;
-  margin: auto;
 }
 
-.section h2 {
+.section-title {
   font-size: 36px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
+  color: #7aa2ff;
+}
+
+/* ABOUT */
+.about-text {
+  max-width: 800px;
+  line-height: 1.7;
+  color: #cdd5ff;
 }
 
 /* SKILLS */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
 }
 
-.skill {
-  background: rgba(255,255,255,0.04);
+.skill-card {
   padding: 20px;
+  background: rgba(255,255,255,0.05);
   border-radius: 14px;
   text-align: center;
+  backdrop-filter: blur(10px);
 }
 
 /* PROJECTS */
-.project-list {
-  list-style: none;
-  line-height: 2;
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 40px;
-  opacity: 0.6;
+.project-card {
+  padding: 25px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border-radius: 18px;
+  backdrop-filter: blur(15px);
+  transition: transform 0.4s ease;
 }
 
-/* ANIMATIONS */
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* SCROLL ANIMATION */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease;
+  transform: translateY(60px);
+  transition: all 0.9s ease;
 }
 
 .reveal.active {
@@ -136,7 +162,7 @@ footer {
   transform: translateY(0);
 }
 
-/* TILT */
-.tilt {
-  perspective: 1000px;
+/* CONTACT */
+.contact-text {
+  color: #cfd8ff;
 }
