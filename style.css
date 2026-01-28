@@ -61,10 +61,23 @@ body {
   align-items: center;
 }
 
+.hero h1 {
+  font-size: 52px;
+}
 .hero h1 span {
-  background: linear-gradient(90deg, #7c3aed, #38bdf8);
-  -webkit-background-clip: text;
-  color: transparent;
+  color: #7aa2ff;
+}
+
+.hero h2 {
+  font-weight: 400;
+  margin-top: 10px;
+  color: #cbd5f5;
+}
+
+.hero p {
+  margin-top: 20px;
+  max-width: 520px;
+  color: #a5b4fc;
 }
 
 .hero-visual img {
@@ -82,11 +95,29 @@ body {
   margin-bottom: 24px;
 }
 
+/* PHILOSOPHY */
+.philosophy li {
+  margin-bottom: 14px;
+  color: #c7d2fe;
+}
+
 /* EXPERIENCE */
 .experience-card {
   background: rgba(255,255,255,0.05);
   border-radius: 18px;
   padding: 26px;
+}
+
+/* CAPABILITIES */
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px;
+}
+.cap {
+  background: rgba(255,255,255,0.04);
+  padding: 22px;
+  border-radius: 16px;
 }
 
 /* PROJECTS */
@@ -95,7 +126,6 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
   gap: 22px;
 }
-
 .project-card {
   background: rgba(255,255,255,0.04);
   padding: 24px;
@@ -103,19 +133,17 @@ body {
   border: 1px solid rgba(124,58,237,.25);
 }
 
-/* AI CONSOLE */
+/* CONSOLE */
 .console {
   background: rgba(0,0,0,.6);
   border-radius: 16px;
   padding: 20px;
   max-width: 600px;
 }
-
 .console pre {
-  min-height: 120px;
   color: #7aa2ff;
+  min-height: 120px;
 }
-
 .console input {
   width: 100%;
   background: transparent;
@@ -125,12 +153,11 @@ body {
   color: #e5e7eb;
 }
 
-/* ANIMATIONS */
+/* ANIMATION */
 .hidden {
   opacity: 0;
   transform: translateY(40px);
 }
-
 .reveal.show {
   opacity: 1;
   transform: translateY(0);
