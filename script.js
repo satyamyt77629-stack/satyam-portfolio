@@ -41,7 +41,7 @@ const sections = {
     <p>Gyanyug RIG Innovation</p>
     <p>
       Building real-world, production-grade software systems
-      with focus on scalability, performance optimization,
+      with a focus on scalability, performance optimization,
       and secure backend architecture.
     </p>
   `,
@@ -52,13 +52,12 @@ const sections = {
   `
 };
 
-// Default load
+// Default
 content.innerHTML = sections.about;
 
-// Button click
+// Navigation
 buttons.forEach(btn => {
   btn.addEventListener("click", () => {
-    const key = btn.dataset.section;
-    content.innerHTML = sections[key];
+    content.innerHTML = sections[btn.dataset.section];
   });
 });
