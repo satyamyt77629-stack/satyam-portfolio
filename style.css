@@ -2,13 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  background: #0e0e0e;
-  color: #ffffff;
-  scroll-behavior: smooth;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #fff;
 }
 
 /* NAVBAR */
@@ -17,111 +16,169 @@ body {
   top: 0;
   width: 100%;
   padding: 20px 60px;
-  background: rgba(14,14,14,0.9);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  backdrop-filter: blur(12px);
+  background: rgba(2, 6, 23, 0.7);
   z-index: 100;
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #38bdf8;
 }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-}
-
-.navbar a {
-  color: #ccc;
+nav a {
+  margin: 0 15px;
   text-decoration: none;
-  transition: 0.3s;
+  color: #cbd5f5;
 }
 
-.navbar a:hover {
-  color: #ff3b3b;
+nav a:hover {
+  color: #38bdf8;
+}
+
+.hire-btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: #fff;
+  text-decoration: none;
 }
 
 /* SECTIONS */
-.section {
+section {
   min-height: 100vh;
-  padding: 120px 10%;
+  padding: 120px 80px;
 }
 
 .section-title {
-  font-size: 36px;
-  margin-bottom: 30px;
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title span {
+  background: linear-gradient(135deg, #38bdf8, #ec4899);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 /* HERO */
-.hero h1 {
-  font-size: 52px;
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.hero span {
-  color: #ff3b3b;
+.hero-text {
+  max-width: 600px;
 }
 
-.hero h2 {
-  margin-top: 15px;
-  font-weight: 400;
-  color: #aaa;
+.hero-text h1 {
+  font-size: 48px;
+}
+
+.hero-text h2 {
+  font-size: 56px;
+  margin: 10px 0;
+}
+
+.hero-text p {
+  color: #94a3b8;
+  margin: 20px 0;
+}
+
+.hero-buttons .btn {
+  padding: 14px 28px;
+  border-radius: 30px;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.primary {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: white;
+}
+
+.secondary {
+  border: 2px solid #38bdf8;
+  color: #38bdf8;
+}
+
+.hero-image img {
+  width: 420px;
 }
 
 /* ABOUT */
-.about-text {
-  max-width: 700px;
-  line-height: 1.7;
+.about-card,
+.contact-box {
+  max-width: 800px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 20px;
+  line-height: 1.8;
 }
 
-.info-grid {
-  margin-top: 30px;
+/* SKILLS */
+.skills-grid {
   display: grid;
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.skill-card {
+  padding: 30px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 16px;
+  text-align: center;
 }
 
 /* PROJECTS */
-.dark {
-  background: #141414;
-}
-
-.projects-grid {
+.project-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
 }
 
 .project-card {
-  padding: 25px;
-  background: #1c1c1c;
-  border-radius: 12px;
-  transition: 0.3s;
+  background: rgba(255,255,255,0.06);
+  padding: 30px;
+  border-radius: 20px;
 }
 
-.project-card:hover {
-  transform: translateY(-8px);
-  background: #222;
+/* 3D EFFECT */
+.tilt {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* CONTACT */
-.contact-box a {
-  color: #ff3b3b;
-  text-decoration: none;
+.tilt:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.05);
+  box-shadow: 0 30px 80px rgba(56,189,248,0.2);
 }
 
-/* ANIMATIONS */
-.fade-in {
+/* FLOAT */
+.floating {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+/* SCROLL ANIMATION */
+.reveal {
   opacity: 0;
-  animation: fade 1.2s forwards;
+  transform: translateY(60px);
+  transition: all 1s ease;
 }
 
-.delay {
-  animation-delay: 0.6s;
-}
-
-@keyframes fade {
-  to { opacity: 1; }
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
