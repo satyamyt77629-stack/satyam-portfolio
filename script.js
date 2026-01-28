@@ -1,66 +1,50 @@
-const bootLines = [
-  "> SYSTEM ONLINE",
-  "> INITIALIZING NEURAL INTERFACE",
-  "> LOADING USER PROFILE",
-  "> INTERFACE: SATYAM KUMAR",
-  "> STATUS: BOSS OFFLINE",
-  "> YOU ARE VIEWING THE INTERFACE OF SATYAM KUMAR.",
-  "> THE BOSS IS CURRENTLY OFFLINE.",
-  "> ACCESS GRANTED"
-];
+const intro = document.getElementById("intro");
+const ui = document.getElementById("interface");
+const enterBtn = document.getElementById("enter-btn");
 
-const bootText = document.getElementById("boot-text");
-let line = 0;
+const slides = document.querySelectorAll(".slide");
+const prevBtn = document.getElementById("prev");
+const nextBtn = document.getElementById("next");
+const sound = document.getElementById("slideSound");
 
-function typeBoot() {
-  if (line < bootLines.length) {
-    bootText.textContent += bootLines[line] + "\n";
-    line++;
-    setTimeout(typeBoot, 400);
-  } else {
-    setTimeout(() => {
-      document.getElementById("boot-screen").style.display = "none";
-      document.getElementById("intro").classList.remove("hidden");
-    }, 1000);
-  }
-}
+let index = 0;
 
-typeBoot();
+// ENTER INTERFACE (SAFE)
+enterBtn.onclick = () => {
+  intro.style.display = "none";
+  ui.style.display = "block";
 
-/* VOICE */
-function speak(text) {
-  if (!window.speechSynthesis) return;
-  const msg = new SpeechSynthesisUtterance(text);
-  msg.rate = 0.95;
-  msg.pitch = 1.1;
-  window.speechSynthesis.speak(msg);
-}
-
-/* ENTER */
-document.getElementById("enter-btn").onclick = () => {
-  document.getElementById("intro").classList.add("hidden");
-  document.getElementById("interface").classList.remove("hidden");
-
-  speak(
-    "You are viewing the interface of Satyam Kumar. The boss is currently offline."
-  );
+  setTimeout(() => {
+    speak(
+      "You are viewing the interface of Satyam Kumar. The boss is currently offline."
+    );
+  }, 600);
 };
 
-/* SLIDES */
-const slides = document.querySelectorAll(".slide");
-let current = 0;
-
+// SLIDE CONTROL
 function showSlide(i) {
   slides.forEach(s => s.classList.remove("active"));
   slides[i].classList.add("active");
+  sound.currentTime = 0;
+  sound.play();
 }
 
-document.getElementById("next").onclick = () => {
-  current = (current + 1) % slides.length;
-  showSlide(current);
+nextBtn.onclick = () => {
+  index = (index + 1) % slides.length;
+  showSlide(index);
 };
 
-document.getElementById("prev").onclick = () => {
-  current = (current - 1 + slides.length) % slides.length;
-  showSlide(current);
+prevBtn.onclick = () => {
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
 };
+
+// VOICE (SAFE)
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const msg = new SpeechSynthesisUtterance(text);
+  msg.rate = 0.95;
+  msg.pitch = 1.05;
+  speechSynthesis.speak(msg);
+}
