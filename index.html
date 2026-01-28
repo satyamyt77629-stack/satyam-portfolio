@@ -6,109 +6,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
 <!-- Neural Background -->
 <canvas id="neural"></canvas>
 
+<!-- BOOT SCREEN -->
+<div id="boot">
+  <pre id="boot-text"></pre>
+</div>
+
 <!-- NAV -->
 <nav>
   <div class="logo">Satyam</div>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#philosophy">Philosophy</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
   <button class="hire">Hire Me</button>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <div id="typing" class="typing"></div>
-
-    <h1 class="hero-title hidden">
-      Hi, I’m <span>Satyam Kumar</span>
+<section class="hero hidden">
+  <div class="hero-text">
+    <h1>
+      Welcome. You are viewing the interface of <span>Satyam Kumar</span>.
+      <br />The boss is currently offline. Let’s begin.
     </h1>
 
-    <h2 class="hero-sub hidden">Full Stack Developer</h2>
+    <h2>Full Stack Developer</h2>
 
-    <p class="hero-desc hidden">
-      Designing secure, scalable, and high-performance software systems using
-      clean architecture and modern technologies.
+    <p>
+      Designing secure, scalable, and high-performance software using clean
+      architecture and modern technologies.
     </p>
 
-    <div class="hero-buttons hidden">
+    <div class="actions">
       <button class="primary">Hire Me</button>
       <button class="secondary">View Portfolio</button>
     </div>
   </div>
 
-  <div class="hero-right">
-    <div class="tilt">
-      <img src="Image/character.png" alt="Satyam AI Character">
-    </div>
+  <!-- CHARACTER -->
+  <div class="hero-visual">
+    <div class="ai-orb"></div>
+    <img
+      src="Image/character.png"
+      alt="AI Character"
+      class="character tilt ai-idle"
+    />
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about" class="section reveal">
-  <h2>About Me</h2>
-  <p>
-    I am an Information Technology undergraduate with a strong foundation in
-    full-stack development, system design, and problem solving.
-    I currently work as a <strong>Software Engineer at Gyanyug RIG Innovation</strong>,
-    contributing to real-world, production-grade software systems.
-  </p>
-  <p>
-    My focus is on building software that is reliable, maintainable, and scalable.
-    I believe engineering is not about writing code fast — it’s about making
-    systems that survive growth, change, and real users.
-  </p>
-</section>
-
-<!-- PHILOSOPHY -->
-<section id="philosophy" class="section reveal glass">
   <h2>Engineering Philosophy</h2>
-  <ul class="philosophy-list">
-    <li>⚙️ Architecture before implementation</li>
-    <li>🧠 Simplicity over cleverness</li>
-    <li>🔒 Security is a default, not an afterthought</li>
-    <li>📈 Systems should scale without rewrites</li>
-    <li>🤖 Automation wherever humans repeat</li>
-  </ul>
+  <p>
+    I am a motivated Information Technology undergraduate with a strong
+    foundation in full-stack development, system design, and problem solving.
+    Currently working as a <strong>Software Engineer at Gyanyug RIG Innovation</strong>,
+    I focus on building real-world, scalable systems that prioritize
+    performance, security, and maintainability.
+  </p>
+  <p>
+    I believe great engineering is silent, reliable, and intentional.
+    Every line of code should earn its place.
+  </p>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="section reveal">
-  <h2>Projects</h2>
+  <h2>AI-Driven Projects</h2>
 
-  <div class="projects-grid">
-    <div class="project-card">
-      <h3>Automatic Water Pump Control (IoT)</h3>
-      <p>Smart automation system using sensors to prevent overflow and save water.</p>
-    </div>
-
-    <div class="project-card">
-      <h3>Automatic Security Alert System</h3>
-      <p>Real-time detection and alert system for enhanced security monitoring.</p>
-    </div>
-
-    <div class="project-card">
-      <h3>Thermoelectric Generator</h3>
-      <p>Energy generation project converting heat gradients into electricity.</p>
-    </div>
-
-    <div class="project-card">
-      <h3>Task Management Web App</h3>
-      <p>Clean CRUD-based task manager with modern UI.</p>
-    </div>
-
-    <div class="project-card">
-      <h3>Personal Portfolio Website</h3>
-      <p>High-performance portfolio with cinematic animations and AI theme.</p>
-    </div>
+  <div class="projects">
+    <div class="card">Automatic Water Pump Control (IoT)</div>
+    <div class="card">Automatic Security Alert System</div>
+    <div class="card">Thermoelectric Generator</div>
+    <div class="card">Task Management Web App</div>
+    <div class="card">Personal Portfolio Interface</div>
   </div>
 </section>
 
