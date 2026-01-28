@@ -5,109 +5,112 @@
   <title>Satyam Kumar | AI Interface</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<canvas id="neural"></canvas>
-
-<!-- BOOT -->
-<div id="boot">
+<!-- BOOT SCREEN -->
+<div id="boot-screen">
   <pre id="boot-text"></pre>
 </div>
 
-<nav>
-  <div class="logo">Satyam</div>
-  <div class="links">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <button class="hire">Hire Me</button>
-</nav>
+<!-- MAIN SITE -->
+<div id="main-site">
 
-<!-- HERO -->
-<section class="hero hidden">
-  <div class="hero-text">
-    <h1>
-      Welcome. You are viewing the interface of
-      <span>Satyam Kumar</span>.<br />
-      The boss is currently offline. Let’s begin.
-    </h1>
-
-    <h2>Full Stack Developer</h2>
-
-    <p>
-      Designing secure, scalable, and high-performance software using
-      clean architecture and modern technologies.
-    </p>
-
-    <div class="actions">
-      <button class="primary">Hire Me</button>
-      <button class="secondary">View Portfolio</button>
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Satyam</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
     </div>
-  </div>
+    <a class="hire-btn" href="#contact">Hire Me</a>
+  </nav>
 
-  <div class="hero-visual">
-    <div class="ai-orb"></div>
-    <img src="Image/character.png" class="character" />
-  </div>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>
+        Welcome. You are viewing the interface of<br />
+        <span>Satyam Kumar</span>
+      </h1>
+      <p class="subtitle">Full Stack Developer</p>
+      <p class="desc">
+        Designing secure, scalable, and high-performance software
+        using clean architecture and modern technologies.
+      </p>
 
-<!-- ABOUT -->
-<section id="about" class="section reveal">
-  <h2>About Me</h2>
-  <p>
-    I am an Information Technology undergraduate with a strong foundation in
-    full-stack development, system design, and problem-solving. I focus on
-    building real-world software that is reliable, scalable, and intentional.
-  </p>
-</section>
+      <div class="hero-actions">
+        <a class="primary-btn" href="#contact">Hire Me</a>
+        <a class="secondary-btn" href="#projects">View Portfolio</a>
+      </div>
+    </div>
 
-<!-- ENGINEERING PHILOSOPHY -->
-<section class="section reveal">
-  <h2>Engineering Philosophy</h2>
-  <p>
-    I believe great engineering is silent and dependable.
-    Every system should be easy to maintain, hard to break, and built with
-    long-term clarity. Code should earn its place.
-  </p>
-</section>
+    <div class="hero-image" id="parallax">
+      <img src="Image/character.png" alt="AI Character" />
+    </div>
+  </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" class="section reveal">
-  <h2>Experience</h2>
-
-  <div class="experience-card">
-    <h3>Software Engineer</h3>
-    <span>Gyanyug RIG Innovation</span>
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <h2>About Me</h2>
     <p>
-      Working on real-world scalable systems with a focus on performance,
-      security, and maintainability. Contributing to backend logic, frontend
-      architecture, and production-ready solutions.
+      I am an Information Technology undergraduate with a strong foundation
+      in full-stack development, system design, and problem solving.
+      I enjoy building real-world systems that emphasize performance,
+      security, and maintainability.
     </p>
-  </div>
-</section>
+  </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="section reveal">
-  <h2>AI-Driven Projects</h2>
+  <!-- PHILOSOPHY -->
+  <section id="philosophy" class="section">
+    <h2>Engineering Philosophy</h2>
+    <p>
+      I believe great engineering is silent, reliable, and intentional.
+      Every line of code should earn its place.
+      I prioritize clean architecture, long-term scalability,
+      and systems that behave predictably under pressure.
+    </p>
+  </section>
 
-  <div class="projects">
-    <div class="card">Automatic Water Pump Control (IoT)</div>
-    <div class="card">Automatic Security Alert System</div>
-    <div class="card">Thermoelectric Generator</div>
-    <div class="card">Task Management Web App</div>
-    <div class="card">Personal Portfolio Interface</div>
-  </div>
-</section>
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <h2>Experience</h2>
+    <div class="experience-card">
+      <h3>Software Engineer</h3>
+      <span>Gyanyug RIG Innovation</span>
+      <p>
+        Building real-world, production-grade software systems.
+        Focused on scalability, performance optimization,
+        and secure backend architecture.
+      </p>
+    </div>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section reveal">
-  <h2>Contact</h2>
-  <p>Email: satya.myt77629@gmail.com</p>
-</section>
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <h2>AI-Driven Projects</h2>
+
+    <div class="project-grid">
+      <div class="project-card">Automatic Water Pump Control (IoT)</div>
+      <div class="project-card">Automatic Security Alert System</div>
+      <div class="project-card">Thermoelectric Generator</div>
+      <div class="project-card">Task Management Web App</div>
+      <div class="project-card">Personal Portfolio Interface</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Email: satya.myt77629@gmail.com</p>
+  </section>
+
+</div>
 
 <script src="script.js"></script>
 </body>
