@@ -1,82 +1,106 @@
-/* TYPING INTRO */
-const intro =
-"Welcome. You are viewing the interface of Satyam Kumar. The boss is currently offline.";
+/* ================= BOOT ================= */
+
+const bootLines = [
+  "> SYSTEM ONLINE",
+  "> INTERFACE: SATYAM KUMAR",
+  "> STATUS: BOSS OFFLINE",
+  "> ACCESS GRANTED"
+];
+
+const bootText = document.getElementById("boot-text");
+const boot = document.getElementById("boot");
 
 let i = 0;
-const typing = document.getElementById("typing");
-
-function type() {
-  if (i < intro.length) {
-    typing.innerHTML += intro.charAt(i);
+function bootType() {
+  if (i < bootLines.length) {
+    bootText.textContent += bootLines[i] + "\n";
     i++;
-    setTimeout(type, 45);
+    setTimeout(bootType, 600);
   } else {
     setTimeout(() => {
-      typing.classList.add("fade-out");
-      document.querySelectorAll(".hidden").forEach(el => {
-        el.style.opacity = 1;
-        el.style.transition = "1.5s";
-      });
-    }, 2000);
+      boot.classList.add("fade-out");
+      setTimeout(() => boot.remove(), 1500);
+      document.querySelectorAll(".hidden").forEach(e => e.style.opacity = 1);
+    }, 1200);
   }
 }
-type();
+bootType();
 
-/* SCROLL REVEAL */
+/* ================= SCROLL REVEAL ================= */
+
 const reveals = document.querySelectorAll(".reveal");
-window.addEventListener("scroll", () => {
-  reveals.forEach(r => {
-    const top = r.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      r.classList.add("active");
+addEventListener("scroll", () => {
+  reveals.forEach(el => {
+    if (el.getBoundingClientRect().top < innerHeight - 100) {
+      el.classList.add("active");
     }
   });
 });
 
-/* TILT EFFECT */
-const tilt = document.querySelector(".tilt");
-tilt.addEventListener("mousemove", e => {
-  const rect = tilt.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  const rx = (y / rect.height - 0.5) * 15;
-  const ry = (x / rect.width - 0.5) * -15;
-  tilt.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
-});
-tilt.addEventListener("mouseleave", () => {
-  tilt.style.transform = "rotateX(0) rotateY(0)";
+/* ================= FACE-TRACKING PARALLAX ================= */
+
+const character = document.querySelector(".character");
+
+addEventListener("mousemove", e => {
+  const x = (e.clientX / innerWidth - 0.5) * 20;
+  const y = (e.clientY / innerHeight - 0.5) * -20;
+  character.style.transform =
+    `rotateY(${x}deg) rotateX(${y}deg) translateZ(10px)`;
 });
 
-/* NEURAL BACKGROUND */
+/* ================= IDLE AI THINKING ================= */
+
+let idleTime = 0;
+setInterval(() => {
+  idleTime++;
+  if (idleTime > 3) {
+    character.style.transform += " rotateZ(1deg)";
+  }
+}, 1000);
+
+addEventListener("mousemove", () => idleTime = 0);
+
+/* ================= NEURAL BG ================= */
+
 const canvas = document.getElementById("neural");
 const ctx = canvas.getContext("2d");
-canvas.width = innerWidth;
-canvas.height = innerHeight;
 
-let points = Array.from({length:80},()=>({
-  x:Math.random()*canvas.width,
-  y:Math.random()*canvas.height,
-  vx:(Math.random()-0.5)*0.4,
-  vy:(Math.random()-0.5)*0.4
+function resize() {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+}
+resize();
+addEventListener("resize", resize);
+
+let nodes = Array.from({ length: 80 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  vx: (Math.random() - 0.5) * 0.4,
+  vy: (Math.random() - 0.5) * 0.4
 }));
 
 function animate() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  points.forEach(p=>{
-    p.x+=p.vx; p.y+=p.vy;
-    if(p.x<0||p.x>canvas.width)p.vx*=-1;
-    if(p.y<0||p.y>canvas.height)p.vy*=-1;
-    points.forEach(q=>{
-      const d=Math.hypot(p.x-q.x,p.y-q.y);
-      if(d<120){
-        ctx.strokeStyle=`rgba(99,102,241,${1-d/120})`;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  nodes.forEach(a => {
+    a.x += a.vx;
+    a.y += a.vy;
+
+    if (a.x < 0 || a.x > canvas.width) a.vx *= -1;
+    if (a.y < 0 || a.y > canvas.height) a.vy *= -1;
+
+    nodes.forEach(b => {
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d < 120) {
+        ctx.strokeStyle = `rgba(99,102,241,${1 - d / 120})`;
         ctx.beginPath();
-        ctx.moveTo(p.x,p.y);
-        ctx.lineTo(q.x,q.y);
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
         ctx.stroke();
       }
     });
   });
+
   requestAnimationFrame(animate);
 }
 animate();
