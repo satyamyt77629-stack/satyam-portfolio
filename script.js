@@ -49,3 +49,22 @@ links.forEach(link => {
     }
   });
 });
+// ===== JARVIS IDLE DETECTION (SAFE) =====
+
+let jarvisIdleTimer;
+
+function jarvisSetIdle() {
+  document.getElementById("jarvis-idle-core").style.opacity = "1";
+}
+
+function jarvisSetActive() {
+  document.getElementById("jarvis-idle-core").style.opacity = "0";
+  clearTimeout(jarvisIdleTimer);
+  jarvisIdleTimer = setTimeout(jarvisSetIdle, 4000);
+}
+
+["mousemove", "keydown", "scroll", "touchstart"].forEach(evt => {
+  window.addEventListener(evt, jarvisSetActive);
+});
+
+jarvisSetIdle();
