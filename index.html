@@ -4,96 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JARVIS | Satyam Kumar</title>
+
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- ACCESS SCREEN -->
-<section id="access" class="screen active">
-  <h1>ACCESS INTERFACE</h1>
-  <p>You are viewing the system of <strong>Satyam Kumar</strong></p>
-  <button id="enterBtn">ENTER INTERFACE</button>
-</section>
+<div class="jarvis">
 
-<!-- BOOT SCREEN -->
-<section id="boot" class="screen">
-  <pre id="bootText"></pre>
-</section>
-
-<!-- JARVIS INTERFACE -->
-<section id="jarvis" class="screen">
-
-  <!-- Sidebar -->
+  <!-- SIDEBAR -->
   <aside class="sidebar">
-    <h2>JARVIS</h2>
+    <h1 class="logo">JARVIS</h1>
+
     <nav>
-      <a href="#about">ABOUT</a>
-      <a href="#philosophy">PHILOSOPHY</a>
-      <a href="#projects">PROJECTS</a>
-      <a href="#experience">EXPERIENCE</a>
-      <a href="#contact">CONTACT</a>
+      <button data-section="about">ABOUT</button>
+      <button data-section="philosophy">PHILOSOPHY</button>
+      <button data-section="projects">PROJECTS</button>
+      <button data-section="experience">EXPERIENCE</button>
+      <button data-section="contact">CONTACT</button>
     </nav>
+
+    <div class="status">
+      <span class="dot"></span> SYSTEM STABLE
+    </div>
   </aside>
 
-  <!-- Content -->
-  <main class="content">
+  <!-- MAIN PANEL -->
+  <main class="panel">
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I am an Information Technology undergraduate with a strong focus on
-        building reliable, scalable, and maintainable software systems.
-        My interests lie in full-stack development, backend architecture,
-        and solving real-world engineering problems.
-      </p>
-      <p>
-        I approach software engineering with a systems mindset — understanding
-        how components interact, how systems scale, and how failures are handled.
-      </p>
-    </section>
+    <!-- HEADER -->
+    <header class="hero">
+      <img src="assets/character.png" alt="Satyam AI" />
+      <div>
+        <h2>INTERFACE: SATYAM KUMAR</h2>
+        <p>Full Stack Developer · Software Engineer</p>
+      </div>
+    </header>
 
-    <section id="philosophy">
-      <h2>Engineering Philosophy</h2>
-      <p>
-        I believe great engineering is silent, reliable, and intentional.
-        Every line of code should earn its place.
-      </p>
-      <p>
-        I prioritize clean architecture, predictable systems,
-        and long-term maintainability over short-term solutions.
-      </p>
-    </section>
-
-    <section id="projects">
-      <h2>AI-Driven Projects</h2>
-      <ul class="cards">
-        <li>Automatic Water Pump Control (IoT)</li>
-        <li>Automatic Security Alert System</li>
-        <li>Thermoelectric Generator</li>
-        <li>Task Management Web App</li>
-        <li>Personal Portfolio Interface</li>
-      </ul>
-    </section>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <h3>Software Engineer</h3>
-      <p><strong>Gyanyug RIG Innovation</strong></p>
-      <p>
-        Building real-world, production-grade software systems with
-        focus on scalability, performance optimization,
-        and secure backend architecture.
-      </p>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <strong>satya.myt77629@gmail.com</strong></p>
-    </section>
+    <!-- CONTENT -->
+    <section id="content"></section>
 
   </main>
 
-</section>
+</div>
 
 <script src="script.js"></script>
 </body>
