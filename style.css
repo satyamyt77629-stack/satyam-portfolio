@@ -2,20 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Inter", "Segoe UI", sans-serif;
 }
 
 body {
-  background: linear-gradient(270deg, #020617, #020617, #0f172a);
-  background-size: 600% 600%;
-  animation: bgMove 20s ease infinite;
   color: #e5e7eb;
-}
-
-@keyframes bgMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  background: radial-gradient(circle at top, #0f172a, #020617 70%);
 }
 
 /* NAVBAR */
@@ -23,113 +15,137 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 18px 40px;
+  padding: 18px 10%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(10px);
-  background: rgba(2,6,23,0.6);
+  justify-content: space-between;
+  backdrop-filter: blur(12px);
+  background: rgba(2, 6, 23, 0.6);
   z-index: 1000;
-}
-
-.navbar nav a {
-  margin: 0 14px;
-  text-decoration: none;
-  color: #cbd5f5;
 }
 
 .logo {
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 600;
   color: #7dd3fc;
 }
 
+nav a {
+  margin: 0 14px;
+  text-decoration: none;
+  color: #cbd5f5;
+  font-size: 14px;
+}
+
 .hire-btn {
-  padding: 10px 20px;
-  border-radius: 25px;
-  background: linear-gradient(90deg, #7c3aed, #ec4899);
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6366f1, #ec4899);
   color: white;
   text-decoration: none;
+  font-weight: 500;
 }
 
 /* HERO */
 .hero {
   min-height: 100vh;
-  display: flex;
+  padding: 140px 10% 80px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
-  justify-content: space-between;
-  padding: 140px 10%;
+  gap: 60px;
 }
 
-.hero-text h1 {
+.hero-content h1 {
   font-size: 48px;
+  font-weight: 700;
 }
 
-.hero-text span {
+.hero-content span {
   color: #7dd3fc;
 }
 
-.hero-text h2 {
-  font-size: 34px;
-  margin: 10px 0;
+.hero-content h2 {
+  margin-top: 10px;
+  font-size: 32px;
+  font-weight: 600;
 }
 
-.hero-text p {
+.hero-content p {
+  margin-top: 20px;
   max-width: 520px;
-  margin: 20px 0;
   line-height: 1.7;
+  color: #cbd5f5;
 }
 
-.hero-buttons .btn {
-  padding: 12px 26px;
-  margin-right: 14px;
-  border-radius: 30px;
+.hero-actions {
+  margin-top: 32px;
+}
+
+.btn {
+  padding: 12px 28px;
+  border-radius: 999px;
   text-decoration: none;
+  font-weight: 500;
+  margin-right: 14px;
 }
 
 .primary {
-  background: linear-gradient(90deg, #7c3aed, #ec4899);
+  background: linear-gradient(90deg, #6366f1, #ec4899);
   color: white;
 }
 
-.outline {
+.secondary {
   border: 1px solid #7dd3fc;
   color: #7dd3fc;
 }
 
-/* HERO IMAGE */
-.hero-image img {
-  width: 380px;
+/* CHARACTER */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  perspective: 800px;
+}
+
+.hero-visual img {
+  width: 360px;
   max-width: 100%;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
   transition: transform 0.2s ease;
 }
 
 /* SECTIONS */
 .section {
-  padding: 100px 12%;
-  text-align: center;
+  padding: 100px 10%;
+  max-width: 1100px;
+  margin: auto;
 }
 
-.section h2 {
-  font-size: 36px;
-  margin-bottom: 30px;
+.section h3 {
+  font-size: 32px;
+  margin-bottom: 28px;
   background: linear-gradient(90deg, #7dd3fc, #c084fc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* SKILLS */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+.section p {
+  margin-bottom: 16px;
+  line-height: 1.7;
+  color: #cbd5f5;
 }
 
-.skill {
-  padding: 20px;
+/* SKILLS */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.skills span {
+  padding: 12px 20px;
   border-radius: 16px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.06);
 }
 
 /* PROJECTS */
@@ -139,9 +155,10 @@ body {
 
 .projects li {
   margin: 12px 0;
+  color: #cbd5f5;
 }
 
-/* REVEAL ANIMATION */
+/* REVEAL */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -151,4 +168,16 @@ body {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-visual {
+    margin-top: 40px;
+  }
 }
