@@ -1,31 +1,29 @@
-/* Scroll reveal */
+// Scroll reveal
 const reveals = document.querySelectorAll(".reveal");
-window.addEventListener("scroll", () => {
-  reveals.forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-      el.classList.add("active");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+      observer.unobserve(entry.target);
     }
   });
-});
+}, { threshold: 0.15 });
 
-/* 3D tilt + AI light */
-document.querySelectorAll(".project-card").forEach(card => {
+reveals.forEach(r => observer.observe(r));
+
+// 3D Tilt (AI feel)
+document.querySelectorAll(".tilt").forEach(card => {
   card.addEventListener("mousemove", e => {
     const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    card.style.setProperty("--x", `${x}px`);
-    card.style.setProperty("--y", `${y}px`);
-
-    const rotateX = ((y / rect.height) - 0.5) * 15;
-    const rotateY = ((x / rect.width) - 0.5) * -15;
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
 
     card.style.transform =
-      `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+      `rotateX(${(-y / 25)}deg) rotateY(${(x / 25)}deg)`;
   });
 
   card.addEventListener("mouseleave", () => {
-    card.style.transform = "rotateX(0) rotateY(0) scale(1)";
+    card.style.transform = "rotateX(0) rotateY(0)";
   });
 });
