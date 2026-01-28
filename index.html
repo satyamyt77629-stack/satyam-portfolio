@@ -4,83 +4,84 @@
   <meta charset="UTF-8" />
   <title>Satyam Kumar | AI Interface</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
-</head>
 
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
 <body>
 
-<!-- BOOT SCREEN -->
-<div id="boot-screen">
+<!-- BOOT -->
+<div id="boot">
   <pre id="boot-text"></pre>
 </div>
 
-<!-- MAIN SITE -->
-<div id="main-site">
-
-  <!-- NAV -->
-  <nav>
-    <div class="logo">Satyam</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#philosophy">Philosophy</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <a class="hire-btn" href="#contact">Hire Me</a>
-  </nav>
+<!-- SLIDES -->
+<div id="slides">
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>
-        Welcome. You are viewing the interface of<br />
-        <span>Satyam Kumar</span>
-      </h1>
-      <p class="subtitle">Full Stack Developer</p>
-      <p class="desc">
-        Designing secure, scalable, and high-performance software
-        using clean architecture and modern technologies.
-      </p>
-
-      <div class="hero-actions">
-        <a class="primary-btn" href="#contact">Hire Me</a>
-        <a class="secondary-btn" href="#projects">View Portfolio</a>
+  <section class="slide active">
+    <div class="hero">
+      <div class="hero-text">
+        <h1>
+          You are viewing the interface of<br />
+          <span>Satyam Kumar</span>
+        </h1>
+        <p class="role">Full Stack Developer</p>
+        <p class="desc">
+          Designing secure, scalable, and high-performance software
+          using clean architecture and modern technologies.
+        </p>
       </div>
-    </div>
 
-    <div class="hero-image" id="parallax">
-      <img src="Image/character.png" alt="AI Character" />
+      <div class="hero-image" id="parallax">
+        <img src="Image/character.png" />
+      </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-      I am an Information Technology undergraduate with a strong foundation
-      in full-stack development, system design, and problem solving.
-      I enjoy building real-world systems that emphasize performance,
-      security, and maintainability.
-    </p>
+  <section class="slide">
+    <div class="content">
+      <h2>About Me</h2>
+      <p>
+        I am an Information Technology undergraduate with a strong foundation
+        in full-stack development, system design, and problem solving.
+        I build systems that prioritize performance, security, and clarity.
+      </p>
+    </div>
   </section>
 
   <!-- PHILOSOPHY -->
-  <section id="philosophy" class="section">
-    <h2>Engineering Philosophy</h2>
-    <p>
-      I believe great engineering is silent, reliable, and intentional.
-      Every line of code should earn its place.
-      I prioritize clean architecture, long-term scalability,
-      and systems that behave predictably under pressure.
-    </p>
+  <section class="slide">
+    <div class="content">
+      <h2>Engineering Philosophy</h2>
+      <p>
+        Great engineering is silent, reliable, and intentional.
+        Every line of code should earn its place.
+        I design systems that behave predictably under pressure
+        and scale without chaos.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="slide">
+    <div class="content">
+      <h2>AI-Driven Projects</h2>
+      <ul class="projects">
+        <li>Automatic Water Pump Control (IoT)</li>
+        <li>Automatic Security Alert System</li>
+        <li>Thermoelectric Generator</li>
+        <li>Task Management Web Application</li>
+        <li>Personal Portfolio Interface</li>
+      </ul>
+    </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience" class="section">
-    <h2>Experience</h2>
-    <div class="experience-card">
+  <section class="slide">
+    <div class="content">
+      <h2>Experience</h2>
       <h3>Software Engineer</h3>
       <span>Gyanyug RIG Innovation</span>
       <p>
@@ -91,23 +92,12 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <h2>AI-Driven Projects</h2>
-
-    <div class="project-grid">
-      <div class="project-card">Automatic Water Pump Control (IoT)</div>
-      <div class="project-card">Automatic Security Alert System</div>
-      <div class="project-card">Thermoelectric Generator</div>
-      <div class="project-card">Task Management Web App</div>
-      <div class="project-card">Personal Portfolio Interface</div>
-    </div>
-  </section>
-
   <!-- CONTACT -->
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Email: satya.myt77629@gmail.com</p>
+  <section class="slide">
+    <div class="content">
+      <h2>Contact</h2>
+      <p>Email: satya.myt77629@gmail.com</p>
+    </div>
   </section>
 
 </div>
