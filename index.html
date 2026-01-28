@@ -2,12 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Satyam Kumar | Full Stack Developer</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- NAVBAR -->
 <header class="navbar">
   <div class="logo">Satyam</div>
   <nav>
@@ -17,89 +22,99 @@
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>
-  <a class="hire-btn" href="#contact">Hire Me</a>
+  <a href="#contact" class="btn-primary">Hire Me</a>
 </header>
 
 <!-- HERO -->
 <section id="home" class="hero">
-  <div class="hero-content reveal">
+  <div class="hero-left">
     <h1>Hi, I'm <span>Satyam Kumar</span></h1>
     <h2>Full Stack Developer</h2>
     <p>
-      I design and build secure, scalable, and high-performance software solutions
+      I design and build scalable, secure, and high-performance software solutions
       using clean architecture and modern technologies.
     </p>
+
     <div class="hero-buttons">
-      <a href="#contact" class="btn primary">Hire Me</a>
-      <a href="#projects" class="btn outline">View Portfolio</a>
+      <a class="btn-primary" href="#contact">Hire Me</a>
+      <a class="btn-secondary" href="#projects">View Portfolio</a>
     </div>
   </div>
 
-  <div class="hero-image tilt">
-    <img src="./assets/character.png" alt="Developer Character">
+  <div class="hero-right">
+    <img src="Image/character.png" alt="Developer Character" class="hero-character">
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about" class="section reveal">
-  <h2>About Me</h2>
-  <p>
-    I am a motivated <strong>Information Technology undergraduate</strong> at
-    <strong>Chandigarh University</strong> (2024–2028) with a strong foundation in
-    programming, cybersecurity fundamentals, and IoT systems.
-  </p>
-  <p>
-    I enjoy building real-world projects focused on performance, security,
-    and usability. I continuously improve my skills through hands-on development,
-    experimentation, and learning modern tools.
-  </p>
-  <p>
-    I am currently seeking <strong>internship or entry-level opportunities</strong>
-    where I can contribute, learn, and grow as a software engineer.
+  <h2 class="section-title">About Me</h2>
+  <p class="about-text">
+    I am a motivated <strong>Information Technology undergraduate</strong> at Chandigarh University (2024–2028)
+    with a strong foundation in programming, cybersecurity fundamentals, IoT systems, and web development.
+    <br><br>
+    I enjoy building real-world products that focus on performance, security, and usability.
+    I continuously improve my skills through hands-on development, experimentation, and learning modern tools.
+    <br><br>
+    I am currently seeking <strong>internship or entry-level opportunities</strong> where I can contribute,
+    learn, and grow as a software engineer.
   </p>
 </section>
 
 <!-- SKILLS -->
 <section id="skills" class="section reveal">
-  <h2>Skills</h2>
+  <h2 class="section-title">Skills</h2>
+
   <div class="skills-grid">
-    <div class="skill">Python</div>
-    <div class="skill">C / C++</div>
-    <div class="skill">HTML / CSS</div>
-    <div class="skill">JavaScript</div>
-    <div class="skill">Cybersecurity Basics</div>
-    <div class="skill">IoT (Arduino / ESP32)</div>
-    <div class="skill">Git & GitHub</div>
-    <div class="skill">Linux CLI</div>
+    <div class="skill-card">HTML / CSS</div>
+    <div class="skill-card">JavaScript</div>
+    <div class="skill-card">React</div>
+    <div class="skill-card">Node.js</div>
+    <div class="skill-card">Problem Solving</div>
+    <div class="skill-card">System Design</div>
   </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="section reveal">
-  <h2>Projects</h2>
-  <ul class="project-list">
-    <li>Automatic Water Pump Control System (IoT)</li>
-    <li>Automatic Security Alert System</li>
-    <li>Thermoelectric Generator Project</li>
-    <li>Task Management Web Application</li>
-    <li>Personal Portfolio Website</li>
-  </ul>
+  <h2 class="section-title">Projects</h2>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3>🤖 AI Task Management System</h3>
+      <p>Smart task prioritization, analytics, and modern UI for productivity.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>🌊 Automatic Water Pump Controller (IoT)</h3>
+      <p>Sensor-based automation system improving water efficiency.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>🔐 Security Alert System</h3>
+      <p>Real-time intrusion detection with automated notifications.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>⚡ Thermoelectric Generator</h3>
+      <p>Energy generation from waste heat using embedded systems.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>💻 Personal Portfolio Website</h3>
+      <p>Ultra-premium animated developer portfolio (this website).</p>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="section reveal">
-  <h2>Contact</h2>
-  <p>📧 kumarsatyam12170@gmail.com</p>
-  <p>
-    🔗 <a href="https://www.linkedin.com/in/satyam-kumar-649733304" target="_blank">
-      LinkedIn Profile
-    </a>
+  <h2 class="section-title">Contact</h2>
+  <p class="contact-text">
+    📧 Email: satyamkumar@example.com<br>
+    🌐 GitHub & LinkedIn available on request
   </p>
 </section>
-
-<footer>
-  © 2026 Satyam Kumar. All rights reserved.
-</footer>
 
 <script src="script.js"></script>
 </body>
