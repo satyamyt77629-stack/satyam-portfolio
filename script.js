@@ -1,49 +1,49 @@
 /* ===============================
-   AI BOOT + VOICE NARRATION
+   AI BOOT + VOICE
 ================================ */
 
 const bootLines = [
-  "SYSTEM BOOTING...",
-  "INITIALIZING AI INTERFACE...",
-  "LOADING DEVELOPER PROFILE...",
-  "IDENTITY CONFIRMED: SATYAM KUMAR",
-  "STATUS: ONLINE"
+  "SYSTEM ONLINE",
+  "INTERFACE: SATYAM KUMAR",
+  "STATUS: BOSS OFFLINE",
+  "ACCESS GRANTED"
 ];
 
 const terminal = document.getElementById("aiTerminal");
-let index = 0;
+let idx = 0;
 
 function speak(text) {
   const msg = new SpeechSynthesisUtterance(text);
   msg.rate = 0.85;
   msg.pitch = 0.8;
-  msg.voice = speechSynthesis.getVoices().find(v => v.name.includes("Google")) || null;
   speechSynthesis.speak(msg);
 }
 
-function bootSequence() {
-  if (index < bootLines.length) {
-    terminal.innerHTML += `> ${bootLines[index]}\n`;
-    speak(bootLines[index]);
-    index++;
-    setTimeout(bootSequence, 700);
+function boot() {
+  if (idx < bootLines.length) {
+    terminal.innerHTML += `> ${bootLines[idx]}\n`;
+    if (idx === 2) {
+      speak("Welcome. You are viewing the interface of Satyam Kumar. The boss is currently offline. You may explore his work or leave a message via email.");
+    }
+    idx++;
+    setTimeout(boot, 700);
   } else {
     setTimeout(() => {
       document.getElementById("aiBoot").style.display = "none";
-      document.querySelectorAll(".hidden").forEach(el => el.classList.add("show"));
+      document.querySelectorAll(".hidden, .reveal").forEach(el => el.classList.add("show"));
     }, 1000);
   }
 }
-bootSequence();
+boot();
 
 /* ===============================
-   PARTICLE NEURAL BACKGROUND
+   PARTICLE BACKGROUND
 ================================ */
 
 const canvas = document.getElementById("ai-bg");
 const ctx = canvas.getContext("2d");
 let w, h;
-let particles = [];
+let nodes = [];
 
 function resize() {
   w = canvas.width = window.innerWidth;
@@ -53,39 +53,50 @@ window.addEventListener("resize", resize);
 resize();
 
 for (let i = 0; i < 70; i++) {
-  particles.push({
+  nodes.push({
     x: Math.random() * w,
     y: Math.random() * h,
-    vx: (Math.random() - 0.5) * 0.6,
-    vy: (Math.random() - 0.5) * 0.6
+    vx: (Math.random() - 0.5) * 0.5,
+    vy: (Math.random() - 0.5) * 0.5
   });
 }
 
-function animateParticles() {
+function animate() {
   ctx.clearRect(0, 0, w, h);
-  particles.forEach(p => {
-    p.x += p.vx;
-    p.y += p.vy;
-    if (p.x < 0 || p.x > w) p.vx *= -1;
-    if (p.y < 0 || p.y > h) p.vy *= -1;
+  nodes.forEach(n => {
+    n.x += n.vx;
+    n.y += n.vy;
+    if (n.x < 0 || n.x > w) n.vx *= -1;
+    if (n.y < 0 || n.y > h) n.vy *= -1;
 
     ctx.fillStyle = "#7aa2ff";
-    ctx.fillRect(p.x, p.y, 2, 2);
+    ctx.fillRect(n.x, n.y, 2, 2);
 
-    particles.forEach(o => {
-      const d = Math.hypot(p.x - o.x, p.y - o.y);
+    nodes.forEach(o => {
+      const d = Math.hypot(n.x - o.x, n.y - o.y);
       if (d < 120) {
         ctx.strokeStyle = "rgba(122,162,255,0.08)";
         ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
+        ctx.moveTo(n.x, n.y);
         ctx.lineTo(o.x, o.y);
         ctx.stroke();
       }
     });
   });
-  requestAnimationFrame(animateParticles);
+  requestAnimationFrame(animate);
 }
-animateParticles();
+animate();
+
+/* ===============================
+   FACE PARALLAX
+================================ */
+
+const face = document.getElementById("face");
+document.addEventListener("mousemove", e => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 8;
+  const y = (e.clientY / window.innerHeight - 0.5) * 8;
+  face.style.transform = `translate(${x}px, ${y}px)`;
+});
 
 /* ===============================
    SCROLL REVEAL
@@ -101,25 +112,7 @@ window.addEventListener("scroll", () => {
 });
 
 /* ===============================
-   3D TILT
-================================ */
-
-document.querySelectorAll(".tilt").forEach(card => {
-  card.addEventListener("mousemove", e => {
-    const r = card.getBoundingClientRect();
-    const x = e.clientX - r.left;
-    const y = e.clientY - r.top;
-    const rx = -(y / r.height - 0.5) * 10;
-    const ry = (x / r.width - 0.5) * 10;
-    card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
-  });
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "rotateX(0) rotateY(0)";
-  });
-});
-
-/* ===============================
-   AI CONSOLE
+   AI CONSOLE COMMANDS
 ================================ */
 
 const input = document.getElementById("consoleInput");
@@ -131,11 +124,16 @@ input.addEventListener("keydown", e => {
     output.textContent += `\n> ${cmd}\n`;
 
     if (cmd === "help") {
-      output.textContent += "Available commands: about, skills, contact\n";
-    } else if (cmd === "about") {
-      output.textContent += "AI Profile: Software Engineer, Full Stack, AI-Driven Systems\n";
+      output.textContent += "Commands: projects, experience, contact\n";
+    } else if (cmd === "projects") {
+      document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
+      output.textContent += "Navigating to Projects module...\n";
+    } else if (cmd === "experience") {
+      document.getElementById("experience").scrollIntoView({ behavior: "smooth" });
+      output.textContent += "Opening Experience module...\n";
     } else if (cmd === "contact") {
-      output.textContent += "Email: satya.myt77629@gmail.com\n";
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+      output.textContent += "Initiating contact channel...\n";
     } else {
       output.textContent += "Unknown command\n";
     }
