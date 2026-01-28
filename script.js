@@ -1,35 +1,30 @@
-// Scroll reveal
+// Reveal on scroll
 const reveals = document.querySelectorAll(".reveal");
 
-const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-      }
-    });
-  },
-  { threshold: 0.15 }
-);
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+    }
+  });
+});
 
-reveals.forEach(el => observer.observe(el));
+reveals.forEach(r => observer.observe(r));
 
-// 3D tilt
+// 3D Tilt
 const tilt = document.querySelector(".tilt");
 
-if (tilt) {
-  tilt.addEventListener("mousemove", e => {
-    const rect = tilt.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+tilt.addEventListener("mousemove", e => {
+  const rect = tilt.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
 
-    const rx = ((y / rect.height) - 0.5) * 8;
-    const ry = ((x / rect.width) - 0.5) * -8;
+  const rotateX = ((y / rect.height) - 0.5) * 15;
+  const rotateY = ((x / rect.width) - 0.5) * -15;
 
-    tilt.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
-  });
+  tilt.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+});
 
-  tilt.addEventListener("mouseleave", () => {
-    tilt.style.transform = "rotateX(0deg) rotateY(0deg)";
-  });
-}
+tilt.addEventListener("mouseleave", () => {
+  tilt.style.transform = "rotateX(0) rotateY(0)";
+});
