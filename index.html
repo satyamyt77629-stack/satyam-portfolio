@@ -2,101 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Satyam Kumar | AI Interface</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<!-- AI Background -->
-<canvas id="ai-bg"></canvas>
+<!-- Neural Background -->
+<canvas id="neural"></canvas>
 
-<!-- Navbar -->
-<header class="navbar">
-  <h2>Satyam</h2>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <button class="hire-btn">Hire Me</button>
-</header>
+<!-- NAV -->
+<nav>
+  <div class="logo">Satyam</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hire">Hire Me</button>
+</nav>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-text">
-    <h1 id="typing"></h1>
-    <h2>Full Stack Developer</h2>
-    <p>
-      Designing secure, scalable, and high-performance software
-      using clean architecture and modern technologies.
+  <div class="hero-left">
+    <div id="typing" class="typing"></div>
+
+    <h1 class="hero-title hidden">
+      Hi, I’m <span>Satyam Kumar</span>
+    </h1>
+
+    <h2 class="hero-sub hidden">Full Stack Developer</h2>
+
+    <p class="hero-desc hidden">
+      Designing secure, scalable, and high-performance software systems using
+      clean architecture and modern technologies.
     </p>
-    <div class="hero-actions">
+
+    <div class="hero-buttons hidden">
       <button class="primary">Hire Me</button>
       <button class="secondary">View Portfolio</button>
     </div>
   </div>
 
-  <div class="hero-visual tilt" id="face">
-    <img src="Image/character.png" alt="AI Avatar">
+  <div class="hero-right">
+    <div class="tilt">
+      <img src="Image/character.png" alt="Satyam AI Character">
+    </div>
   </div>
 </section>
 
-<!-- About -->
-<section id="about" class="section">
-  <h3>About Me</h3>
+<!-- ABOUT -->
+<section id="about" class="section reveal">
+  <h2>About Me</h2>
   <p>
-    I am a motivated <strong>Information Technology undergraduate</strong> with a strong
-    foundation in full-stack development, system design, and problem solving.
-    Currently working as a <strong>Software Engineer at Gyanyug RIG Innovation</strong>,
-    contributing to real-world, scalable software systems.
+    I am an Information Technology undergraduate with a strong foundation in
+    full-stack development, system design, and problem solving.
+    I currently work as a <strong>Software Engineer at Gyanyug RIG Innovation</strong>,
+    contributing to real-world, production-grade software systems.
   </p>
   <p>
-    I focus on performance, security, and clean architecture while continuously
-    improving my skills through hands-on development and modern tools.
+    My focus is on building software that is reliable, maintainable, and scalable.
+    I believe engineering is not about writing code fast — it’s about making
+    systems that survive growth, change, and real users.
   </p>
 </section>
 
-<!-- Projects -->
-<section id="projects" class="section">
-  <h3>Projects</h3>
+<!-- PHILOSOPHY -->
+<section id="philosophy" class="section reveal glass">
+  <h2>Engineering Philosophy</h2>
+  <ul class="philosophy-list">
+    <li>⚙️ Architecture before implementation</li>
+    <li>🧠 Simplicity over cleverness</li>
+    <li>🔒 Security is a default, not an afterthought</li>
+    <li>📈 Systems should scale without rewrites</li>
+    <li>🤖 Automation wherever humans repeat</li>
+  </ul>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section reveal">
+  <h2>Projects</h2>
 
   <div class="projects-grid">
-
-    <div class="project-card tilt">
-      <h4>Automatic Water Pump Control (IoT)</h4>
+    <div class="project-card">
+      <h3>Automatic Water Pump Control (IoT)</h3>
       <p>Smart automation system using sensors to prevent overflow and save water.</p>
     </div>
 
-    <div class="project-card tilt">
-      <h4>Automatic Security Alert System</h4>
+    <div class="project-card">
+      <h3>Automatic Security Alert System</h3>
       <p>Real-time detection and alert system for enhanced security monitoring.</p>
     </div>
 
-    <div class="project-card tilt">
-      <h4>Thermoelectric Generator</h4>
+    <div class="project-card">
+      <h3>Thermoelectric Generator</h3>
       <p>Energy generation project converting heat gradients into electricity.</p>
     </div>
 
-    <div class="project-card tilt">
-      <h4>Task Management Web App</h4>
-      <p>Clean and efficient task manager with CRUD operations.</p>
+    <div class="project-card">
+      <h3>Task Management Web App</h3>
+      <p>Clean CRUD-based task manager with modern UI.</p>
     </div>
 
-    <div class="project-card tilt">
-      <h4>Personal Portfolio Website</h4>
-      <p>High-performance portfolio with modern UI and AI-style animations.</p>
+    <div class="project-card">
+      <h3>Personal Portfolio Website</h3>
+      <p>High-performance portfolio with cinematic animations and AI theme.</p>
     </div>
-
   </div>
 </section>
 
-<!-- Contact -->
-<section id="contact" class="section">
-  <h3>Contact</h3>
+<!-- CONTACT -->
+<section id="contact" class="section reveal">
+  <h2>Contact</h2>
   <p>Email: satya.myt77629@gmail.com</p>
 </section>
 
