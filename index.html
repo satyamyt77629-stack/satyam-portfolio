@@ -1,71 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>JARVIS | Satyam Kumar</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JARVIS | Satyam Kumar</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ================= ROOT ================= */
+:root {
+  --bg: #050914;
+  --panel: #0b1220;
+  --cyan: #4fc3ff;
+  --text: #dbe9f5;
+  --muted: #8faec9;
+}
+
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+  background: radial-gradient(circle at top, #0b1630, #050914 70%);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ================= LAYOUT ================= */
+.app {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  background: linear-gradient(180deg, #050914, #080f1f);
+  padding: 30px 20px;
+  border-right: 1px solid rgba(79,195,255,.15);
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 26px;
+  color: var(--cyan);
+  margin-bottom: 30px;
+}
+
+.menu a {
+  display: block;
+  color: var(--muted);
+  text-decoration: none;
+  margin: 12px 0;
+  transition: .3s;
+}
+
+.menu a:hover {
+  color: var(--cyan);
+}
+
+/* ================= MAIN ================= */
+.main {
+  padding: 40px;
+  position: relative;
+}
+
+/* ================= HEADER ================= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 28px;
+  color: var(--cyan);
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ================= CARD ================= */
+.card {
+  background: linear-gradient(180deg, #0b1220, #070c18);
+  border: 1px solid rgba(79,195,255,.15);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 30px rgba(79,195,255,.05);
+}
+
+.card h2 {
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+
+/* ================= IDLE AI CORE ================= */
+.ai-core {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid rgba(79,195,255,.3);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: .9;
+}
+
+/* Pulsing Ring */
+.ai-core::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid rgba(79,195,255,.2);
+  animation: pulse 2.5s infinite;
+}
+
+/* Center Dot */
+.core-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--cyan);
+}
+
+/* Thinking State */
+.thinking {
+  animation: think 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: .4; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+@keyframes think {
+  0%,100% { opacity: .6; }
+  50% { opacity: 1; }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    display: none;
+  }
+}
+</style>
 </head>
+
 <body>
 
-<!-- BOOT SCREEN -->
-<div id="boot-screen">
-  <div id="boot-text"></div>
-</div>
-
-<!-- APP -->
 <div class="app">
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <h1 class="logo">JARVIS</h1>
-    <nav>
-      <a data-slide="about">ABOUT</a>
-      <a data-slide="philosophy">PHILOSOPHY</a>
-      <a data-slide="projects">PROJECTS</a>
-      <a data-slide="experience">EXPERIENCE</a>
-      <a data-slide="contact">CONTACT</a>
+    <div class="logo">JARVIS</div>
+    <nav class="menu">
+      <a href="#about">ABOUT</a>
+      <a href="#philosophy">PHILOSOPHY</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#experience">EXPERIENCE</a>
+      <a href="#contact">CONTACT</a>
     </nav>
   </aside>
 
   <!-- MAIN -->
   <main class="main">
-
-    <!-- HEADER -->
-    <header class="header">
+    <div class="header">
       <div>
-        <h2>INTERFACE: <span>SATYAM KUMAR</span></h2>
-        <p>Full Stack Developer · Software Engineer</p>
+        <div class="title">INTERFACE: SATYAM KUMAR</div>
+        <div class="subtitle">Full Stack Developer · Software Engineer</div>
       </div>
-      <img src="Image/character.png" class="character" />
-    </header>
+    </div>
 
-    <!-- SLIDES -->
-
-    <section class="slide active" id="about">
-      <h3>About Me</h3>
+    <section id="about" class="card">
+      <h2>About Me</h2>
       <p>
-        I am an Information Technology undergraduate with a strong focus on building
-        reliable, scalable, and maintainable software systems.
-      </p>
-      <p>
-        My interests lie in full-stack development, backend architecture, and solving
-        real-world problems through clean system design.
+        I am an Information Technology undergraduate with a strong focus on building reliable,
+        scalable, and maintainable software systems. My interests lie in full-stack development,
+        backend architecture, and solving real-world problems through clean system design.
       </p>
     </section>
 
-    <section class="slide" id="philosophy">
-      <h3>Engineering Philosophy</h3>
+    <section id="philosophy" class="card">
+      <h2>Engineering Philosophy</h2>
       <p>
-        I believe great engineering is silent, reliable, and intentional.
-      </p>
-      <p>
-        Every line of code should earn its place. I prioritize clean architecture,
-        predictable systems, and long-term maintainability.
+        Great engineering is silent, reliable, and intentional. Every line of code should earn its
+        place. I prioritize clean architecture, predictable systems, and long-term maintainability
+        over short-term solutions.
       </p>
     </section>
 
-    <section class="slide" id="projects">
-      <h3>AI-Driven Projects</h3>
+    <section id="projects" class="card">
+      <h2>Projects</h2>
       <ul>
         <li>Automatic Water Pump Control (IoT)</li>
         <li>Automatic Security Alert System</li>
@@ -75,24 +221,47 @@
       </ul>
     </section>
 
-    <section class="slide" id="experience">
-      <h3>Experience</h3>
-      <h4>Software Engineer</h4>
-      <p><strong>Gyanyug RIG Innovation</strong></p>
+    <section id="experience" class="card">
+      <h2>Experience</h2>
+      <p><strong>Software Engineer</strong> — Gyanyug RIG Innovation</p>
       <p>
-        Building real-world, production-grade systems with focus on scalability,
-        performance optimization, and secure backend architecture.
+        Building production-grade software systems with focus on scalability, performance
+        optimization, and secure backend architecture.
       </p>
     </section>
 
-    <section class="slide" id="contact">
-      <h3>Contact</h3>
-      <p>Email: <strong>satya.myt77629@gmail.com</strong></p>
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>Email: satya.myt77629@gmail.com</p>
     </section>
-
   </main>
 </div>
 
-<script src="script.js"></script>
+<!-- IDLE THINKING AI -->
+<div class="ai-core thinking" id="aiCore">
+  <div class="core-dot"></div>
+</div>
+
+<script>
+/* ================= IDLE DETECTION ================= */
+let idleTimer;
+
+function setIdle() {
+  document.getElementById('aiCore').classList.add('thinking');
+}
+
+function setActive() {
+  document.getElementById('aiCore').classList.remove('thinking');
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(setIdle, 2000);
+}
+
+['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(evt => {
+  window.addEventListener(evt, setActive);
+});
+
+setIdle();
+</script>
+
 </body>
 </html>
