@@ -2,118 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Satyam Kumar | Full Stack Developer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Satyam Kumar | Software Engineer</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <div class="logo">Satyam</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <nav class="navbar">
+    <h1 class="logo">Satyam</h1>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hire-btn">Hire Me</button>
   </nav>
-  <a href="#contact" class="btn-primary">Hire Me</a>
-</header>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-left">
-    <h1>Hi, I'm <span>Satyam Kumar</span></h1>
-    <h2>Full Stack Developer</h2>
-    <p>
-      I design and build scalable, secure, and high-performance software solutions
-      using clean architecture and modern technologies.
-    </p>
+  <div class="hero-content">
+    <div class="hero-text">
+      <h2 class="hero-title">
+        Hi, I'm <span>Satyam Kumar</span>
+      </h2>
+      <h3>Full Stack Developer</h3>
+      <p>
+        I design and build secure, scalable, and high-performance software
+        solutions using clean architecture and modern technologies.
+      </p>
+      <div class="hero-actions">
+        <button class="primary">Hire Me</button>
+        <button class="secondary">View Portfolio</button>
+      </div>
+    </div>
 
-    <div class="hero-buttons">
-      <a class="btn-primary" href="#contact">Hire Me</a>
-      <a class="btn-secondary" href="#projects">View Portfolio</a>
+    <div class="hero-image">
+      <img src="Image/character.png" alt="Developer Character" />
     </div>
   </div>
+</header>
 
-  <div class="hero-right">
-    <img src="Image/character.png" alt="Developer Character" class="hero-character">
-  </div>
-</section>
-
-<!-- ABOUT -->
+<!-- ===== ABOUT ===== -->
 <section id="about" class="section reveal">
   <h2 class="section-title">About Me</h2>
-  <p class="about-text">
-    I am a motivated <strong>Information Technology undergraduate</strong> at Chandigarh University (2024–2028)
-    with a strong foundation in programming, cybersecurity fundamentals, IoT systems, and web development.
+  <p class="section-text">
+    I am a motivated Information Technology undergraduate with a strong
+    foundation in full-stack development, system design, and problem solving.
+    Currently working as a <strong>Software Engineer at Gyanyug RIG Innovation</strong>,
+    where I contribute to building real-world, scalable software solutions.
     <br><br>
-    I enjoy building real-world products that focus on performance, security, and usability.
-    I continuously improve my skills through hands-on development, experimentation, and learning modern tools.
-    <br><br>
-    I am currently seeking <strong>internship or entry-level opportunities</strong> where I can contribute,
-    learn, and grow as a software engineer.
+    I enjoy working on projects that emphasize performance, security, and clean
+    architecture, and I continuously improve my skills through hands-on
+    development and learning modern tools.
   </p>
 </section>
 
-<!-- SKILLS -->
-<section id="skills" class="section reveal">
-  <h2 class="section-title">Skills</h2>
-
-  <div class="skills-grid">
-    <div class="skill-card">HTML / CSS</div>
-    <div class="skill-card">JavaScript</div>
-    <div class="skill-card">React</div>
-    <div class="skill-card">Node.js</div>
-    <div class="skill-card">Problem Solving</div>
-    <div class="skill-card">System Design</div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
+<!-- ===== PROJECTS ===== -->
 <section id="projects" class="section reveal">
   <h2 class="section-title">Projects</h2>
 
   <div class="projects-grid">
     <div class="project-card">
-      <h3>🤖 AI Task Management System</h3>
-      <p>Smart task prioritization, analytics, and modern UI for productivity.</p>
+      <h3>Automatic Water Pump Control (IoT)</h3>
+      <p>Smart automation system using sensors to prevent overflow and save water.</p>
     </div>
 
     <div class="project-card">
-      <h3>🌊 Automatic Water Pump Controller (IoT)</h3>
-      <p>Sensor-based automation system improving water efficiency.</p>
+      <h3>Automatic Security Alert System</h3>
+      <p>Real-time detection and alert system for enhanced security monitoring.</p>
     </div>
 
     <div class="project-card">
-      <h3>🔐 Security Alert System</h3>
-      <p>Real-time intrusion detection with automated notifications.</p>
+      <h3>Thermoelectric Generator</h3>
+      <p>Energy generation project converting heat gradients into electricity.</p>
     </div>
 
     <div class="project-card">
-      <h3>⚡ Thermoelectric Generator</h3>
-      <p>Energy generation from waste heat using embedded systems.</p>
+      <h3>Task Management Web App</h3>
+      <p>Clean and efficient task manager with CRUD operations.</p>
     </div>
 
     <div class="project-card">
-      <h3>💻 Personal Portfolio Website</h3>
-      <p>Ultra-premium animated developer portfolio (this website).</p>
+      <h3>Personal Portfolio Website</h3>
+      <p>High-performance portfolio with modern UI and animations.</p>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ===== CONTACT ===== -->
 <section id="contact" class="section reveal">
   <h2 class="section-title">Contact</h2>
-  <p class="contact-text">
-    📧 Email: satyamkumar@example.com<br>
-    🌐 GitHub & LinkedIn available on request
-  </p>
+  <p>Email: satya.myt77629@gmail.com</p>
 </section>
 
 <script src="script.js"></script>
