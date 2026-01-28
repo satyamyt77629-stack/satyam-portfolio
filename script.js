@@ -6,69 +6,62 @@ const bootLines = [
   "> STATUS: BOSS OFFLINE",
   "> MESSAGE:",
   "> YOU ARE VIEWING THE INTERFACE OF SATYAM KUMAR.",
-  "> THE BOSS IS CURRENTLY OFFLINE.",
   "> YOU MAY EXPLORE THE SYSTEM, REVIEW PROJECTS, OR INITIATE CONTACT.",
   "> ACCESS GRANTED"
 ];
 
-let currentLine = 0;
-const bootElement = document.getElementById("boot-text");
+const bootText = document.getElementById("boot-text");
+let index = 0;
 
-/* TYPE EFFECT */
-function typeLine(text, callback) {
+function typeLine(line, cb) {
   let i = 0;
-  const interval = setInterval(() => {
-    bootElement.innerHTML += text.charAt(i);
+  const timer = setInterval(() => {
+    bootText.textContent += line[i];
     i++;
-    if (i >= text.length) {
-      clearInterval(interval);
-      bootElement.innerHTML += "<br/>";
-      if (callback) setTimeout(callback, 350);
+    if (i === line.length) {
+      clearInterval(timer);
+      bootText.textContent += "\n";
+      setTimeout(cb, 250);
     }
-  }, 35);
+  }, 26);
 }
 
-/* BOOT SEQUENCE */
-function startBootSequence() {
-  if (currentLine < bootLines.length) {
-    typeLine(bootLines[currentLine], () => {
-      currentLine++;
-      startBootSequence();
+function startBoot() {
+  if (index < bootLines.length) {
+    typeLine(bootLines[index], () => {
+      index++;
+      startBoot();
     });
   } else {
-    speakIntro();
-    setTimeout(showMainInterface, 5000);
+    speak();
+    setTimeout(showMain, 3800);
   }
 }
 
-/* 🔊 AI VOICE (AFTER TYPING FINISHES) */
-function speakIntro() {
-  if (!("speechSynthesis" in window)) return;
-
-  const message = new SpeechSynthesisUtterance(
-    "You are viewing the interface of Satyam Kumar. " +
-    "The boss is currently offline. " +
-    "You may explore the system, review projects, or initiate contact."
+function speak() {
+  if (!window.speechSynthesis) return;
+  const msg = new SpeechSynthesisUtterance(
+    "You are viewing the interface of Satyam Kumar. The boss is currently offline. You may explore the system."
   );
-
-  message.rate = 0.9;
-  message.pitch = 1.15;
-  message.volume = 1;
-
-  const voices = speechSynthesis.getVoices();
-  message.voice =
-    voices.find(v => v.name.toLowerCase().includes("female")) || voices[0];
-
-  speechSynthesis.speak(message);
+  msg.rate = 0.9;
+  msg.pitch = 1.1;
+  speechSynthesis.speak(msg);
 }
 
-/* SHOW MAIN SITE */
-function showMainInterface() {
+function showMain() {
   document.getElementById("boot-screen").style.display = "none";
   document.getElementById("main-site").classList.add("visible");
+  document.body.style.overflow = "auto";
 }
 
-/* START SYSTEM */
+/* PARALLAX */
+const parallax = document.getElementById("parallax");
+document.addEventListener("mousemove", e => {
+  const x = (window.innerWidth / 2 - e.clientX) / 30;
+  const y = (window.innerHeight / 2 - e.clientY) / 30;
+  parallax.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+});
+
 window.onload = () => {
-  setTimeout(startBootSequence, 600);
+  setTimeout(startBoot, 500);
 };
