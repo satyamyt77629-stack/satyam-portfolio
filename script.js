@@ -1,26 +1,31 @@
-// Scroll reveal
-const reveals = document.querySelectorAll('.reveal');
-
-window.addEventListener('scroll', () => {
+/* Scroll reveal */
+const reveals = document.querySelectorAll(".reveal");
+window.addEventListener("scroll", () => {
   reveals.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add('active');
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add("active");
     }
   });
 });
 
-// 3D Character Tilt
-const character = document.querySelector('.hero-character');
+/* 3D tilt + AI light */
+document.querySelectorAll(".project-card").forEach(card => {
+  card.addEventListener("mousemove", e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-if (character) {
-  document.addEventListener('mousemove', (e) => {
-    const x = (window.innerWidth / 2 - e.clientX) / 30;
-    const y = (window.innerHeight / 2 - e.clientY) / 30;
-    character.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    card.style.setProperty("--x", `${x}px`);
+    card.style.setProperty("--y", `${y}px`);
+
+    const rotateX = ((y / rect.height) - 0.5) * 15;
+    const rotateY = ((x / rect.width) - 0.5) * -15;
+
+    card.style.transform =
+      `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
   });
 
-  document.addEventListener('mouseleave', () => {
-    character.style.transform = 'rotateY(0deg) rotateX(0deg)';
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "rotateX(0) rotateY(0) scale(1)";
   });
-}
+});
