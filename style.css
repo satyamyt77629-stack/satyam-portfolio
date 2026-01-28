@@ -1,154 +1,129 @@
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
 body {
-  height: 100vh;
-  background: radial-gradient(circle at top, #0b1426, #04070d);
-  color: #dbeaff;
-  font-family: 'Inter', sans-serif;
-}
-
-/* LAYOUT */
-.jarvis {
+  background: radial-gradient(circle at top, #0b1220, #05070c);
+  color: #e6f1ff;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 }
 
-/* SIDEBAR */
+/* Sidebar */
 .sidebar {
-  width: 260px;
-  background: rgba(0,0,0,0.65);
-  border-right: 1px solid rgba(0,198,255,0.2);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
+  width: 240px;
+  background: linear-gradient(180deg, #050914, #02040a);
+  padding: 30px 20px;
+  border-right: 1px solid rgba(0,180,255,0.15);
 }
 
-/* BRAND */
-.brand {
+.logo span {
+  font-size: 28px;
+  font-weight: 700;
+  color: #4cc9ff;
+}
+
+.logo small {
+  display: block;
+  font-size: 12px;
+  color: #7aaed6;
+  margin-top: 4px;
+}
+
+.sidebar nav {
+  margin-top: 40px;
+}
+
+.sidebar nav a {
+  display: block;
+  color: #9ecbff;
+  text-decoration: none;
+  margin: 14px 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.sidebar nav a:hover {
+  color: #4cc9ff;
+}
+
+/* Main */
+.main {
+  flex: 1;
+  padding: 40px 50px;
+}
+
+/* Header */
+.header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  margin-bottom: 60px;
+}
+
+.header h1 {
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+
+.header h1 span {
+  color: #4cc9ff;
+}
+
+.role {
+  margin-top: 8px;
+  color: #9ecbff;
+}
+
+.avatar img {
+  width: 180px;
+  filter: drop-shadow(0 0 30px rgba(76,201,255,0.35));
+}
+
+/* Cards */
+.card {
+  background: linear-gradient(180deg, rgba(12,20,40,0.9), rgba(5,10,20,0.9));
+  border: 1px solid rgba(76,201,255,0.15);
+  border-radius: 16px;
+  padding: 30px;
   margin-bottom: 40px;
 }
 
-.brand img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 12px rgba(79,195,255,0.5));
+.card h2 {
+  color: #4cc9ff;
+  margin-bottom: 15px;
 }
 
-.brand span {
-  font-family: 'Orbitron', sans-serif;
-  color: #4fc3ff;
-  font-size: 20px;
-}
-
-/* NAV */
-nav button {
-  background: none;
-  border: none;
-  color: #b7dfff;
-  text-align: left;
-  padding: 10px 0;
-  font-size: 14px;
-  letter-spacing: 1px;
-  cursor: pointer;
-}
-
-nav button:hover {
-  color: #4fc3ff;
-}
-
-/* STATUS */
-.status {
-  margin-top: auto;
-  font-size: 12px;
-  color: #6ee7ff;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  background: #6ee7ff;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 6px;
-}
-
-/* MAIN PANEL */
-.panel {
-  flex: 1;
-  padding: 36px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-/* HERO */
-.hero {
-  margin-bottom: 24px;
-}
-
-.hero h2 {
-  font-family: 'Orbitron', sans-serif;
-  color: #4fc3ff;
-  letter-spacing: 1px;
-}
-
-.hero p {
-  font-size: 14px;
-  opacity: 0.85;
-}
-
-/* CONTENT PANEL */
-#content {
-  flex: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(79,195,255,0.06),
-    rgba(0,0,0,0.55)
-  );
-  border: 1px solid rgba(79,195,255,0.18);
-  border-radius: 18px;
-  padding: 28px;
-  overflow-y: auto;
-  animation: fadeIn 0.3s ease;
-}
-
-/* TEXT */
-h3 {
-  font-family: 'Orbitron', sans-serif;
-  color: #4fc3ff;
-  margin-bottom: 14px;
-}
-
-p {
-  line-height: 1.65;
-  margin-bottom: 12px;
-}
-
-/* PROJECT CARD */
-.project {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(79,195,255,0.15);
-  padding: 14px;
-  border-radius: 12px;
+.card p {
+  color: #cfe8ff;
+  line-height: 1.7;
   margin-bottom: 10px;
 }
 
-/* ANIMATION */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Projects */
+.projects {
+  list-style: none;
+}
+
+.projects li {
+  background: rgba(255,255,255,0.03);
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(76,201,255,0.12);
+}
+
+/* Experience */
+.company {
+  color: #9ecbff;
+  font-size: 14px;
+}
+
+/* Links */
+a {
+  color: #4cc9ff;
+  text-decoration: none;
 }
