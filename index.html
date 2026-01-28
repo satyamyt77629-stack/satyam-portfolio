@@ -2,153 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JARVIS | Satyam Kumar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- ACCESS -->
-<section id="access">
+<!-- ACCESS SCREEN -->
+<section id="access" class="screen active">
   <h1>ACCESS INTERFACE</h1>
   <p>You are viewing the system of <strong>Satyam Kumar</strong></p>
-  <button id="enter">ENTER</button>
+  <button id="enterBtn">ENTER INTERFACE</button>
 </section>
 
-<!-- BOOT -->
-<section id="boot" class="hidden">
+<!-- BOOT SCREEN -->
+<section id="boot" class="screen">
   <pre id="bootText"></pre>
 </section>
 
 <!-- JARVIS INTERFACE -->
-<div id="jarvis" class="hidden">
+<section id="jarvis" class="screen">
 
-  <!-- LEFT NAV -->
-  <aside class="nav-panel">
-    <h3>JARVIS</h3>
-    <button data-slide="0">ABOUT</button>
-    <button data-slide="1">PHILOSOPHY</button>
-    <button data-slide="2">PROJECTS</button>
-    <button data-slide="3">EXPERIENCE</button>
-    <button data-slide="4">CONTACT</button>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>JARVIS</h2>
+    <nav>
+      <a href="#about">ABOUT</a>
+      <a href="#philosophy">PHILOSOPHY</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#experience">EXPERIENCE</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
   </aside>
 
-  <!-- MAIN CONTENT -->
-  <main class="content-stage">
+  <!-- Content -->
+  <main class="content">
 
-    <!-- ABOUT -->
-    <section class="slide active">
+    <section id="about">
       <h2>About Me</h2>
       <p>
-        I am an Information Technology undergraduate with a strong focus on building reliable,
-        scalable, and maintainable software systems. My interests lie in full-stack development,
-        backend architecture, and problem-solving driven by real-world constraints.
+        I am an Information Technology undergraduate with a strong focus on
+        building reliable, scalable, and maintainable software systems.
+        My interests lie in full-stack development, backend architecture,
+        and solving real-world engineering problems.
       </p>
       <p>
-        I approach software engineering with a systems mindset — understanding how components
-        interact, how systems scale, and how failures are handled. I value clean architecture,
-        clarity in code, and long-term maintainability over short-term solutions.
-      </p>
-      <p>
-        I continuously refine my skills by working on practical projects, learning modern
-        development practices, and contributing to production-grade systems.
+        I approach software engineering with a systems mindset — understanding
+        how components interact, how systems scale, and how failures are handled.
       </p>
     </section>
 
-    <!-- PHILOSOPHY -->
-    <section class="slide">
+    <section id="philosophy">
       <h2>Engineering Philosophy</h2>
       <p>
         I believe great engineering is silent, reliable, and intentional.
-        Every line of code should serve a purpose.
+        Every line of code should earn its place.
       </p>
       <p>
-        I prioritize simplicity over unnecessary complexity, maintainability over clever
-        shortcuts, and predictable behavior over fragile features.
-      </p>
-      <p>
-        Good software should be easy to reason about, resilient under pressure,
-        and adaptable to change.
+        I prioritize clean architecture, predictable systems,
+        and long-term maintainability over short-term solutions.
       </p>
     </section>
 
-    <!-- PROJECTS -->
-    <section class="slide">
-      <h2>Projects</h2>
-
-      <h4>Automatic Water Pump Control System</h4>
-      <p>
-        An automation system designed to intelligently control water pumps based on
-        environmental conditions, improving efficiency and reducing manual intervention.
-      </p>
-
-      <h4>Automatic Security Alert System</h4>
-      <p>
-        A system that detects predefined conditions and triggers alerts in real time,
-        focusing on reliability and timely response.
-      </p>
-
-      <h4>Thermoelectric Generator</h4>
-      <p>
-        A project exploring energy conversion by generating electricity from temperature
-        differences, combining hardware understanding with system logic.
-      </p>
-
-      <h4>Task Management Web Application</h4>
-      <p>
-        A full-stack web application designed to manage tasks efficiently,
-        focusing on clean UI, structured backend logic, and scalability.
-      </p>
-
-      <h4>AI-Style Portfolio Interface</h4>
-      <p>
-        A portfolio interface inspired by intelligent systems, designed to present
-        information in an organized, interactive, and professional manner.
-      </p>
+    <section id="projects">
+      <h2>AI-Driven Projects</h2>
+      <ul class="cards">
+        <li>Automatic Water Pump Control (IoT)</li>
+        <li>Automatic Security Alert System</li>
+        <li>Thermoelectric Generator</li>
+        <li>Task Management Web App</li>
+        <li>Personal Portfolio Interface</li>
+      </ul>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section class="slide">
+    <section id="experience">
       <h2>Experience</h2>
-      <p><strong>Software Engineer</strong></p>
+      <h3>Software Engineer</h3>
       <p><strong>Gyanyug RIG Innovation</strong></p>
       <p>
-        I currently work as a Software Engineer at Gyanyug RIG Innovation, where I contribute
-        to the development of real-world, production-grade software systems.
-      </p>
-      <p>
-        My responsibilities include designing and implementing scalable backend logic,
-        working with full-stack architectures, optimizing performance and reliability,
-        and writing clean, maintainable, and secure code.
-      </p>
-      <p>
-        This role has strengthened my understanding of how software behaves in real
-        environments, where performance, stability, and clarity matter more than experimentation.
+        Building real-world, production-grade software systems with
+        focus on scalability, performance optimization,
+        and secure backend architecture.
       </p>
     </section>
 
-    <!-- CONTACT -->
-    <section class="slide">
+    <section id="contact">
       <h2>Contact</h2>
-      <p>
-        If you’d like to connect, collaborate, or discuss opportunities:
-      </p>
-      <p><strong>Email:</strong> satya.myt77629@gmail.com</p>
+      <p>Email: <strong>satya.myt77629@gmail.com</strong></p>
     </section>
 
   </main>
 
-  <!-- AI STATUS -->
-  <aside class="ai-panel">
-    <div class="ai-core"></div>
-    <p class="status">SYSTEM STABLE</p>
-  </aside>
-
-</div>
+</section>
 
 <script src="script.js"></script>
 </body>
