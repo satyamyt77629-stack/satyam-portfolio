@@ -1,11 +1,10 @@
 const access = document.getElementById("access");
 const boot = document.getElementById("boot");
-const bootText = document.getElementById("bootText");
 const jarvis = document.getElementById("jarvis");
+const bootText = document.getElementById("bootText");
+const enterBtn = document.getElementById("enterBtn");
 
-const enterBtn = document.getElementById("enter");
-const navButtons = document.querySelectorAll(".nav-panel button");
-const slides = document.querySelectorAll(".slide");
+let hasEntered = false;
 
 const bootLines = [
   "> SYSTEM ONLINE",
@@ -16,42 +15,32 @@ const bootLines = [
   "> ACCESS GRANTED"
 ];
 
-// ENTER
 enterBtn.onclick = () => {
-  access.classList.add("hidden");
-  boot.classList.remove("hidden");
+  if (hasEntered) return;
+  hasEntered = true;
+
+  access.classList.remove("active");
+  boot.classList.add("active");
+
   runBoot();
 };
 
-// BOOT SEQUENCE
 function runBoot() {
   let i = 0;
-  function nextLine() {
-    if (i < bootLines.length) {
-      bootText.textContent += bootLines[i] + "\n";
-      i++;
-      setTimeout(nextLine, 420);
-    } else {
+  bootText.textContent = "";
+
+  const interval = setInterval(() => {
+    bootText.textContent += bootLines[i] + "\n";
+    i++;
+
+    if (i === bootLines.length) {
+      clearInterval(interval);
       setTimeout(showJarvis, 800);
     }
-  }
-  nextLine();
+  }, 600);
 }
 
-// SHOW INTERFACE
 function showJarvis() {
-  boot.classList.add("hidden");
-  jarvis.classList.remove("hidden");
+  boot.classList.remove("active");
+  jarvis.classList.add("active");
 }
-
-// SLIDE CONTROL
-function showSlide(index) {
-  slides.forEach(s => s.classList.remove("active"));
-  slides[index].classList.add("active");
-}
-
-navButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    showSlide(Number(btn.dataset.slide));
-  });
-});
