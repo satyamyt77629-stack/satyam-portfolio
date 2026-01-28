@@ -1,13 +1,12 @@
-const text = "Software Engineer | Full-Stack Developer";
-let index = 0;
+const reveals = document.querySelectorAll(".reveal");
 
-function typeEffect() {
-  const element = document.querySelector(".typing");
-  if (index < text.length) {
-    element.textContent += text.charAt(index);
-    index++;
-    setTimeout(typeEffect, 80);
-  }
-}
+window.addEventListener("scroll", () => {
+  reveals.forEach((el) => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
 
-window.onload = typeEffect;
+    if (elementTop < windowHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+});
