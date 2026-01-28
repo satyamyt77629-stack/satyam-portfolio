@@ -1,15 +1,11 @@
-const welcome = document.getElementById("welcome");
+const access = document.getElementById("access");
 const boot = document.getElementById("boot");
 const bootText = document.getElementById("bootText");
-const ui = document.getElementById("interface");
+const jarvis = document.getElementById("jarvis");
 
-const startBtn = document.getElementById("startBtn");
-
+const enterBtn = document.getElementById("enter");
+const navButtons = document.querySelectorAll(".nav-panel button");
 const slides = document.querySelectorAll(".slide");
-const nextBtn = document.getElementById("next");
-const prevBtn = document.getElementById("prev");
-
-let index = 0;
 
 const bootLines = [
   "> SYSTEM ONLINE",
@@ -17,62 +13,45 @@ const bootLines = [
   "> LOADING USER PROFILE",
   "> INTERFACE: SATYAM KUMAR",
   "> STATUS: BOSS OFFLINE",
-  "> YOU ARE VIEWING THE INTERFACE OF SATYAM KUMAR",
   "> ACCESS GRANTED"
 ];
 
-// START
-startBtn.onclick = () => {
-  welcome.classList.add("hidden");
+// ENTER
+enterBtn.onclick = () => {
+  access.classList.add("hidden");
   boot.classList.remove("hidden");
   runBoot();
 };
 
+// BOOT SEQUENCE
 function runBoot() {
   let i = 0;
-  function typeLine() {
+  function nextLine() {
     if (i < bootLines.length) {
       bootText.textContent += bootLines[i] + "\n";
       i++;
-      setTimeout(typeLine, 400);
+      setTimeout(nextLine, 420);
     } else {
-      setTimeout(showUI, 800);
+      setTimeout(showJarvis, 800);
     }
   }
-  typeLine();
+  nextLine();
 }
 
-function showUI() {
+// SHOW INTERFACE
+function showJarvis() {
   boot.classList.add("hidden");
-  ui.classList.remove("hidden");
-
-  speak(
-    "You are viewing the interface of Satyam Kumar. The boss is currently offline."
-  );
+  jarvis.classList.remove("hidden");
 }
 
-// SLIDES
-function showSlide(i) {
+// SLIDE CONTROL
+function showSlide(index) {
   slides.forEach(s => s.classList.remove("active"));
-  slides[i].classList.add("active");
+  slides[index].classList.add("active");
 }
 
-nextBtn.onclick = () => {
-  index = (index + 1) % slides.length;
-  showSlide(index);
-};
-
-prevBtn.onclick = () => {
-  index = (index - 1 + slides.length) % slides.length;
-  showSlide(index);
-};
-
-// VOICE (SAFE)
-function speak(text) {
-  if (!window.speechSynthesis) return;
-  speechSynthesis.cancel();
-  const msg = new SpeechSynthesisUtterance(text);
-  msg.rate = 0.95;
-  msg.pitch = 1.05;
-  speechSynthesis.speak(msg);
-}
+navButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    showSlide(Number(btn.dataset.slide));
+  });
+});
