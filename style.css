@@ -6,35 +6,18 @@
 }
 
 body {
-  background: #020617;
-  color: #e5e7eb;
+  background: #050814;
+  color: #e6e6e6;
   overflow-x: hidden;
 }
 
-#ai-bg {
+canvas#ai-bg {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
 }
 
-/* AI BOOT */
-.ai-boot {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at top, #0b1028, #020617);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-}
-
-.ai-boot pre {
-  color: #7aa2ff;
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-/* NAV */
+/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -42,129 +25,110 @@ body {
   padding: 18px 60px;
   display: flex;
   justify-content: space-between;
-  backdrop-filter: blur(14px);
+  align-items: center;
+  background: rgba(5,8,20,0.6);
+  backdrop-filter: blur(10px);
   z-index: 10;
 }
 
-.navbar a {
-  margin: 0 14px;
-  color: #cbd5f5;
+.navbar nav a {
+  margin: 0 15px;
+  color: #aaa;
   text-decoration: none;
 }
 
-/* HERO */
+.hire-btn {
+  background: linear-gradient(135deg,#7f5cff,#3fd2ff);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  color: #fff;
+}
+
+/* Hero */
 .hero {
   min-height: 100vh;
-  padding: 140px 80px;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  padding: 120px 80px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
-.hero h1 {
-  font-size: 52px;
-}
-.hero h1 span {
-  color: #7aa2ff;
-}
-
-.hero h2 {
-  font-weight: 400;
-  margin-top: 10px;
-  color: #cbd5f5;
+.hero-text h1 {
+  font-size: 46px;
+  background: linear-gradient(90deg,#7f5cff,#3fd2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.hero p {
-  margin-top: 20px;
-  max-width: 520px;
-  color: #a5b4fc;
+.hero-text h2 {
+  margin: 15px 0;
+  font-weight: 500;
 }
 
+.hero-text p {
+  max-width: 500px;
+  color: #b3b3b3;
+}
+
+.hero-actions {
+  margin-top: 25px;
+}
+
+.primary, .secondary {
+  padding: 12px 22px;
+  border-radius: 25px;
+  border: none;
+  margin-right: 10px;
+}
+
+.primary {
+  background: linear-gradient(135deg,#7f5cff,#3fd2ff);
+  color: #fff;
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid #3fd2ff;
+  color: #3fd2ff;
+}
+
+/* Hero Image */
 .hero-visual img {
-  max-width: 420px;
-  filter: drop-shadow(0 40px 90px rgba(124,58,237,.45));
+  width: 340px;
+  filter: drop-shadow(0 0 40px rgba(63,210,255,0.3));
 }
 
-/* SECTIONS */
+/* Sections */
 .section {
   padding: 120px 80px;
+  position: relative;
+  z-index: 2;
 }
 
 .section h3 {
-  font-size: 34px;
-  margin-bottom: 24px;
+  font-size: 32px;
+  margin-bottom: 30px;
 }
 
-/* PHILOSOPHY */
-.philosophy li {
-  margin-bottom: 14px;
-  color: #c7d2fe;
-}
-
-/* EXPERIENCE */
-.experience-card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 18px;
-  padding: 26px;
-}
-
-/* CAPABILITIES */
-.cap-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 20px;
-}
-.cap {
-  background: rgba(255,255,255,0.04);
-  padding: 22px;
-  border-radius: 16px;
-}
-
-/* PROJECTS */
+/* Projects */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 30px;
 }
+
 .project-card {
+  padding: 25px;
+  border-radius: 20px;
   background: rgba(255,255,255,0.04);
-  padding: 24px;
-  border-radius: 18px;
-  border: 1px solid rgba(124,58,237,.25);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
-/* CONSOLE */
-.console {
-  background: rgba(0,0,0,.6);
-  border-radius: 16px;
-  padding: 20px;
-  max-width: 600px;
-}
-.console pre {
-  color: #7aa2ff;
-  min-height: 120px;
-}
-.console input {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-top: 1px solid rgba(255,255,255,.2);
-  padding: 12px;
-  color: #e5e7eb;
-}
-
-/* ANIMATION */
-.hidden {
-  opacity: 0;
-  transform: translateY(40px);
-}
-.reveal.show {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all .9s ease;
-}
-
-/* TILT */
+/* 3D Tilt */
 .tilt {
-  transform-style: preserve-3d;
+  transition: transform 0.2s ease;
 }
