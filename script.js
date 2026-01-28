@@ -1,4 +1,4 @@
-// SCROLL REVEAL
+// Scroll reveal
 const reveals = document.querySelectorAll(".reveal");
 
 const observer = new IntersectionObserver(
@@ -9,12 +9,12 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.2 }
+  { threshold: 0.15 }
 );
 
 reveals.forEach(el => observer.observe(el));
 
-// 3D TILT EFFECT
+// 3D tilt
 const tilt = document.querySelector(".tilt");
 
 if (tilt) {
@@ -23,13 +23,13 @@ if (tilt) {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const rotateX = ((y / rect.height) - 0.5) * 10;
-    const rotateY = ((x / rect.width) - 0.5) * -10;
+    const rx = ((y / rect.height) - 0.5) * 8;
+    const ry = ((x / rect.width) - 0.5) * -8;
 
-    tilt.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    tilt.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
   });
 
   tilt.addEventListener("mouseleave", () => {
-    tilt.style.transform = "rotateX(0) rotateY(0)";
+    tilt.style.transform = "rotateX(0deg) rotateY(0deg)";
   });
 }
