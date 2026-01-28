@@ -1,79 +1,66 @@
-const slides = document.querySelectorAll(".slide");
-let current = 0;
-let scrolling = false;
-
-const voices = [
-  "Background loaded.",
-  "Engineering philosophy initialized.",
-  "Deploying project intelligence.",
-  "Professional experience detected.",
-  "Communication channels available."
-];
-
-function speak(text) {
-  if (!speechSynthesis) return;
-  const msg = new SpeechSynthesisUtterance(text);
-  msg.rate = 0.9;
-  msg.pitch = 1.1;
-  speechSynthesis.speak(msg);
-}
-
-function showSlide(index) {
-  slides.forEach(s => s.classList.remove("active"));
-  slides[index].classList.add("active");
-
-  if (voices[index - 1]) {
-    speak(voices[index - 1]);
-  }
-}
-
-window.addEventListener("wheel", e => {
-  if (scrolling) return;
-  scrolling = true;
-
-  if (e.deltaY > 0 && current < slides.length - 1) {
-    current++;
-    showSlide(current);
-  } else if (e.deltaY < 0 && current > 0) {
-    current--;
-    showSlide(current);
-  }
-
-  setTimeout(() => scrolling = false, 900);
-});
-
-/* BOOT */
 const bootLines = [
   "> SYSTEM ONLINE",
   "> INITIALIZING NEURAL INTERFACE",
+  "> LOADING USER PROFILE",
   "> INTERFACE: SATYAM KUMAR",
   "> STATUS: BOSS OFFLINE",
+  "> YOU ARE VIEWING THE INTERFACE OF SATYAM KUMAR.",
+  "> THE BOSS IS CURRENTLY OFFLINE.",
   "> ACCESS GRANTED"
 ];
 
 const bootText = document.getElementById("boot-text");
-let i = 0;
+let line = 0;
 
-function boot() {
-  if (i < bootLines.length) {
-    bootText.textContent += bootLines[i] + "\n";
-    i++;
-    setTimeout(boot, 350);
+function typeBoot() {
+  if (line < bootLines.length) {
+    bootText.textContent += bootLines[line] + "\n";
+    line++;
+    setTimeout(typeBoot, 400);
   } else {
     setTimeout(() => {
-      document.getElementById("boot").style.display = "none";
-      showSlide(0);
-    }, 1200);
+      document.getElementById("boot-screen").style.display = "none";
+      document.getElementById("intro").classList.remove("hidden");
+    }, 1000);
   }
 }
 
-boot();
+typeBoot();
 
-/* PARALLAX */
-document.addEventListener("mousemove", e => {
-  const img = document.querySelector(".hero-image img");
-  if (!img) return;
-  const x = (window.innerWidth / 2 - e.clientX) / 40;
-  const y = (window.innerHeight / 2 - e.clientY) / 40;
-  img.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-});
+/* VOICE */
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  const msg = new SpeechSynthesisUtterance(text);
+  msg.rate = 0.95;
+  msg.pitch = 1.1;
+  window.speechSynthesis.speak(msg);
+}
+
+/* ENTER */
+document.getElementById("enter-btn").onclick = () => {
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("interface").classList.remove("hidden");
+
+  speak(
+    "You are viewing the interface of Satyam Kumar. The boss is currently offline."
+  );
+};
+
+/* SLIDES */
+const slides = document.querySelectorAll(".slide");
+let current = 0;
+
+function showSlide(i) {
+  slides.forEach(s => s.classList.remove("active"));
+  slides[i].classList.add("active");
+}
+
+document.getElementById("next").onclick = () => {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+};
+
+document.getElementById("prev").onclick = () => {
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+};
