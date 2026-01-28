@@ -1,12 +1,51 @@
-// Optional subtle AI greeting (safe)
-window.addEventListener("load", () => {
-  if ("speechSynthesis" in window) {
-    const msg = new SpeechSynthesisUtterance(
-      "Welcome. You are viewing the interface of Satyam Kumar."
-    );
-    msg.rate = 0.9;
-    msg.pitch = 0.8;
-    msg.volume = 0.6;
-    speechSynthesis.speak(msg);
+/* BOOT SCREEN */
+const bootLines = [
+  "> SYSTEM ONLINE",
+  "> INITIALIZING NEURAL INTERFACE",
+  "> LOADING USER PROFILE",
+  "> INTERFACE: SATYAM KUMAR",
+  "> STATUS: BOSS OFFLINE",
+  "> ACCESS GRANTED"
+];
+
+const bootText = document.getElementById("boot-text");
+const bootScreen = document.getElementById("boot-screen");
+
+let i = 0;
+function runBoot() {
+  if (i < bootLines.length) {
+    bootText.innerText += bootLines[i] + "\n";
+    i++;
+    setTimeout(runBoot, 500);
+  } else {
+    setTimeout(() => {
+      bootScreen.style.opacity = "0";
+      setTimeout(() => bootScreen.remove(), 700);
+    }, 800);
   }
+}
+runBoot();
+
+/* SLIDE NAVIGATION */
+const links = document.querySelectorAll("[data-slide]");
+const slides = document.querySelectorAll(".slide");
+
+links.forEach(link => {
+  link.addEventListener("click", () => {
+    const target = link.dataset.slide;
+
+    slides.forEach(s =>
+      s.classList.toggle("active", s.id === target)
+    );
+
+    if ("speechSynthesis" in window) {
+      speechSynthesis.cancel();
+      const msg = new SpeechSynthesisUtterance(
+        `Opening ${target} section`
+      );
+      msg.rate = 0.9;
+      msg.volume = 0.6;
+      speechSynthesis.speak(msg);
+    }
+  });
 });
