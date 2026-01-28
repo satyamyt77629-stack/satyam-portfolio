@@ -1,106 +1,74 @@
-/* ================= BOOT ================= */
-
 const bootLines = [
   "> SYSTEM ONLINE",
+  "> INITIALIZING NEURAL INTERFACE",
+  "> LOADING USER PROFILE",
   "> INTERFACE: SATYAM KUMAR",
   "> STATUS: BOSS OFFLINE",
+  "> MESSAGE:",
+  "> YOU ARE VIEWING THE INTERFACE OF SATYAM KUMAR.",
+  "> THE BOSS IS CURRENTLY OFFLINE.",
+  "> YOU MAY EXPLORE THE SYSTEM, REVIEW PROJECTS, OR INITIATE CONTACT.",
   "> ACCESS GRANTED"
 ];
 
-const bootText = document.getElementById("boot-text");
-const boot = document.getElementById("boot");
+let currentLine = 0;
+const bootElement = document.getElementById("boot-text");
 
-let i = 0;
-function bootType() {
-  if (i < bootLines.length) {
-    bootText.textContent += bootLines[i] + "\n";
+/* TYPE EFFECT */
+function typeLine(text, callback) {
+  let i = 0;
+  const interval = setInterval(() => {
+    bootElement.innerHTML += text.charAt(i);
     i++;
-    setTimeout(bootType, 600);
-  } else {
-    setTimeout(() => {
-      boot.classList.add("fade-out");
-      setTimeout(() => boot.remove(), 1500);
-      document.querySelectorAll(".hidden").forEach(e => e.style.opacity = 1);
-    }, 1200);
-  }
-}
-bootType();
-
-/* ================= SCROLL REVEAL ================= */
-
-const reveals = document.querySelectorAll(".reveal");
-addEventListener("scroll", () => {
-  reveals.forEach(el => {
-    if (el.getBoundingClientRect().top < innerHeight - 100) {
-      el.classList.add("active");
+    if (i >= text.length) {
+      clearInterval(interval);
+      bootElement.innerHTML += "<br/>";
+      if (callback) setTimeout(callback, 350);
     }
-  });
-});
-
-/* ================= FACE-TRACKING PARALLAX ================= */
-
-const character = document.querySelector(".character");
-
-addEventListener("mousemove", e => {
-  const x = (e.clientX / innerWidth - 0.5) * 20;
-  const y = (e.clientY / innerHeight - 0.5) * -20;
-  character.style.transform =
-    `rotateY(${x}deg) rotateX(${y}deg) translateZ(10px)`;
-});
-
-/* ================= IDLE AI THINKING ================= */
-
-let idleTime = 0;
-setInterval(() => {
-  idleTime++;
-  if (idleTime > 3) {
-    character.style.transform += " rotateZ(1deg)";
-  }
-}, 1000);
-
-addEventListener("mousemove", () => idleTime = 0);
-
-/* ================= NEURAL BG ================= */
-
-const canvas = document.getElementById("neural");
-const ctx = canvas.getContext("2d");
-
-function resize() {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
+  }, 35);
 }
-resize();
-addEventListener("resize", resize);
 
-let nodes = Array.from({ length: 80 }, () => ({
-  x: Math.random() * canvas.width,
-  y: Math.random() * canvas.height,
-  vx: (Math.random() - 0.5) * 0.4,
-  vy: (Math.random() - 0.5) * 0.4
-}));
-
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  nodes.forEach(a => {
-    a.x += a.vx;
-    a.y += a.vy;
-
-    if (a.x < 0 || a.x > canvas.width) a.vx *= -1;
-    if (a.y < 0 || a.y > canvas.height) a.vy *= -1;
-
-    nodes.forEach(b => {
-      const d = Math.hypot(a.x - b.x, a.y - b.y);
-      if (d < 120) {
-        ctx.strokeStyle = `rgba(99,102,241,${1 - d / 120})`;
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.stroke();
-      }
+/* BOOT SEQUENCE */
+function startBootSequence() {
+  if (currentLine < bootLines.length) {
+    typeLine(bootLines[currentLine], () => {
+      currentLine++;
+      startBootSequence();
     });
-  });
-
-  requestAnimationFrame(animate);
+  } else {
+    speakIntro();
+    setTimeout(showMainInterface, 5000);
+  }
 }
-animate();
+
+/* 🔊 AI VOICE (AFTER TYPING FINISHES) */
+function speakIntro() {
+  if (!("speechSynthesis" in window)) return;
+
+  const message = new SpeechSynthesisUtterance(
+    "You are viewing the interface of Satyam Kumar. " +
+    "The boss is currently offline. " +
+    "You may explore the system, review projects, or initiate contact."
+  );
+
+  message.rate = 0.9;
+  message.pitch = 1.15;
+  message.volume = 1;
+
+  const voices = speechSynthesis.getVoices();
+  message.voice =
+    voices.find(v => v.name.toLowerCase().includes("female")) || voices[0];
+
+  speechSynthesis.speak(message);
+}
+
+/* SHOW MAIN SITE */
+function showMainInterface() {
+  document.getElementById("boot-screen").style.display = "none";
+  document.getElementById("main-site").classList.add("visible");
+}
+
+/* START SYSTEM */
+window.onload = () => {
+  setTimeout(startBootSequence, 600);
+};
