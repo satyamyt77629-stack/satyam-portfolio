@@ -2,83 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>JARVIS Interface | Satyam Kumar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <title>JARVIS Interface — Satyam Kumar</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- BOOT SCREEN -->
-<div id="boot-screen">
-  <pre id="boot-text"></pre>
-</div>
-
 <!-- INTRO -->
-<section id="intro" class="hidden">
-  <img src="Image/character.png" class="character" />
+<div id="intro">
+  <img src="assets/character.png" class="intro-avatar" />
   <h1>Welcome</h1>
-  <p>You are viewing the interface of <strong>Satyam Kumar</strong></p>
+  <p>You are viewing the interface of <b>Satyam Kumar</b></p>
   <button id="enter-btn">ENTER INTERFACE</button>
-</section>
+</div>
 
 <!-- MAIN INTERFACE -->
 <div id="interface" class="hidden">
 
+  <!-- AI IDLE CORE -->
+  <div class="ai-core"></div>
+
   <!-- SLIDES -->
-  <div class="slide active">
+  <section class="slide active">
     <h2>About Me</h2>
     <p>
-      I am an Information Technology undergraduate with a strong foundation in full-stack
-      development, system design, and problem solving. I build scalable, maintainable,
-      real-world software systems with an engineering-first mindset.
+      I am an Information Technology undergraduate with a strong foundation in
+      full-stack development, system design, and problem solving. I focus on
+      building secure, scalable, and maintainable systems.
     </p>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="slide">
     <h2>Engineering Philosophy</h2>
     <p>
-      Great engineering is silent, reliable, and intentional. Every line of code must earn
-      its place. Systems should be simple to reason about, resilient under pressure,
-      and designed for long-term evolution.
+      Great engineering is silent, reliable, and intentional. Every line of code
+      must earn its place. I design systems that behave predictably under pressure.
     </p>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="slide">
     <h2>AI-Driven Projects</h2>
     <ul>
-      <li>Automatic Water Pump Control System</li>
-      <li>Security Alert Automation</li>
-      <li>Thermoelectric Generator System</li>
-      <li>Task Management Web Application</li>
-      <li>AI-Style Portfolio Interface</li>
+      <li>Automatic Water Pump Control (IoT)</li>
+      <li>Automatic Security Alert System</li>
+      <li>Thermoelectric Generator</li>
+      <li>Task Management Web App</li>
+      <li>Personal Portfolio Interface</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="slide">
     <h2>Experience</h2>
+    <p><b>Software Engineer</b></p>
+    <p>Gyanyug RIG Innovation</p>
     <p>
-      <strong>Software Engineer — Gyanyug RIG Innovation</strong><br><br>
-      Working on production-grade software systems focused on scalability,
-      performance optimization, and secure backend architecture.
+      Building real-world, production-grade systems focused on performance,
+      scalability, and secure backend architecture.
     </p>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="slide">
     <h2>Contact</h2>
-    <p>Email: <strong>satya.myt77629@gmail.com</strong></p>
-  </div>
+    <p>Email: satya.myt77629@gmail.com</p>
+  </section>
 
-  <!-- CONTROLS -->
-  <div class="controls">
+  <!-- NAV -->
+  <div class="nav">
     <button id="prev">◀</button>
     <button id="next">▶</button>
   </div>
 
 </div>
+
+<audio id="slideSound" src="assets/slide.mp3"></audio>
 
 <script src="script.js"></script>
 </body>
