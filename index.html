@@ -2,54 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JARVIS | Satyam Kumar</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="jarvis">
-
-  <!-- SIDEBAR -->
+  <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="brand">
-      <img src="assets/character.png" alt="Satyam AI" />
+    <div class="logo">
       <span>JARVIS</span>
+      <small>Satyam AI</small>
     </div>
-
     <nav>
-      <button data-section="about">ABOUT</button>
-      <button data-section="philosophy">PHILOSOPHY</button>
-      <button data-section="projects">PROJECTS</button>
-      <button data-section="experience">EXPERIENCE</button>
-      <button data-section="contact">CONTACT</button>
+      <a href="#about">ABOUT</a>
+      <a href="#philosophy">PHILOSOPHY</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#experience">EXPERIENCE</a>
+      <a href="#contact">CONTACT</a>
     </nav>
-
-    <div class="status">
-      <span class="dot"></span> SYSTEM STABLE
-    </div>
   </aside>
 
-  <!-- MAIN -->
-  <main class="panel">
+  <!-- Main -->
+  <main class="main">
 
-    <!-- HEADER -->
-    <header class="hero">
-      <div class="hero-text">
-        <h2>INTERFACE: SATYAM KUMAR</h2>
-        <p>Full Stack Developer · Software Engineer</p>
+    <!-- Header -->
+    <section class="header">
+      <div>
+        <h1>INTERFACE: <span>SATYAM KUMAR</span></h1>
+        <p class="role">Full Stack Developer · Software Engineer</p>
       </div>
-    </header>
 
-    <!-- CONTENT -->
-    <section id="content"></section>
+      <div class="avatar">
+        <img src="Image/character.png" alt="Satyam AI Character" />
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="card">
+      <h2>About Me</h2>
+      <p>
+        I am an Information Technology undergraduate with a strong focus on building
+        reliable, scalable, and maintainable software systems.
+      </p>
+      <p>
+        My interests lie in full-stack development, backend architecture,
+        and solving real-world problems through clean system design.
+      </p>
+    </section>
+
+    <!-- Philosophy -->
+    <section id="philosophy" class="card">
+      <h2>Engineering Philosophy</h2>
+      <p>
+        I believe great engineering is silent, reliable, and intentional.
+        Every line of code should earn its place.
+      </p>
+      <p>
+        I prioritize clean architecture, predictable systems,
+        and long-term maintainability over short-term solutions.
+      </p>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="card">
+      <h2>AI-Driven Projects</h2>
+      <ul class="projects">
+        <li>Automatic Water Pump Control (IoT)</li>
+        <li>Automatic Security Alert System</li>
+        <li>Thermoelectric Generator</li>
+        <li>Task Management Web App</li>
+        <li>Personal Portfolio Interface (JARVIS)</li>
+      </ul>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="card">
+      <h2>Experience</h2>
+      <h3>Software Engineer</h3>
+      <span class="company">Gyanyug RIG Innovation</span>
+      <p>
+        Building real-world, production-grade software systems with
+        focus on scalability, performance optimization,
+        and secure backend architecture.
+      </p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:satya.myt77629@gmail.com">satya.myt77629@gmail.com</a></p>
+    </section>
 
   </main>
 
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
