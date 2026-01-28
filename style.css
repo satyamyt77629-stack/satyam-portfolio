@@ -11,67 +11,54 @@ body {
 }
 
 /* BOOT */
-#boot-screen {
+#boot {
   position: fixed;
   inset: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 #boot-text {
-  width: min(90%, 720px);
   font-family: "JetBrains Mono", monospace;
   font-size: 15px;
-  line-height: 1.6;
   color: #7dd3fc;
+  line-height: 1.6;
 }
 
-/* MAIN */
-#main-site {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1.2s ease;
+/* SLIDES */
+#slides {
+  height: 100vh;
+  width: 100vw;
 }
 
-#main-site.visible {
-  opacity: 1;
-  pointer-events: auto;
+.slide {
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  padding: 80px;
 }
 
-/* NAV */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
+.slide.active {
+  display: block;
+  animation: fadeSlide 0.9s ease;
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 22px;
-}
-
-.nav-links a {
-  margin: 0 14px;
-  color: #9ca3af;
-  text-decoration: none;
-}
-
-.hire-btn {
-  background: linear-gradient(135deg, #6366f1, #38bdf8);
-  padding: 10px 18px;
-  border-radius: 999px;
-  color: #fff;
-  text-decoration: none;
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* HERO */
 .hero {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  padding: 80px 60px;
   align-items: center;
+}
+
+.hero h1 {
+  font-size: 42px;
+  line-height: 1.2;
 }
 
 .hero h1 span {
@@ -80,32 +67,41 @@ nav {
   color: transparent;
 }
 
-.hero-image img {
-  width: 100%;
-  max-width: 420px;
-  transition: transform 0.2s ease;
+.role {
+  font-weight: 500;
+  color: #9ca3af;
 }
 
-/* SECTIONS */
-.section {
-  padding: 80px 60px;
+.desc {
+  max-width: 520px;
+  margin-top: 16px;
 }
 
-.section h2 {
-  font-size: 32px;
-  margin-bottom: 16px;
+/* CONTENT */
+.content h2 {
+  font-size: 38px;
+  margin-bottom: 20px;
+}
+
+.content p {
+  max-width: 700px;
+  line-height: 1.7;
+  font-size: 18px;
 }
 
 /* PROJECTS */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+.projects {
+  list-style: none;
+  padding: 0;
 }
 
-.project-card {
-  padding: 20px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
+.projects li {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* IMAGE */
+.hero-image img {
+  max-width: 420px;
+  transition: transform 0.2s ease;
 }
