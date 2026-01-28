@@ -112,3 +112,41 @@ body {
 .slide ul li {
   margin: 12px 0;
 }
+/* ===== JARVIS IDLE THINKING (SAFE ADDON) ===== */
+
+#jarvis-idle-core {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(80, 200, 255, 0.35);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 9999;
+}
+
+#jarvis-idle-core::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid rgba(80, 200, 255, 0.25);
+  animation: jarvisIdlePulse 2.8s infinite;
+}
+
+.jarvis-core-dot {
+  width: 8px;
+  height: 8px;
+  background: #50c8ff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #50c8ff;
+}
+
+@keyframes jarvisIdlePulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
