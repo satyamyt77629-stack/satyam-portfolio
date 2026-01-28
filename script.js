@@ -1,30 +1,26 @@
-// Reveal on scroll
-const reveals = document.querySelectorAll(".reveal");
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("active");
+window.addEventListener('scroll', () => {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add('active');
     }
   });
 });
 
-reveals.forEach(r => observer.observe(r));
+// 3D Character Tilt
+const character = document.querySelector('.hero-character');
 
-// 3D Tilt
-const tilt = document.querySelector(".tilt");
+if (character) {
+  document.addEventListener('mousemove', (e) => {
+    const x = (window.innerWidth / 2 - e.clientX) / 30;
+    const y = (window.innerHeight / 2 - e.clientY) / 30;
+    character.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+  });
 
-tilt.addEventListener("mousemove", e => {
-  const rect = tilt.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  const rotateX = ((y / rect.height) - 0.5) * 15;
-  const rotateY = ((x / rect.width) - 0.5) * -15;
-
-  tilt.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-});
-
-tilt.addEventListener("mouseleave", () => {
-  tilt.style.transform = "rotateX(0) rotateY(0)";
-});
+  document.addEventListener('mouseleave', () => {
+    character.style.transform = 'rotateY(0deg) rotateX(0deg)';
+  });
+}
