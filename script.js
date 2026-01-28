@@ -1,142 +1,74 @@
-/* ===============================
-   AI BOOT + VOICE
-================================ */
+/* Typing Intro */
+const text = "Welcome. You are viewing the interface of Satyam Kumar. The boss is currently offline. Let's begin.";
+let i = 0;
+const speed = 45;
+const target = document.getElementById("typing");
 
-const bootLines = [
-  "SYSTEM ONLINE",
-  "INTERFACE: SATYAM KUMAR",
-  "STATUS: BOSS OFFLINE",
-  "ACCESS GRANTED"
-];
+function type() {
+  if (i < text.length) {
+    target.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, speed);
+  }
+}
+type();
 
-const terminal = document.getElementById("aiTerminal");
-let idx = 0;
+/* Female AI Voice */
+function speak() {
+  const msg = new SpeechSynthesisUtterance(
+    "Welcome. You are viewing the interface of Satyam Kumar. The boss is currently offline. Let's begin."
+  );
+  msg.rate = 0.9;
+  msg.pitch = 1.2;
 
-function speak(text) {
-  const msg = new SpeechSynthesisUtterance(text);
-  msg.rate = 0.85;
-  msg.pitch = 0.8;
+  const voices = speechSynthesis.getVoices();
+  const female = voices.find(v => v.name.toLowerCase().includes("female")) || voices[0];
+  msg.voice = female;
+
   speechSynthesis.speak(msg);
 }
 
-function boot() {
-  if (idx < bootLines.length) {
-    terminal.innerHTML += `> ${bootLines[idx]}\n`;
-    if (idx === 2) {
-      speak("Welcome. You are viewing the interface of Satyam Kumar. The boss is currently offline. You may explore his work or leave a message via email.");
-    }
-    idx++;
-    setTimeout(boot, 700);
-  } else {
-    setTimeout(() => {
-      document.getElementById("aiBoot").style.display = "none";
-      document.querySelectorAll(".hidden, .reveal").forEach(el => el.classList.add("show"));
-    }, 1000);
-  }
-}
-boot();
+window.addEventListener("load", () => {
+  setTimeout(speak, 1200);
+});
 
-/* ===============================
-   PARTICLE BACKGROUND
-================================ */
-
+/* Particle Background */
 const canvas = document.getElementById("ai-bg");
 const ctx = canvas.getContext("2d");
-let w, h;
-let nodes = [];
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 
-function resize() {
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-}
-window.addEventListener("resize", resize);
-resize();
-
-for (let i = 0; i < 70; i++) {
-  nodes.push({
-    x: Math.random() * w,
-    y: Math.random() * h,
-    vx: (Math.random() - 0.5) * 0.5,
-    vy: (Math.random() - 0.5) * 0.5
-  });
-}
+let particles = Array.from({ length: 70 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  vx: (Math.random() - 0.5) * 0.5,
+  vy: (Math.random() - 0.5) * 0.5
+}));
 
 function animate() {
-  ctx.clearRect(0, 0, w, h);
-  nodes.forEach(n => {
-    n.x += n.vx;
-    n.y += n.vy;
-    if (n.x < 0 || n.x > w) n.vx *= -1;
-    if (n.y < 0 || n.y > h) n.vy *= -1;
-
-    ctx.fillStyle = "#7aa2ff";
-    ctx.fillRect(n.x, n.y, 2, 2);
-
-    nodes.forEach(o => {
-      const d = Math.hypot(n.x - o.x, n.y - o.y);
-      if (d < 120) {
-        ctx.strokeStyle = "rgba(122,162,255,0.08)";
-        ctx.beginPath();
-        ctx.moveTo(n.x, n.y);
-        ctx.lineTo(o.x, o.y);
-        ctx.stroke();
-      }
-    });
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    ctx.fillStyle = "#3fd2ff";
+    ctx.fillRect(p.x,p.y,2,2);
   });
   requestAnimationFrame(animate);
 }
 animate();
 
-/* ===============================
-   FACE PARALLAX
-================================ */
-
-const face = document.getElementById("face");
-document.addEventListener("mousemove", e => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 8;
-  const y = (e.clientY / window.innerHeight - 0.5) * 8;
-  face.style.transform = `translate(${x}px, ${y}px)`;
-});
-
-/* ===============================
-   SCROLL REVEAL
-================================ */
-
-const reveals = document.querySelectorAll(".reveal");
-window.addEventListener("scroll", () => {
-  reveals.forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-      el.classList.add("show");
-    }
+/* 3D Tilt */
+document.querySelectorAll(".tilt").forEach(card => {
+  card.addEventListener("mousemove", e => {
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    card.style.transform =
+      `rotateX(${-(y-r.height/2)/12}deg) rotateY(${(x-r.width/2)/12}deg)`;
   });
-});
-
-/* ===============================
-   AI CONSOLE COMMANDS
-================================ */
-
-const input = document.getElementById("consoleInput");
-const output = document.getElementById("consoleOutput");
-
-input.addEventListener("keydown", e => {
-  if (e.key === "Enter") {
-    const cmd = input.value.toLowerCase();
-    output.textContent += `\n> ${cmd}\n`;
-
-    if (cmd === "help") {
-      output.textContent += "Commands: projects, experience, contact\n";
-    } else if (cmd === "projects") {
-      document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
-      output.textContent += "Navigating to Projects module...\n";
-    } else if (cmd === "experience") {
-      document.getElementById("experience").scrollIntoView({ behavior: "smooth" });
-      output.textContent += "Opening Experience module...\n";
-    } else if (cmd === "contact") {
-      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-      output.textContent += "Initiating contact channel...\n";
-    } else {
-      output.textContent += "Unknown command\n";
-    }
-    input.value = "";
-  }
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "rotateX(0) rotateY(0)";
+  });
 });
