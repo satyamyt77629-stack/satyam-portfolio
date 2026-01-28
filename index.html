@@ -2,39 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Satyam Kumar | Software Engineer</title>
+  <title>Satyam Kumar | AI Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
 
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-<header class="navbar">
+<!-- AI BOOT SCREEN -->
+<section class="ai-boot" id="aiBoot">
+<pre id="aiTerminal"></pre>
+</section>
+
+<!-- NAVBAR -->
+<header class="navbar hidden">
   <div class="logo">Satyam</div>
   <nav>
     <a href="#about">About</a>
-    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>
-  <a class="hire-btn" href="#contact">Hire Me</a>
+  <a href="#contact" class="hire">Hire Me</a>
 </header>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero hidden">
   <div class="hero-content reveal">
     <h1>Hi, I’m <span>Satyam Kumar</span></h1>
     <h2>Full Stack Software Engineer</h2>
     <p>
-      I design and build secure, scalable, and high-performance software systems
-      using clean architecture and modern technologies.
+      Designing intelligent, secure, and scalable systems —
+      where software meets engineering precision.
     </p>
 
     <div class="hero-actions">
-      <a href="#contact" class="primary">Hire Me</a>
-      <a href="#projects" class="secondary">View Work</a>
+      <a href="#contact" class="primary">Initiate Contact</a>
+      <a href="#projects" class="secondary">View Capabilities</a>
     </div>
   </div>
 
@@ -47,61 +55,59 @@
 <section id="about" class="section reveal">
   <h3>About Me</h3>
   <p>
-    I am an Information Technology undergraduate with a strong foundation in
-    full-stack development, system design, and problem solving.
-    I currently work as a <strong>Software Engineer at Gyanyug RIG Innovation</strong>,
-    contributing to real-world, scalable software solutions.
+    I am a motivated Information Technology undergraduate with a strong foundation
+    in full-stack development, system design, and problem solving.
+    Currently working as a <strong>Software Engineer at Gyanyug RIG Innovation</strong>,
+    contributing to real-world, scalable software systems.
   </p>
-
   <p>
-    I focus on performance, security, and clean architecture while continuously
-    improving my skills through hands-on development and learning modern tools.
+    I enjoy building high-performance applications that emphasize clean architecture,
+    security, and long-term maintainability — continuously improving through hands-on
+    engineering and modern tooling.
   </p>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" class="section reveal">
-  <h3>Experience</h3>
-
-  <div class="experience-card">
-    <h4>Software Engineer</h4>
-    <span>Gyanyug RIG Innovation</span>
-    <p>
-      Building and maintaining scalable software systems, contributing to
-      production-grade applications, and collaborating on system design,
-      performance optimization, and real-world problem solving.
-    </p>
+<!-- SKILLS -->
+<section id="skills" class="section reveal">
+  <h3>Core Skills</h3>
+  <div class="skills-grid">
+    <div class="skill">HTML / CSS</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">React</div>
+    <div class="skill">Node.js</div>
+    <div class="skill">System Design</div>
+    <div class="skill">Problem Solving</div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="section">
-  <h3 class="reveal">Projects</h3>
+<section id="projects" class="section reveal">
+  <h3>AI Projects</h3>
 
-  <div class="project-grid">
-    <div class="project-card tilt reveal">
+  <div class="projects-grid">
+    <div class="project-card tilt">
       <h4>Automatic Water Pump Control (IoT)</h4>
-      <p>Smart automation system preventing overflow and conserving water.</p>
+      <p>Smart automation system using sensors to prevent overflow and conserve water.</p>
     </div>
 
-    <div class="project-card tilt reveal">
+    <div class="project-card tilt">
       <h4>Automatic Security Alert System</h4>
-      <p>Real-time detection and alerting for enhanced monitoring.</p>
+      <p>Real-time monitoring and alerting system for enhanced security.</p>
     </div>
 
-    <div class="project-card tilt reveal">
+    <div class="project-card tilt">
       <h4>Thermoelectric Generator</h4>
       <p>Energy generation by converting heat gradients into electricity.</p>
     </div>
 
-    <div class="project-card tilt reveal">
+    <div class="project-card tilt">
       <h4>Task Management Web App</h4>
-      <p>Clean, efficient CRUD-based task management system.</p>
+      <p>CRUD-based productivity system with clean UI and optimized logic.</p>
     </div>
 
-    <div class="project-card tilt reveal">
-      <h4>Personal Portfolio Website</h4>
-      <p>High-performance portfolio with modern UI and animations.</p>
+    <div class="project-card tilt">
+      <h4>Personal AI Portfolio</h4>
+      <p>High-performance portfolio with cinematic UI and AI-inspired interactions.</p>
     </div>
   </div>
 </section>
