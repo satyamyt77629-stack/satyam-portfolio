@@ -1,28 +1,50 @@
-// Scroll reveal
-const reveals = document.querySelectorAll(".reveal");
+/* AI BOOT SEQUENCE */
+const lines = [
+  "SYSTEM BOOTING...",
+  "INITIALIZING INTERFACE...",
+  "LOADING AI MODULES...",
+  "IDENTITY CONFIRMED: SATYAM KUMAR",
+  "STATUS: ONLINE"
+];
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("active");
-      observer.unobserve(entry.target);
+const terminal = document.getElementById("aiTerminal");
+let line = 0;
+
+function typeLine() {
+  if (line < lines.length) {
+    terminal.innerHTML += "> " + lines[line] + "\n";
+    line++;
+    setTimeout(typeLine, 600);
+  } else {
+    setTimeout(() => {
+      document.getElementById("aiBoot").style.display = "none";
+      document.querySelectorAll(".hidden").forEach(el => el.classList.add("show"));
+    }, 900);
+  }
+}
+typeLine();
+
+/* SCROLL REVEAL */
+const reveals = document.querySelectorAll(".reveal");
+window.addEventListener("scroll", () => {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add("show");
     }
   });
-}, { threshold: 0.15 });
+});
 
-reveals.forEach(r => observer.observe(r));
-
-// 3D Tilt (AI feel)
+/* 3D TILT */
 document.querySelectorAll(".tilt").forEach(card => {
   card.addEventListener("mousemove", e => {
     const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    card.style.transform =
-      `rotateX(${(-y / 25)}deg) rotateY(${(x / 25)}deg)`;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const rx = -(y / rect.height - 0.5) * 10;
+    const ry = (x / rect.width - 0.5) * 10;
+    card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
   });
-
   card.addEventListener("mouseleave", () => {
     card.style.transform = "rotateX(0) rotateY(0)";
   });
