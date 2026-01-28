@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Satyam Kumar | AI Engineer Interface</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satyam Kumar | AI Interface</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -14,15 +14,16 @@
 
 <!-- AI BOOT -->
 <section class="ai-boot" id="aiBoot">
-  <pre id="aiTerminal"></pre>
+<pre id="aiTerminal"></pre>
 </section>
 
 <!-- NAV -->
 <header class="navbar hidden">
   <div class="logo">SATYAM</div>
   <nav>
-    <a href="#about">About</a>
+    <a href="#philosophy">Philosophy</a>
     <a href="#experience">Experience</a>
+    <a href="#capabilities">Capabilities</a>
     <a href="#projects">Projects</a>
     <a href="#console">Console</a>
     <a href="#contact">Contact</a>
@@ -30,29 +31,30 @@
 </header>
 
 <!-- HERO -->
-<section class="hero hidden">
+<section class="hero hidden" id="hero">
   <div class="hero-content reveal">
-    <h1>Initializing <span>Satyam Kumar</span></h1>
-    <h2>Full Stack Software Engineer</h2>
+    <h1>Welcome<span>.</span></h1>
+    <h2>Interface of <strong>Satyam Kumar</strong></h2>
     <p>
-      Building intelligent, scalable, and secure software systems —
-      engineered with precision and AI-grade discipline.
+      Designing intelligent, scalable, and secure systems —  
+      engineered with precision and intent.
     </p>
   </div>
 
-  <div class="hero-visual tilt">
-    <img src="Image/character.png" alt="AI Engineer">
+  <div class="hero-visual tilt" id="face">
+    <img src="Image/character.png" alt="AI Avatar">
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="section reveal">
-  <h3>About Me</h3>
-  <p>
-    I am an Information Technology undergraduate and a <strong>Software Engineer
-    at Gyanyug RIG Innovation</strong>, working on real-world, scalable systems.
-    My focus lies in clean architecture, performance, and intelligent system design.
-  </p>
+<!-- ENGINEERING PHILOSOPHY -->
+<section id="philosophy" class="section reveal">
+  <h3>Engineering Philosophy</h3>
+  <ul class="philosophy">
+    <li>Clarity over cleverness.</li>
+    <li>Systems should be simple to understand and hard to break.</li>
+    <li>Scalability is a mindset, not a feature.</li>
+    <li>Good software is boring — because it works.</li>
+  </ul>
 </section>
 
 <!-- EXPERIENCE -->
@@ -62,22 +64,33 @@
     <h4>Software Engineer</h4>
     <span>Gyanyug RIG Innovation</span>
     <p>
-      Contributing to production-grade software, system logic, automation,
-      debugging, and performance optimization across real deployments.
+      Working on production-grade software systems, focusing on
+      performance, maintainability, automation, and real-world reliability.
     </p>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities" class="section reveal">
+  <h3>System Capabilities</h3>
+  <div class="cap-grid">
+    <div class="cap">Architecture Design</div>
+    <div class="cap">Problem Decomposition</div>
+    <div class="cap">Automation & Optimization</div>
+    <div class="cap">Performance Awareness</div>
+    <div class="cap">Production Readiness</div>
   </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="section reveal">
-  <h3>AI Projects</h3>
-
+  <h3>Projects</h3>
   <div class="projects-grid">
     <div class="project-card tilt">Automatic Water Pump Control (IoT)</div>
     <div class="project-card tilt">Automatic Security Alert System</div>
     <div class="project-card tilt">Thermoelectric Generator</div>
-    <div class="project-card tilt">Task Management Web Application</div>
-    <div class="project-card tilt">AI-Driven Personal Portfolio</div>
+    <div class="project-card tilt">Task Management Web App</div>
+    <div class="project-card tilt">AI Portfolio System</div>
   </div>
 </section>
 
@@ -86,10 +99,11 @@
   <h3>AI Command Console</h3>
   <div class="console">
     <pre id="consoleOutput">
-> SYSTEM READY
-> Awaiting command...
+> SYSTEM ONLINE
+> STATUS: BOSS OFFLINE
+> TYPE 'help'
     </pre>
-    <input id="consoleInput" placeholder="Type command (help)" />
+    <input id="consoleInput" placeholder="Enter command…" />
   </div>
 </section>
 
