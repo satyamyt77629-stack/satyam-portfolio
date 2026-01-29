@@ -1,66 +1,72 @@
 {
-  "assistantName": "J.A.R.V.I.S",
   "interfaceTitle": "SATYAM INTERFACE",
+  "assistantName": "JARVIS v5",
   "welcomeSpeech": "Welcome to Satyam Interface. Boss is offline. You can view the portfolio and contact with him.",
 
   "profile": {
-    "fullName": "Satyam",
-    "handle": "@satyam",
-    "role": "Full Stack Developer",
+    "fullName": "Satyam Kumar",
+    "role": "Software Engineer",
+    "company": "Gyanyug Riginnovations",
     "location": "India",
-    "bio": "Write your bio here. Example: I build modern web apps, clean UI, and fast backend systems. I love creating futuristic experiences and interactive interfaces.",
-    "email": "you@example.com",
-    "phone": "+91-00000-00000",
+    "email": "your.email@example.com",
+    "phone": "+91-XXXXXXXXXX",
 
     "links": {
-      "resume": "https://example.com/resume.pdf",
-      "github": "https://github.com/yourusername",
-      "linkedin": "https://linkedin.com/in/yourusername"
-    }
+      "linkedin": "https://www.linkedin.com/in/satyam-kumar-649733304",
+      "github": "https://github.com/your-username",
+      "resume": "#"
+    },
+
+    "about": [
+      "I’m Satyam Kumar, a Software Engineer currently working at Gyanyug Riginnovations.",
+      "I build modern, reliable software with clean UI and scalable logic. I enjoy solving real-world problems and learning new technologies."
+    ]
   },
 
   "skills": [
-    {
-      "category": "Frontend",
-      "items": ["HTML", "CSS", "JavaScript", "React", "Three.js"]
-    },
-    {
-      "category": "Backend",
-      "items": ["Node.js", "Express", "MongoDB", "SQL"]
-    },
-    {
-      "category": "Tools",
-      "items": ["Git", "GitHub", "VS Code", "Figma"]
-    }
+    { "group": "Frontend", "items": ["HTML", "CSS", "JavaScript", "Responsive UI"] },
+    { "group": "Backend", "items": ["Node.js", "APIs", "SQL (Basics)"] },
+    { "group": "Tools", "items": ["Git", "GitHub", "VS Code", "Postman"] }
   ],
 
   "projects": [
     {
-      "title": "Project One",
-      "description": "Short description of your project. What problem it solves and what you built.",
-      "stack": ["HTML", "CSS", "JavaScript"],
-      "links": {
-        "live": "https://example.com",
-        "github": "https://github.com/yourusername/project-one"
-      }
+      "title": "AI Chatbot System",
+      "description": "A chatbot interface with intent routing and clean UI. Replace with your real chatbot project details.",
+      "stack": ["JavaScript", "API", "UI"],
+      "links": { "live": "#", "github": "#" }
     },
     {
-      "title": "Project Two",
-      "description": "Another project description with features and impact.",
-      "stack": ["React", "Node.js"],
-      "links": {
-        "live": "https://example.com",
-        "github": "https://github.com/yourusername/project-two"
-      }
+      "title": "E‑Commerce Website",
+      "description": "Product listing, cart flow, and basic checkout UI. Replace with your real project details.",
+      "stack": ["HTML", "CSS", "JavaScript"],
+      "links": { "live": "#", "github": "#" }
+    },
+    {
+      "title": "Weather App",
+      "description": "Weather search with clean cards, loading state, and error handling. Replace with real links.",
+      "stack": ["Fetch API", "UI", "JavaScript"],
+      "links": { "live": "#", "github": "#" }
+    },
+    {
+      "title": "Portfolio Interface (JARVIS World)",
+      "description": "A 3D world portfolio with assistant voice greeting and command console.",
+      "stack": ["Three.js", "Web Speech API", "HTML", "CSS"],
+      "links": { "live": "#", "github": "#" }
     }
   ],
 
   "experience": [
     {
-      "role": "Freelance Developer",
-      "company": "Self",
-      "period": "2024 - Present",
-      "description": "Built websites, landing pages, and web apps for clients. Focused on performance, clean UI, and real-world usability."
+      "role": "Software Engineer",
+      "company": "Gyanyug Riginnovations",
+      "period": "Present",
+      "bullets": [
+        "Building and improving software features for production systems.",
+        "Working with APIs, UI improvements, and bug fixing with clean code practices.",
+        "Collaborating with team members for stable releases."
+      ],
+      "tech": ["JavaScript", "APIs", "Git"]
     }
   ]
 }
