@@ -11,17 +11,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- IMPORTANT: your file is css/style.css -->
   <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
-  <!-- 3D World -->
   <canvas id="world" aria-hidden="true"></canvas>
   <div class="scanlines" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
 
-  <!-- ENTER GATE -->
   <section id="gate" class="gate" aria-label="Enter interface">
     <div class="gate-card">
       <div class="gate-top">
@@ -52,7 +49,6 @@
     </div>
   </section>
 
-  <!-- HUD -->
   <div id="hud" class="hud hidden">
     <header class="topbar">
       <div class="brand">
@@ -84,7 +80,6 @@
     </header>
 
     <main class="main">
-      <!-- LEFT NAV -->
       <aside class="nav panel">
         <div class="panel-title">NAV</div>
 
@@ -111,19 +106,20 @@
         <div class="mini">
           <div class="mini-title">CONTACT</div>
           <div class="linkcol">
-            <span class="muted">Email only:</span>
+            <span class="muted">Email:</span>
             <a href="mailto:satya.myt77629@gmail.com">satya.myt77629@gmail.com</a>
+
+            <span class="muted" style="margin-top:8px;">LinkedIn:</span>
+            <a id="navLinkedIn" href="#" target="_blank" rel="noopener">Open Profile</a>
           </div>
         </div>
       </aside>
 
-      <!-- CENTER CONTENT -->
       <section class="content panel">
         <div class="panel-title" id="viewTitle">ABOUT</div>
         <div id="view" class="view"></div>
       </section>
 
-      <!-- RIGHT CONSOLE -->
       <aside class="console panel">
         <div class="panel-title">ASSISTANT CONSOLE</div>
 
@@ -155,10 +151,7 @@
     </footer>
   </div>
 
-  <!-- Three.js -->
   <script defer src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
-
-  <!-- App -->
   <script type="module" src="./js/main.js"></script>
 </body>
 </html>
