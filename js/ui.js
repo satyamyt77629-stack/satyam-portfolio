@@ -20,19 +20,21 @@ export function renderView(viewKey, data) {
 
       <div class="grid" style="margin-top:14px;">
         <div class="card">
-          <div class="card-title">IDENTITY</div>
+          <div class="card-title">PROFILE</div>
           <div class="tags">
             <span class="tag">${escapeHtml(p.role)}</span>
             <span class="tag">${escapeHtml(p.location)}</span>
+            <span class="tag">BOSS: OFFLINE</span>
           </div>
         </div>
 
         <div class="card">
-          <div class="card-title">STATUS</div>
-          <p class="p">Boss is offline. Portfolio access granted.</p>
+          <div class="card-title">FOCUS</div>
+          <p class="p">Software engineering, automation concepts, and building real product experiences with clean systems.</p>
           <div class="tags">
-            <span class="tag">ACCESS: GRANTED</span>
-            <span class="tag">MODE: PORTFOLIO</span>
+            <span class="tag">QUALITY</span>
+            <span class="tag">SPEED</span>
+            <span class="tag">RELIABILITY</span>
           </div>
         </div>
       </div>
@@ -42,7 +44,7 @@ export function renderView(viewKey, data) {
   if (viewKey === "skills") {
     const skills = data.skills || [];
     return `
-      <p class="p">A clean overview of my core skills. (Edit in <b>data/profile.json</b>)</p>
+      <p class="p">Core skills overview.</p>
       <div class="grid">
         ${skills.map(g => `
           <div class="card">
@@ -59,7 +61,7 @@ export function renderView(viewKey, data) {
   if (viewKey === "projects") {
     const projects = data.projects || [];
     return `
-      <p class="p">Projects showcase. Replace # links with your real GitHub/Live URLs.</p>
+      <p class="p">Projects showcase.</p>
       <div class="grid">
         ${projects.map(pr => `
           <div class="card">
@@ -67,10 +69,6 @@ export function renderView(viewKey, data) {
             <p class="p">${escapeHtml(pr.description)}</p>
             <div class="tags">
               ${(pr.stack || []).map(s => `<span class="tag">${escapeHtml(s)}</span>`).join("")}
-            </div>
-            <div class="card-links">
-              ${pr.links?.github && pr.links.github !== "#" ? `<a target="_blank" rel="noopener" href="${escapeHtml(pr.links.github)}">GitHub</a>` : `<span class="muted">GitHub: add link</span>`}
-              ${pr.links?.live && pr.links.live !== "#" ? `<a target="_blank" rel="noopener" href="${escapeHtml(pr.links.live)}">Live</a>` : `<span class="muted">Live: add link</span>`}
             </div>
           </div>
         `).join("")}
@@ -81,7 +79,7 @@ export function renderView(viewKey, data) {
   if (viewKey === "experience") {
     const exp = data.experience || [];
     return `
-      <p class="p">Professional experience timeline.</p>
+      <p class="p">Professional experience.</p>
       ${exp.map(e => `
         <div class="card" style="margin-bottom:12px;">
           <div class="card-title">${escapeHtml(e.role)} • ${escapeHtml(e.company)}</div>
@@ -97,57 +95,17 @@ export function renderView(viewKey, data) {
     `;
   }
 
-  // contact
+  // contact: ONLY email
   return `
-    <p class="p">Use the options below to contact me.</p>
-    <div class="grid">
-      <div class="card">
-        <div class="card-title">EMAIL</div>
-        <p class="p">${escapeHtml(p.email)}</p>
-        <div class="card-links">
-          <a href="mailto:${encodeURIComponent(p.email)}">Send Email</a>
-        </div>
+    <div class="h1">Contact</div>
+    <p class="p">You can contact me via email only.</p>
+
+    <div class="card" style="max-width:520px;">
+      <div class="card-title">EMAIL</div>
+      <p class="p"><b>${escapeHtml(p.email)}</b></p>
+      <div class="card-links">
+        <a href="mailto:${encodeURIComponent(p.email)}">Send Email</a>
       </div>
-
-      <div class="card">
-        <div class="card-title">PHONE</div>
-        <p class="p">${escapeHtml(p.phone)}</p>
-        <div class="card-links">
-          <a href="tel:${escapeHtml(p.phone)}">Call</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">LINKEDIN</div>
-        <p class="p">Professional profile</p>
-        <div class="card-links">
-          <a target="_blank" rel="noopener" href="${escapeHtml(p.links.linkedin)}">Open</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">GITHUB</div>
-        <p class="p">Projects & code</p>
-        <div class="card-links">
-          <a target="_blank" rel="noopener" href="${escapeHtml(p.links.github)}">Open</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="card">
-      <div class="card-title">SEND MESSAGE</div>
-      <p class="p">This site is static. The form uses mailto (opens your mail app).</p>
-
-      <form id="contactForm">
-        <div style="display:grid; gap:10px;">
-          <input class="cmd" id="cName" placeholder="Your name" required />
-          <input class="cmd" id="cEmail" placeholder="Your email" type="email" required />
-          <textarea class="cmd" id="cMsg" placeholder="Your message" rows="5" required></textarea>
-          <button class="btn primary" type="submit">SEND</button>
-        </div>
-      </form>
     </div>
   `;
 }
