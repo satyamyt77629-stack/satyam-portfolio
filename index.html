@@ -2,120 +2,227 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>JARVIS | Satyam Kumar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Satyam Interface</title>
+
+  <!-- Futuristic font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/styles.css" />
 </head>
+
 <body>
+  <!-- 3D World Canvas -->
+  <canvas id="bg"></canvas>
 
-<!-- ================= BOOT SCREEN ================= -->
-<div id="boot">
-  <div class="boot-text" id="bootText"></div>
-</div>
+  <!-- Boot / Entry overlay -->
+  <div id="boot" class="boot">
+    <div class="boot-card">
+      <div class="boot-title">SATYAM INTERFACE</div>
+      <div class="boot-sub">World Link Established • Secure Channel</div>
 
-<!-- ================= MAIN INTERFACE ================= -->
-<div id="app" class="hidden">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <h1 class="logo">JARVIS</h1>
-    <nav>
-      <button data-slide="0">ABOUT</button>
-      <button data-slide="1">PHILOSOPHY</button>
-      <button data-slide="2">PROJECTS</button>
-      <button data-slide="3">EXPERIENCE</button>
-      <button data-slide="4">CONTACT</button>
-    </nav>
-  </aside>
-
-  <!-- SLIDES -->
-  <main class="slides">
-
-    <!-- ABOUT -->
-    <section class="slide active">
-      <header class="header">
-        <h2>INTERFACE: <span>SATYAM KUMAR</span></h2>
-        <p>Full Stack Developer · Software Engineer</p>
-      </header>
-
-      <div class="card">
-        <h3>About Me</h3>
-        <p>
-          I am an Information Technology undergraduate focused on building reliable,
-          scalable, and maintainable software systems.
-        </p>
-        <p>
-          My interests lie in full-stack development, backend architecture,
-          and solving real-world problems through clean system design.
-        </p>
+      <div class="boot-log" id="bootLog">
+        <div>▸ Initializing neural HUD...</div>
+        <div>▸ Loading world renderer...</div>
+        <div>▸ Calibrating assistant voice...</div>
       </div>
 
-      <img src="assets/character.png" class="character" alt="Satyam AI" />
-    </section>
+      <button id="enterBtn" class="enter-btn">ENTER INTERFACE</button>
 
-    <!-- PHILOSOPHY -->
-    <section class="slide">
-      <div class="card">
-        <h3>Engineering Philosophy</h3>
-
-        <ul class="philosophy">
-          <li>
-            <strong>Clarity over cleverness</strong>
-            <span>Readable systems scale better than smart hacks.</span>
-          </li>
-          <li>
-            <strong>Predictability under pressure</strong>
-            <span>Systems should behave the same in calm and chaos.</span>
-          </li>
-          <li>
-            <strong>Architecture earns performance</strong>
-            <span>Optimization follows structure, not shortcuts.</span>
-          </li>
-          <li>
-            <strong>Long-term thinking</strong>
-            <span>Maintainability beats short-term velocity.</span>
-          </li>
-        </ul>
+      <div class="boot-note">
+        Tip: Voice plays after you click Enter (browser rule).
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- PROJECTS -->
-    <section class="slide">
-      <div class="card">
-        <h3>Projects</h3>
-        <ul class="projects">
-          <li>Automatic Water Pump Control (IoT)</li>
-          <li>Automatic Security Alert System</li>
-          <li>Thermoelectric Generator</li>
-          <li>Task Management Web App</li>
-          <li>Personal Portfolio Interface</li>
-        </ul>
+  <!-- HUD -->
+  <div id="hud" class="hud hidden">
+    <header class="hud-top">
+      <div class="brand">
+        <div class="brand-title" id="brandTitle">SATYAM INTERFACE</div>
+        <div class="brand-sub" id="brandSub">Boss is offline • Portfolio access granted</div>
       </div>
-    </section>
 
-    <!-- EXPERIENCE -->
-    <section class="slide">
-      <div class="card">
-        <h3>Experience</h3>
-        <p class="role">Software Engineer — Gyanyug RIG Innovation</p>
-        <p>
-          Building production-grade software systems with focus on scalability,
-          performance optimization, and secure backend architecture.
-        </p>
+      <div class="status">
+        <div class="status-pill">
+          <span class="dot"></span>
+          <span id="statusText">OFFLINE</span>
+        </div>
+        <div class="status-meta">
+          <div id="clock">--:--:--</div>
+          <div id="date">---- -- --</div>
+        </div>
       </div>
-    </section>
+    </header>
 
-    <!-- CONTACT -->
-    <section class="slide">
-      <div class="card">
-        <h3>Contact</h3>
-        <p>Email: satya.myt77629@gmail.com</p>
-      </div>
-    </section>
+    <main class="hud-main">
+      <!-- Left panel -->
+      <aside class="panel left">
+        <div class="panel-title">NAVIGATION</div>
 
-  </main>
-</div>
+        <nav class="nav">
+          <button class="nav-btn active" data-view="about">ABOUT</button>
+          <button class="nav-btn" data-view="skills">SKILLS</button>
+          <button class="nav-btn" data-view="projects">PROJECTS</button>
+          <button class="nav-btn" data-view="experience">EXPERIENCE</button>
+          <button class="nav-btn" data-view="contact">CONTACT</button>
+        </nav>
 
-<script src="script.js"></script>
+        <div class="panel-divider"></div>
+
+        <div class="mini">
+          <div class="mini-title">SYSTEM</div>
+          <div class="mini-row"><span>Assistant</span><span id="assistantName">J.A.R.V.I.S</span></div>
+          <div class="mini-row"><span>Access</span><span class="ok">GRANTED</span></div>
+          <div class="mini-row"><span>Mode</span><span id="modeText">PORTFOLIO</span></div>
+        </div>
+
+        <div class="panel-divider"></div>
+
+        <div class="mini">
+          <div class="mini-title">COMMANDS</div>
+          <div class="mini-hint">Try:</div>
+          <div class="chip-row">
+            <span class="chip">open projects</span>
+            <span class="chip">open contact</span>
+            <span class="chip">mute</span>
+            <span class="chip">unmute</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Center content -->
+      <section class="panel center">
+        <div class="panel-title" id="viewTitle">ABOUT</div>
+
+        <div id="view-about" class="view">
+          <div class="hero">
+            <div class="hero-text">
+              <div class="hero-name" id="fullName">Satyam</div>
+              <div class="hero-role" id="role">Developer • Designer</div>
+              <p class="hero-bio" id="bio">
+                Loading profile...
+              </p>
+
+              <div class="hero-actions">
+                <a class="btn" id="resumeBtn" href="#" target="_blank" rel="noopener">RESUME</a>
+                <a class="btn ghost" id="githubBtn" href="#" target="_blank" rel="noopener">GITHUB</a>
+                <a class="btn ghost" id="linkedinBtn" href="#" target="_blank" rel="noopener">LINKEDIN</a>
+              </div>
+            </div>
+
+            <div class="hero-card">
+              <div class="hero-card-title">IDENTITY CARD</div>
+              <div class="kv">
+                <div class="kv-row"><span>Handle</span><span id="handle">@satyam</span></div>
+                <div class="kv-row"><span>Location</span><span id="location">India</span></div>
+                <div class="kv-row"><span>Email</span><span id="emailText">you@example.com</span></div>
+                <div class="kv-row"><span>Availability</span><span class="warn">BOSS OFFLINE</span></div>
+              </div>
+              <div class="scanline"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="view-skills" class="view hidden">
+          <div id="skillsGrid" class="grid"></div>
+        </div>
+
+        <div id="view-projects" class="view hidden">
+          <div id="projectsGrid" class="grid"></div>
+        </div>
+
+        <div id="view-experience" class="view hidden">
+          <div id="experienceList" class="stack"></div>
+        </div>
+
+        <div id="view-contact" class="view hidden">
+          <div class="contact">
+            <div class="contact-card">
+              <div class="contact-title">SEND MESSAGE</div>
+              <p class="contact-sub">
+                This is a static GitHub Pages site. The form uses <b>mailto:</b> (opens user email app).
+                You can switch to Formspree/EmailJS later.
+              </p>
+
+              <form id="contactForm">
+                <div class="row">
+                  <label>
+                    Name
+                    <input type="text" id="cName" required placeholder="Your name" />
+                  </label>
+                  <label>
+                    Email
+                    <input type="email" id="cEmail" required placeholder="you@email.com" />
+                  </label>
+                </div>
+
+                <label>
+                  Message
+                  <textarea id="cMsg" required rows="5" placeholder="Write your message..."></textarea>
+                </label>
+
+                <button class="btn" type="submit">SEND</button>
+              </form>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-title">DIRECT LINKS</div>
+              <div class="kv">
+                <div class="kv-row"><span>Email</span><a id="emailLink" href="#">---</a></div>
+                <div class="kv-row"><span>Phone</span><a id="phoneLink" href="#">---</a></div>
+                <div class="kv-row"><span>GitHub</span><a id="githubLink" href="#" target="_blank" rel="noopener">---</a></div>
+                <div class="kv-row"><span>LinkedIn</span><a id="linkedinLink" href="#" target="_blank" rel="noopener">---</a></div>
+              </div>
+
+              <div class="panel-divider"></div>
+
+              <div class="toggle-row">
+                <button class="btn ghost" id="muteBtn" type="button">MUTE VOICE</button>
+                <button class="btn ghost" id="speakBtn" type="button">REPEAT WELCOME</button>
+              </div>
+
+              <div class="scanline"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right panel -->
+      <aside class="panel right">
+        <div class="panel-title">ASSISTANT CONSOLE</div>
+
+        <div class="console" id="console">
+          <div class="console-line">▸ Waiting for user input...</div>
+        </div>
+
+        <div class="cmd">
+          <input id="cmdInput" type="text" placeholder="Type a command... (e.g., open projects)" />
+          <button id="cmdSend" class="btn small">RUN</button>
+        </div>
+
+        <div class="panel-divider"></div>
+
+        <div class="mini">
+          <div class="mini-title">VOICE</div>
+          <div class="mini-row"><span>Status</span><span id="voiceStatus">READY</span></div>
+          <div class="mini-row"><span>Autoplay</span><span class="warn">CLICK REQUIRED</span></div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="hud-bottom">
+      <div class="footer-left">© <span id="year"></span> <span id="footerName">Satyam</span></div>
+      <div class="footer-right">WORLD RENDER • HUD ACTIVE</div>
+    </footer>
+  </div>
+
+  <!-- Three.js (CDN) -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+
+  <!-- App -->
+  <script src="./js/app.js"></script>
 </body>
 </html>
