@@ -1,4 +1,6 @@
 // js/world.js
+// Procedural sci-fi world (planet + stars). No photos.
+
 export function createWorld(canvas) {
   const THREE = window.THREE;
   if (!THREE) throw new Error("Three.js not loaded");
