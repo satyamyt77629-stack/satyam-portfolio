@@ -12,6 +12,7 @@ const silentBtn = $("#silentBtn");
 const brandTitle = $("#brandTitle");
 const brandRole = $("#brandRole");
 const brandLocation = $("#brandLocation");
+
 const viewTitle = $("#viewTitle");
 const viewEl = $("#view");
 
@@ -80,6 +81,8 @@ function speak(text) {
     window.speechSynthesis.cancel();
 
     const utter = new SpeechSynthesisUtterance(text);
+
+    // sweet tone
     utter.rate = 0.95;
     utter.pitch = 1.15;
     utter.volume = 1;
@@ -97,12 +100,25 @@ function speak(text) {
   }
 }
 
-function showView(key) {
+function sectionLabel(key) {
+  const labels = {
+    about: "About",
+    skills: "Skills",
+    projects: "Projects",
+    experience: "Experience",
+    certifications: "Certifications",
+    contact: "Contact"
+  };
+  return labels[key] || "Section";
+}
+
+function showView(key, { speakOpening = true } = {}) {
   const map = {
     about: "ABOUT",
     skills: "SKILLS",
     projects: "PROJECTS",
     experience: "EXPERIENCE",
+    certifications: "CERTIFICATIONS",
     contact: "CONTACT"
   };
   const title = map[key] || "ABOUT";
@@ -114,7 +130,9 @@ function showView(key) {
     btn.classList.toggle("active", btn.dataset.view === key);
   });
 
+  const label = sectionLabel(key);
   log(`<span class="k">JARVIS:</span> Opened <b>${title}</b>.`);
+  if (speakOpening) speak(`Opening ${label}.`);
 }
 
 function runCommand(raw) {
@@ -124,7 +142,7 @@ function runCommand(raw) {
   log(`<span class="k">YOU:</span> ${cmd}`);
 
   if (cmd === "help" || cmd === "?") {
-    log(`<span class="k">JARVIS:</span> Commands: <b>about</b>, <b>skills</b>, <b>projects</b>, <b>experience</b>, <b>contact</b>, <b>mute</b>, <b>unmute</b>, <b>welcome</b>, <b>clear</b>.`);
+    log(`<span class="k">JARVIS:</span> Commands: <b>about</b>, <b>skills</b>, <b>projects</b>, <b>experience</b>, <b>certifications</b>, <b>contact</b>, <b>mute</b>, <b>unmute</b>, <b>welcome</b>, <b>clear</b>.`);
     return;
   }
 
@@ -156,9 +174,9 @@ function runCommand(raw) {
   }
 
   const cleaned = cmd.replace(/^open\s+/, "");
-  if (["about", "skills", "projects", "experience", "contact"].includes(cleaned)) {
-    showView(cleaned);
-    speak(`Opening ${cleaned}.`);
+  const allowed = ["about", "skills", "projects", "experience", "certifications", "contact"];
+  if (allowed.includes(cleaned)) {
+    showView(cleaned, { speakOpening: true });
     return;
   }
 
@@ -212,12 +230,13 @@ function enterInterface({ silent = false } = {}) {
   log(`<span class="k">JARVIS:</span> ${msg}`);
   if (!silent) speak(msg);
 
-  showView("about");
+  // first view
+  showView("about", { speakOpening: false });
 }
 
 function bindUI() {
   document.querySelectorAll(".navbtn").forEach(btn => {
-    btn.addEventListener("click", () => showView(btn.dataset.view));
+    btn.addEventListener("click", () => showView(btn.dataset.view, { speakOpening: true }));
   });
 
   document.querySelectorAll(".chip").forEach(ch => {
