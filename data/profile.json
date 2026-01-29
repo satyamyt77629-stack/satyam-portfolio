@@ -1,0 +1,66 @@
+{
+  "assistantName": "J.A.R.V.I.S",
+  "interfaceTitle": "SATYAM INTERFACE",
+  "welcomeSpeech": "Welcome to Satyam Interface. Boss is offline. You can view the portfolio and contact with him.",
+
+  "profile": {
+    "fullName": "Satyam",
+    "handle": "@satyam",
+    "role": "Full Stack Developer",
+    "location": "India",
+    "bio": "Write your bio here. Example: I build modern web apps, clean UI, and fast backend systems. I love creating futuristic experiences and interactive interfaces.",
+    "email": "you@example.com",
+    "phone": "+91-00000-00000",
+
+    "links": {
+      "resume": "https://example.com/resume.pdf",
+      "github": "https://github.com/yourusername",
+      "linkedin": "https://linkedin.com/in/yourusername"
+    }
+  },
+
+  "skills": [
+    {
+      "category": "Frontend",
+      "items": ["HTML", "CSS", "JavaScript", "React", "Three.js"]
+    },
+    {
+      "category": "Backend",
+      "items": ["Node.js", "Express", "MongoDB", "SQL"]
+    },
+    {
+      "category": "Tools",
+      "items": ["Git", "GitHub", "VS Code", "Figma"]
+    }
+  ],
+
+  "projects": [
+    {
+      "title": "Project One",
+      "description": "Short description of your project. What problem it solves and what you built.",
+      "stack": ["HTML", "CSS", "JavaScript"],
+      "links": {
+        "live": "https://example.com",
+        "github": "https://github.com/yourusername/project-one"
+      }
+    },
+    {
+      "title": "Project Two",
+      "description": "Another project description with features and impact.",
+      "stack": ["React", "Node.js"],
+      "links": {
+        "live": "https://example.com",
+        "github": "https://github.com/yourusername/project-two"
+      }
+    }
+  ],
+
+  "experience": [
+    {
+      "role": "Freelance Developer",
+      "company": "Self",
+      "period": "2024 - Present",
+      "description": "Built websites, landing pages, and web apps for clients. Focused on performance, clean UI, and real-world usability."
+    }
+  ]
+}
