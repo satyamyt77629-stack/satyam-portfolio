@@ -60,5 +60,29 @@
       ],
       "tech": ["JavaScript", "APIs", "Git"]
     }
+  ],
+
+  "certifications": [
+    {
+      "title": "Deloitte Australia - Cyber Job Simulation",
+      "issuer": "Forage",
+      "issued": "Jun 2025",
+      "credentialId": "SweWEPAHp6ngy4xwF",
+      "url": "#"
+    },
+    {
+      "title": "Programming in Python: A Hands-on Introduction",
+      "issuer": "Codio",
+      "issued": "Feb 2025",
+      "credentialId": "SJJSF54YT24B",
+      "url": "#"
+    },
+    {
+      "title": "IoT Devices (with Honors)",
+      "issuer": "University of Illinois Urbana-Champaign",
+      "issued": "Sep 2024",
+      "credentialId": "TWOW7ZPGZCUE",
+      "url": "#"
+    }
   ]
 }
