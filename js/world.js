@@ -1,11 +1,10 @@
 // js/world.js
-// 3D world: procedural planet + atmosphere + starfield (no external textures)
-
 export function createWorld(canvas) {
   const THREE = window.THREE;
   if (!THREE) throw new Error("Three.js not loaded");
 
-  const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
+  const prefersReducedMotion =
+    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
 
   const renderer = new THREE.WebGLRenderer({
     canvas,
@@ -19,23 +18,25 @@ export function createWorld(canvas) {
 
   const scene = new THREE.Scene();
 
-  const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 2000);
+  const camera = new THREE.PerspectiveCamera(
+    55,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    2000
+  );
   camera.position.set(0, 0.2, 7);
 
-  // Lights
   scene.add(new THREE.AmbientLight(0x88ffff, 0.28));
 
   const key = new THREE.DirectionalLight(0x88ffff, 0.85);
   key.position.set(6, 4, 8);
   scene.add(key);
 
-  // ===== Procedural planet texture (CanvasTexture)
   function makePlanetTexture(size = 1024) {
     const c = document.createElement("canvas");
     c.width = c.height = size;
     const ctx = c.getContext("2d");
 
-    // base gradient
     const g = ctx.createLinearGradient(0, 0, size, size);
     g.addColorStop(0, "#06253b");
     g.addColorStop(0.45, "#0b3b55");
@@ -43,7 +44,6 @@ export function createWorld(canvas) {
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, size, size);
 
-    // noise blobs for "continents"
     for (let i = 0; i < 9000; i++) {
       const x = Math.random() * size;
       const y = Math.random() * size;
@@ -56,7 +56,6 @@ export function createWorld(canvas) {
       ctx.fill();
     }
 
-    // subtle scan arcs
     ctx.strokeStyle = "rgba(140,255,255,0.08)";
     ctx.lineWidth = 1;
     for (let i = 0; i < 22; i++) {
@@ -70,13 +69,11 @@ export function createWorld(canvas) {
     const tex = new THREE.CanvasTexture(c);
     tex.colorSpace = THREE.SRGBColorSpace;
     tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-    tex.repeat.set(1, 1);
     return tex;
   }
 
   const planetTex = makePlanetTexture(1024);
 
-  // Planet
   const planet = new THREE.Mesh(
     new THREE.SphereGeometry(2.15, 64, 64),
     new THREE.MeshStandardMaterial({
@@ -89,14 +86,12 @@ export function createWorld(canvas) {
   );
   scene.add(planet);
 
-  // Wireframe shell
   const wire = new THREE.LineSegments(
     new THREE.WireframeGeometry(new THREE.SphereGeometry(2.18, 28, 28)),
     new THREE.LineBasicMaterial({ color: 0x66ffff, transparent: true, opacity: 0.16 })
   );
   scene.add(wire);
 
-  // Atmosphere (simple shader-ish material using back side)
   const atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(2.33, 64, 64),
     new THREE.MeshBasicMaterial({
@@ -108,7 +103,6 @@ export function createWorld(canvas) {
   );
   scene.add(atmosphere);
 
-  // Orbit ring
   const ring = new THREE.Mesh(
     new THREE.TorusGeometry(2.85, 0.02, 10, 140),
     new THREE.MeshBasicMaterial({ color: 0x66ffff, transparent: true, opacity: 0.14 })
@@ -117,7 +111,6 @@ export function createWorld(canvas) {
   ring.rotation.y = Math.PI / 7;
   scene.add(ring);
 
-  // Starfield
   const starCount = window.innerWidth < 900 ? 900 : 1600;
   const starsGeo = new THREE.BufferGeometry();
   const pos = new Float32Array(starCount * 3);
@@ -134,30 +127,6 @@ export function createWorld(canvas) {
   );
   scene.add(stars);
 
-  // Floating "satellites" points around planet
-  const satCount = 700;
-  const satGeo = new THREE.BufferGeometry();
-  const satPos = new Float32Array(satCount * 3);
-  for (let i = 0; i < satCount; i++) {
-    const i3 = i * 3;
-    const u = Math.random();
-    const v = Math.random();
-    const theta = 2 * Math.PI * u;
-    const phi = Math.acos(2 * v - 1);
-    const r = 2.45 + Math.random() * 0.18;
-
-    satPos[i3 + 0] = r * Math.sin(phi) * Math.cos(theta);
-    satPos[i3 + 1] = r * Math.cos(phi);
-    satPos[i3 + 2] = r * Math.sin(phi) * Math.sin(theta);
-  }
-  satGeo.setAttribute("position", new THREE.BufferAttribute(satPos, 3));
-  const sats = new THREE.Points(
-    satGeo,
-    new THREE.PointsMaterial({ color: 0x88ffff, size: 0.03, transparent: true, opacity: 0.70 })
-  );
-  scene.add(sats);
-
-  // Parallax camera
   let targetX = 0, targetY = 0;
   function onMove(e) {
     const x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -175,18 +144,13 @@ export function createWorld(canvas) {
   }
   window.addEventListener("resize", resize);
 
-  let t = 0;
   let rafId = 0;
-
   function animate() {
     rafId = requestAnimationFrame(animate);
-    t += prefersReducedMotion ? 0.0012 : 0.0032;
 
     planet.rotation.y += prefersReducedMotion ? 0.0006 : 0.0016;
     wire.rotation.y += prefersReducedMotion ? 0.0007 : 0.0019;
-    sats.rotation.y += prefersReducedMotion ? 0.0005 : 0.0014;
     ring.rotation.z += prefersReducedMotion ? 0.0004 : 0.0011;
-
     stars.rotation.y += prefersReducedMotion ? 0.00005 : 0.00018;
 
     camera.position.x += (targetX - camera.position.x) * 0.04;
@@ -204,7 +168,6 @@ export function createWorld(canvas) {
       window.removeEventListener("resize", resize);
       renderer.dispose();
       starsGeo.dispose();
-      satGeo.dispose();
     }
   };
 }
