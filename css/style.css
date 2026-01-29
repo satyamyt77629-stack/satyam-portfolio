@@ -261,7 +261,7 @@ html,body{ height:100%; margin:0; background:var(--bg); color:var(--text); font-
   cursor:pointer;
 }
 
-.linkcol{ display:flex; flex-direction:column; gap:10px; }
+.linkcol{ display:flex; flex-direction:column; gap:8px; }
 .linkcol a{
   color: rgba(230,255,255,.86);
   text-decoration:none;
@@ -269,6 +269,7 @@ html,body{ height:100%; margin:0; background:var(--bg); color:var(--text); font-
   width: fit-content;
 }
 .linkcol a:hover{ border-bottom-color: rgba(120,255,255,.55); }
+.muted{ opacity:.7; }
 
 /* Content */
 .view{
@@ -403,7 +404,6 @@ html,body{ height:100%; margin:0; background:var(--bg); color:var(--text); font-
   color: rgba(230,255,255,.62);
   font-size: 12px;
 }
-.muted{ opacity:.7; }
 
 /* Responsive */
 @media (max-width: 1050px){
