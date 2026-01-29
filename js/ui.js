@@ -95,16 +95,26 @@ export function renderView(viewKey, data) {
     `;
   }
 
-  // contact: ONLY email
+  // contact (email + linkedin only)
   return `
     <div class="h1">Contact</div>
-    <p class="p">You can contact me via email only.</p>
+    <p class="p">You can contact me via email or LinkedIn.</p>
 
-    <div class="card" style="max-width:520px;">
-      <div class="card-title">EMAIL</div>
-      <p class="p"><b>${escapeHtml(p.email)}</b></p>
-      <div class="card-links">
-        <a href="mailto:${encodeURIComponent(p.email)}">Send Email</a>
+    <div class="grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+      <div class="card">
+        <div class="card-title">EMAIL</div>
+        <p class="p"><b>${escapeHtml(p.email)}</b></p>
+        <div class="card-links">
+          <a href="mailto:${encodeURIComponent(p.email)}">Send Email</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">LINKEDIN</div>
+        <p class="p">Professional profile</p>
+        <div class="card-links">
+          <a target="_blank" rel="noopener" href="${escapeHtml(p.linkedin)}">Open LinkedIn</a>
+        </div>
       </div>
     </div>
   `;
