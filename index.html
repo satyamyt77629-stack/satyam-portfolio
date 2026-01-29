@@ -11,7 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/styles.css" />
+  <!-- IMPORTANT: your file is css/style.css -->
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
@@ -20,7 +21,7 @@
   <div class="scanlines" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
 
-  <!-- ENTER GATE (required for voice autoplay policies) -->
+  <!-- ENTER GATE -->
   <section id="gate" class="gate" aria-label="Enter interface">
     <div class="gate-card">
       <div class="gate-top">
@@ -46,7 +47,7 @@
       </div>
 
       <div class="gate-hint">
-        Tip: After entering, try typing commands like <b>projects</b> or <b>contact</b>.
+        Tip: Type commands like <b>projects</b>, <b>contact</b>, <b>mute</b>.
       </div>
     </div>
   </section>
@@ -108,11 +109,10 @@
         <div class="divider"></div>
 
         <div class="mini">
-          <div class="mini-title">LINKS</div>
+          <div class="mini-title">CONTACT</div>
           <div class="linkcol">
-            <a id="linkLinkedIn" href="#" target="_blank" rel="noopener">LinkedIn</a>
-            <a id="linkGitHub" href="#" target="_blank" rel="noopener">GitHub</a>
-            <a id="linkResume" href="#" target="_blank" rel="noopener">Resume</a>
+            <span class="muted">Email only:</span>
+            <a href="mailto:satya.myt77629@gmail.com">satya.myt77629@gmail.com</a>
           </div>
         </div>
       </aside>
@@ -155,7 +155,7 @@
     </footer>
   </div>
 
-  <!-- Three.js (global THREE) -->
+  <!-- Three.js -->
   <script defer src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
 
   <!-- App -->
