@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#05070b" />
   <title>Satyam Interface</title>
+  <meta name="description" content="Satyam Interface — futuristic portfolio world with assistant console and voice greeting." />
 
-  <!-- Futuristic font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -14,215 +15,150 @@
 </head>
 
 <body>
-  <!-- 3D World Canvas -->
-  <canvas id="bg"></canvas>
+  <!-- 3D World -->
+  <canvas id="world" aria-hidden="true"></canvas>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
 
-  <!-- Boot / Entry overlay -->
-  <div id="boot" class="boot">
-    <div class="boot-card">
-      <div class="boot-title">SATYAM INTERFACE</div>
-      <div class="boot-sub">World Link Established • Secure Channel</div>
-
-      <div class="boot-log" id="bootLog">
-        <div>▸ Initializing neural HUD...</div>
-        <div>▸ Loading world renderer...</div>
-        <div>▸ Calibrating assistant voice...</div>
+  <!-- ENTER GATE (required for voice autoplay policies) -->
+  <section id="gate" class="gate" aria-label="Enter interface">
+    <div class="gate-card">
+      <div class="gate-top">
+        <div class="gate-brand">
+          <div class="pulse-dot"></div>
+          <div>
+            <div class="gate-title" id="gateTitle">SATYAM INTERFACE</div>
+            <div class="gate-sub" id="gateSub">Secure world link • Voice requires click</div>
+          </div>
+        </div>
+        <div class="gate-badge">JARVIS v5</div>
       </div>
 
-      <button id="enterBtn" class="enter-btn">ENTER INTERFACE</button>
+      <div class="gate-log" id="gateLog">
+        <div>▸ Initializing world renderer…</div>
+        <div>▸ Loading HUD modules…</div>
+        <div>▸ Preparing assistant voice…</div>
+      </div>
 
-      <div class="boot-note">
-        Tip: Voice plays after you click Enter (browser rule).
+      <div class="gate-actions">
+        <button id="enterBtn" class="btn primary">ENTER INTERFACE</button>
+        <button id="silentBtn" class="btn ghost">ENTER (SILENT)</button>
+      </div>
+
+      <div class="gate-hint">
+        Tip: After entering, try typing commands like <b>projects</b> or <b>contact</b>.
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- HUD -->
   <div id="hud" class="hud hidden">
-    <header class="hud-top">
+    <header class="topbar">
       <div class="brand">
-        <div class="brand-title" id="brandTitle">SATYAM INTERFACE</div>
-        <div class="brand-sub" id="brandSub">Boss is offline • Portfolio access granted</div>
+        <div class="brand-dot"></div>
+        <div>
+          <div class="brand-title" id="brandTitle">SATYAM INTERFACE</div>
+          <div class="brand-sub">
+            <span id="brandRole">Boss is offline</span>
+            <span class="sep">•</span>
+            <span id="brandLocation">Earth Node</span>
+          </div>
+        </div>
       </div>
 
       <div class="status">
-        <div class="status-pill">
-          <span class="dot"></span>
-          <span id="statusText">OFFLINE</span>
+        <div class="pill">
+          <span class="pill-label">BOSS</span>
+          <span class="pill-value offline">OFFLINE</span>
         </div>
-        <div class="status-meta">
-          <div id="clock">--:--:--</div>
-          <div id="date">---- -- --</div>
+        <div class="pill">
+          <span class="pill-label">VOICE</span>
+          <span class="pill-value" id="voiceState">READY</span>
+        </div>
+        <div class="pill hide-mobile">
+          <span class="pill-label">TIME</span>
+          <span class="pill-value" id="clock">--:--:--</span>
         </div>
       </div>
     </header>
 
-    <main class="hud-main">
-      <!-- Left panel -->
-      <aside class="panel left">
-        <div class="panel-title">NAVIGATION</div>
+    <main class="main">
+      <!-- LEFT NAV -->
+      <aside class="nav panel">
+        <div class="panel-title">NAV</div>
 
-        <nav class="nav">
-          <button class="nav-btn active" data-view="about">ABOUT</button>
-          <button class="nav-btn" data-view="skills">SKILLS</button>
-          <button class="nav-btn" data-view="projects">PROJECTS</button>
-          <button class="nav-btn" data-view="experience">EXPERIENCE</button>
-          <button class="nav-btn" data-view="contact">CONTACT</button>
-        </nav>
+        <button class="navbtn active" data-view="about">ABOUT</button>
+        <button class="navbtn" data-view="skills">SKILLS</button>
+        <button class="navbtn" data-view="projects">PROJECTS</button>
+        <button class="navbtn" data-view="experience">EXPERIENCE</button>
+        <button class="navbtn" data-view="contact">CONTACT</button>
 
-        <div class="panel-divider"></div>
+        <div class="divider"></div>
 
         <div class="mini">
-          <div class="mini-title">SYSTEM</div>
-          <div class="mini-row"><span>Assistant</span><span id="assistantName">J.A.R.V.I.S</span></div>
-          <div class="mini-row"><span>Access</span><span class="ok">GRANTED</span></div>
-          <div class="mini-row"><span>Mode</span><span id="modeText">PORTFOLIO</span></div>
+          <div class="mini-title">QUICK</div>
+          <div class="chips">
+            <button class="chip" data-cmd="help">help</button>
+            <button class="chip" data-cmd="projects">projects</button>
+            <button class="chip" data-cmd="contact">contact</button>
+            <button class="chip" data-cmd="mute">mute</button>
+          </div>
         </div>
 
-        <div class="panel-divider"></div>
+        <div class="divider"></div>
 
         <div class="mini">
-          <div class="mini-title">COMMANDS</div>
-          <div class="mini-hint">Try:</div>
-          <div class="chip-row">
-            <span class="chip">open projects</span>
-            <span class="chip">open contact</span>
-            <span class="chip">mute</span>
-            <span class="chip">unmute</span>
+          <div class="mini-title">LINKS</div>
+          <div class="linkcol">
+            <a id="linkLinkedIn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+            <a id="linkGitHub" href="#" target="_blank" rel="noopener">GitHub</a>
+            <a id="linkResume" href="#" target="_blank" rel="noopener">Resume</a>
           </div>
         </div>
       </aside>
 
-      <!-- Center content -->
-      <section class="panel center">
+      <!-- CENTER CONTENT -->
+      <section class="content panel">
         <div class="panel-title" id="viewTitle">ABOUT</div>
-
-        <div id="view-about" class="view">
-          <div class="hero">
-            <div class="hero-text">
-              <div class="hero-name" id="fullName">Satyam</div>
-              <div class="hero-role" id="role">Developer • Designer</div>
-              <p class="hero-bio" id="bio">
-                Loading profile...
-              </p>
-
-              <div class="hero-actions">
-                <a class="btn" id="resumeBtn" href="#" target="_blank" rel="noopener">RESUME</a>
-                <a class="btn ghost" id="githubBtn" href="#" target="_blank" rel="noopener">GITHUB</a>
-                <a class="btn ghost" id="linkedinBtn" href="#" target="_blank" rel="noopener">LINKEDIN</a>
-              </div>
-            </div>
-
-            <div class="hero-card">
-              <div class="hero-card-title">IDENTITY CARD</div>
-              <div class="kv">
-                <div class="kv-row"><span>Handle</span><span id="handle">@satyam</span></div>
-                <div class="kv-row"><span>Location</span><span id="location">India</span></div>
-                <div class="kv-row"><span>Email</span><span id="emailText">you@example.com</span></div>
-                <div class="kv-row"><span>Availability</span><span class="warn">BOSS OFFLINE</span></div>
-              </div>
-              <div class="scanline"></div>
-            </div>
-          </div>
-        </div>
-
-        <div id="view-skills" class="view hidden">
-          <div id="skillsGrid" class="grid"></div>
-        </div>
-
-        <div id="view-projects" class="view hidden">
-          <div id="projectsGrid" class="grid"></div>
-        </div>
-
-        <div id="view-experience" class="view hidden">
-          <div id="experienceList" class="stack"></div>
-        </div>
-
-        <div id="view-contact" class="view hidden">
-          <div class="contact">
-            <div class="contact-card">
-              <div class="contact-title">SEND MESSAGE</div>
-              <p class="contact-sub">
-                This is a static GitHub Pages site. The form uses <b>mailto:</b> (opens user email app).
-                You can switch to Formspree/EmailJS later.
-              </p>
-
-              <form id="contactForm">
-                <div class="row">
-                  <label>
-                    Name
-                    <input type="text" id="cName" required placeholder="Your name" />
-                  </label>
-                  <label>
-                    Email
-                    <input type="email" id="cEmail" required placeholder="you@email.com" />
-                  </label>
-                </div>
-
-                <label>
-                  Message
-                  <textarea id="cMsg" required rows="5" placeholder="Write your message..."></textarea>
-                </label>
-
-                <button class="btn" type="submit">SEND</button>
-              </form>
-            </div>
-
-            <div class="contact-card">
-              <div class="contact-title">DIRECT LINKS</div>
-              <div class="kv">
-                <div class="kv-row"><span>Email</span><a id="emailLink" href="#">---</a></div>
-                <div class="kv-row"><span>Phone</span><a id="phoneLink" href="#">---</a></div>
-                <div class="kv-row"><span>GitHub</span><a id="githubLink" href="#" target="_blank" rel="noopener">---</a></div>
-                <div class="kv-row"><span>LinkedIn</span><a id="linkedinLink" href="#" target="_blank" rel="noopener">---</a></div>
-              </div>
-
-              <div class="panel-divider"></div>
-
-              <div class="toggle-row">
-                <button class="btn ghost" id="muteBtn" type="button">MUTE VOICE</button>
-                <button class="btn ghost" id="speakBtn" type="button">REPEAT WELCOME</button>
-              </div>
-
-              <div class="scanline"></div>
-            </div>
-          </div>
-        </div>
+        <div id="view" class="view"></div>
       </section>
 
-      <!-- Right panel -->
-      <aside class="panel right">
+      <!-- RIGHT CONSOLE -->
+      <aside class="console panel">
         <div class="panel-title">ASSISTANT CONSOLE</div>
 
-        <div class="console" id="console">
-          <div class="console-line">▸ Waiting for user input...</div>
+        <div id="consoleFeed" class="feed" aria-label="Console output"></div>
+
+        <div class="cmdrow">
+          <input id="cmdInput" class="cmd" placeholder="Type command… (help, projects, contact, mute)" />
+          <button id="cmdRun" class="btn small primary">RUN</button>
         </div>
 
-        <div class="cmd">
-          <input id="cmdInput" type="text" placeholder="Type a command... (e.g., open projects)" />
-          <button id="cmdSend" class="btn small">RUN</button>
-        </div>
-
-        <div class="panel-divider"></div>
+        <div class="divider"></div>
 
         <div class="mini">
-          <div class="mini-title">VOICE</div>
-          <div class="mini-row"><span>Status</span><span id="voiceStatus">READY</span></div>
-          <div class="mini-row"><span>Autoplay</span><span class="warn">CLICK REQUIRED</span></div>
+          <div class="mini-title">CONTROLS</div>
+          <div class="btnrow">
+            <button id="repeatBtn" class="btn small ghost" type="button">REPEAT WELCOME</button>
+            <button id="muteBtn" class="btn small ghost" type="button">MUTE</button>
+          </div>
+          <div class="note">
+            Voice works after Enter (browser rule).
+          </div>
         </div>
       </aside>
     </main>
 
-    <footer class="hud-bottom">
-      <div class="footer-left">© <span id="year"></span> <span id="footerName">Satyam</span></div>
-      <div class="footer-right">WORLD RENDER • HUD ACTIVE</div>
+    <footer class="footer">
+      <span>© <span id="year"></span> <span id="footerName">Satyam</span></span>
+      <span class="muted">WORLD RENDER • HUD ACTIVE</span>
     </footer>
   </div>
 
-  <!-- Three.js (CDN) -->
-  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <!-- Three.js (global THREE) -->
+  <script defer src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
 
   <!-- App -->
-  <script src="./js/app.js"></script>
+  <script type="module" src="./js/main.js"></script>
 </body>
 </html>
