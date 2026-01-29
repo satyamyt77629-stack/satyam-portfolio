@@ -27,13 +27,15 @@ const clockEl = $("#clock");
 const yearEl = $("#year");
 const footerName = $("#footerName");
 
-const linkLinkedIn = $("#linkLinkedIn");
-const linkGitHub = $("#linkGitHub");
-const linkResume = $("#linkResume");
-
 let DATA = null;
 let muted = false;
-let world = null;
+
+// preload voices (Chrome fix)
+if ("speechSynthesis" in window) {
+  window.speechSynthesis.onvoiceschanged = () => {
+    window.speechSynthesis.getVoices();
+  };
+}
 
 function log(line, cls = "") {
   const div = document.createElement("div");
@@ -47,26 +49,55 @@ function setVoiceState(s) {
   voiceState.textContent = s;
 }
 
+function pickIndianFemaleVoice() {
+  const voices = window.speechSynthesis?.getVoices?.() || [];
+  if (!voices.length) return null;
+
+  // Strong preference: en-IN voices, female-ish names if available
+  const enIN = voices.filter(v => /en-IN/i.test(v.lang));
+
+  const femaleHint = (v) => {
+    const n = (v.name || "").toLowerCase();
+    // not perfect, but helps choose a softer/assistant-like voice
+    return /(female|woman|zira|siri|google)/i.test(n);
+  };
+
+  return (
+    enIN.find(femaleHint) ||
+    enIN[0] ||
+    voices.find(v => /en/i.test(v.lang)) ||
+    voices[0] ||
+    null
+  );
+}
+
 function speak(text) {
   if (muted) return;
 
   if (!("speechSynthesis" in window)) {
-    log(`<span class="k">JARVIS:</span> Voice not supported in this browser.`, "warn");
+    log(`<span class="k">JARVIS:</span> Voice not supported.`, "warn");
     return;
   }
 
   try {
     window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.rate = 1.02;
-    u.pitch = 1.0;
-    u.volume = 1;
+
+    const utter = new SpeechSynthesisUtterance(text);
+
+    // Sweet tone
+    utter.rate = 0.95;
+    utter.pitch = 1.15;
+    utter.volume = 1;
+
+    const v = pickIndianFemaleVoice();
+    if (v) utter.voice = v;
 
     setVoiceState("SPEAKING");
-    u.onend = () => setVoiceState("READY");
-    u.onerror = () => setVoiceState("ERROR");
-    window.speechSynthesis.speak(u);
-  } catch (e) {
+    utter.onend = () => setVoiceState("READY");
+    utter.onerror = () => setVoiceState("ERROR");
+
+    window.speechSynthesis.speak(utter);
+  } catch {
     setVoiceState("ERROR");
   }
 }
@@ -84,24 +115,6 @@ function showView(key) {
 
   viewEl.innerHTML = renderView(key, DATA);
 
-  // contact form handler (mailto)
-  const form = document.getElementById("contactForm");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const name = document.getElementById("cName").value.trim();
-      const email = document.getElementById("cEmail").value.trim();
-      const msg = document.getElementById("cMsg").value.trim();
-
-      const to = DATA.profile.email;
-      const subject = encodeURIComponent(`Portfolio Contact: ${name}`);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}\n`);
-      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-      log(`<span class="k">SYS:</span> Opening mail client…`);
-    });
-  }
-
-  // nav highlight
   document.querySelectorAll(".navbtn").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.view === key);
   });
@@ -147,7 +160,6 @@ function runCommand(raw) {
     return;
   }
 
-  // support "open projects"
   const cleaned = cmd.replace(/^open\s+/, "");
   if (["about", "skills", "projects", "experience", "contact"].includes(cleaned)) {
     showView(cleaned);
@@ -175,7 +187,6 @@ async function loadProfile() {
 function applyData(data) {
   DATA = data;
 
-  // top labels
   brandTitle.textContent = data.interfaceTitle || "SATYAM INTERFACE";
   brandRole.textContent = "Boss is offline • Portfolio access";
   brandLocation.textContent = data.profile.location || "Earth Node";
@@ -183,16 +194,9 @@ function applyData(data) {
   footerName.textContent = (data.profile.fullName || "Satyam").split(" ")[0];
   yearEl.textContent = String(new Date().getFullYear());
 
-  // links
-  linkLinkedIn.href = data.profile.links.linkedin || "#";
-  linkGitHub.href = data.profile.links.github || "#";
-  linkResume.href = data.profile.links.resume || "#";
-
-  // gate labels
   $("#gateTitle").textContent = data.interfaceTitle || "SATYAM INTERFACE";
   $("#gateSub").textContent = `${data.assistantName || "JARVIS"} • Voice greeting on Enter`;
 
-  // initial console
   log(`<span class="k">SYS:</span> Interface ready. Type <b>help</b> for commands.`);
 }
 
@@ -200,7 +204,6 @@ function enterInterface({ silent = false } = {}) {
   gate.classList.add("hidden");
   hud.classList.remove("hidden");
 
-  // Start voice greeting only if not silent
   muted = !!silent;
   setVoiceState(muted ? "MUTED" : "READY");
 
@@ -209,29 +212,26 @@ function enterInterface({ silent = false } = {}) {
 
   const msg = DATA.welcomeSpeech;
   log(`<span class="k">JARVIS:</span> ${msg}`);
-
   if (!silent) speak(msg);
 
   showView("about");
 }
 
 function bindUI() {
-  // nav buttons
   document.querySelectorAll(".navbtn").forEach(btn => {
     btn.addEventListener("click", () => showView(btn.dataset.view));
   });
 
-  // chips
   document.querySelectorAll(".chip").forEach(ch => {
     ch.addEventListener("click", () => runCommand(ch.dataset.cmd));
   });
 
-  // command box
   cmdRun.addEventListener("click", () => {
     runCommand(cmdInput.value);
     cmdInput.value = "";
     cmdInput.focus();
   });
+
   cmdInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       runCommand(cmdInput.value);
@@ -239,11 +239,9 @@ function bindUI() {
     }
   });
 
-  // gate buttons
   enterBtn.addEventListener("click", () => enterInterface({ silent: false }));
   silentBtn.addEventListener("click", () => enterInterface({ silent: true }));
 
-  // controls
   muteBtn.addEventListener("click", () => {
     muted = !muted;
     setVoiceState(muted ? "MUTED" : "READY");
@@ -257,23 +255,17 @@ function bindUI() {
 }
 
 async function init() {
-  // world
-  world = createWorld($("#world"));
+  createWorld($("#world"));
 
-  // clock
   tickClock();
   setInterval(tickClock, 1000);
 
-  // data
   const data = await loadProfile();
   applyData(data);
-
-  // ui events
   bindUI();
 }
 
 init().catch((e) => {
   console.error(e);
-  // If something breaks early, at least show a minimal message
   alert("Error loading portfolio. Check console and file paths.");
 });
