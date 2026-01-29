@@ -8,49 +8,44 @@
     "role": "Software Engineer",
     "company": "Gyanyug Riginnovations",
     "location": "India",
-    "email": "your.email@example.com",
-    "phone": "+91-XXXXXXXXXX",
-
-    "links": {
-      "linkedin": "https://www.linkedin.com/in/satyam-kumar-649733304",
-      "github": "https://github.com/your-username",
-      "resume": "#"
-    },
+    "email": "satya.myt77629@gmail.com",
 
     "about": [
       "I’m Satyam Kumar, a Software Engineer currently working at Gyanyug Riginnovations.",
-      "I build modern, reliable software with clean UI and scalable logic. I enjoy solving real-world problems and learning new technologies."
+      "I focus on building reliable and scalable software with clean structure and professional UI/UX.",
+      "I enjoy solving real-world problems, learning new technologies, and improving performance and code quality.",
+      "I’m interested in automation, embedded systems concepts, and product-focused development."
     ]
   },
 
   "skills": [
-    { "group": "Frontend", "items": ["HTML", "CSS", "JavaScript", "Responsive UI"] },
-    { "group": "Backend", "items": ["Node.js", "APIs", "SQL (Basics)"] },
+    { "group": "Programming", "items": ["JavaScript", "HTML", "CSS", "Basic Python"] },
+    { "group": "Software", "items": ["APIs", "Responsive UI", "Debugging", "Clean Code"] },
     { "group": "Tools", "items": ["Git", "GitHub", "VS Code", "Postman"] }
   ],
 
   "projects": [
     {
-      "title": "AI Chatbot System",
-      "description": "A chatbot interface with intent routing and clean UI. Replace with your real chatbot project details.",
-      "stack": ["JavaScript", "API", "UI"],
+      "title": "Automatic Water Pump",
+      "description": "A system that automatically controls water flow based on water level sensing to prevent overflow and reduce manual effort.",
+      "stack": ["Sensors", "Control Logic", "Automation"],
       "links": { "live": "#", "github": "#" }
     },
     {
-      "title": "E‑Commerce Website",
-      "description": "Product listing, cart flow, and basic checkout UI. Replace with your real project details.",
-      "stack": ["HTML", "CSS", "JavaScript"],
+      "title": "Automatic Door Lock",
+      "description": "An automatic door locking mechanism focused on safety and convenience, designed to lock/unlock based on defined conditions.",
+      "stack": ["Automation", "Electronics Concept", "Logic Design"],
       "links": { "live": "#", "github": "#" }
     },
     {
-      "title": "Weather App",
-      "description": "Weather search with clean cards, loading state, and error handling. Replace with real links.",
-      "stack": ["Fetch API", "UI", "JavaScript"],
+      "title": "Thermoelectric Generator",
+      "description": "A concept/project exploring power generation using temperature difference (Seebeck effect) for energy harvesting applications.",
+      "stack": ["Energy", "Thermoelectric", "Engineering Concept"],
       "links": { "live": "#", "github": "#" }
     },
     {
       "title": "Portfolio Interface (JARVIS World)",
-      "description": "A 3D world portfolio with assistant voice greeting and command console.",
+      "description": "A futuristic 3D world portfolio with an assistant console and voice greeting for a premium first impression.",
       "stack": ["Three.js", "Web Speech API", "HTML", "CSS"],
       "links": { "live": "#", "github": "#" }
     }
@@ -62,9 +57,9 @@
       "company": "Gyanyug Riginnovations",
       "period": "Present",
       "bullets": [
-        "Building and improving software features for production systems.",
-        "Working with APIs, UI improvements, and bug fixing with clean code practices.",
-        "Collaborating with team members for stable releases."
+        "Working on software features and improvements for production systems.",
+        "Building clean UI modules and integrating APIs as required.",
+        "Collaborating with team members to deliver stable releases and bug fixes."
       ],
       "tech": ["JavaScript", "APIs", "Git"]
     }
