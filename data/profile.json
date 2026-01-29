@@ -9,12 +9,13 @@
     "company": "Gyanyug Riginnovations",
     "location": "India",
     "email": "satya.myt77629@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/satyam-kumar-649733304",
 
     "about": [
       "I’m Satyam Kumar, a Software Engineer currently working at Gyanyug Riginnovations.",
-      "I focus on building reliable and scalable software with clean structure and professional UI/UX.",
+      "I focus on building reliable, scalable software with clean structure and professional UI/UX.",
       "I enjoy solving real-world problems, learning new technologies, and improving performance and code quality.",
-      "I’m interested in automation, embedded systems concepts, and product-focused development."
+      "I’m interested in automation and engineering-based projects and I like building products that feel premium to use."
     ]
   },
 
@@ -28,26 +29,22 @@
     {
       "title": "Automatic Water Pump",
       "description": "A system that automatically controls water flow based on water level sensing to prevent overflow and reduce manual effort.",
-      "stack": ["Sensors", "Control Logic", "Automation"],
-      "links": { "live": "#", "github": "#" }
+      "stack": ["Sensors", "Control Logic", "Automation"]
     },
     {
       "title": "Automatic Door Lock",
       "description": "An automatic door locking mechanism focused on safety and convenience, designed to lock/unlock based on defined conditions.",
-      "stack": ["Automation", "Electronics Concept", "Logic Design"],
-      "links": { "live": "#", "github": "#" }
+      "stack": ["Automation", "Logic Design", "Safety"]
     },
     {
       "title": "Thermoelectric Generator",
-      "description": "A concept/project exploring power generation using temperature difference (Seebeck effect) for energy harvesting applications.",
-      "stack": ["Energy", "Thermoelectric", "Engineering Concept"],
-      "links": { "live": "#", "github": "#" }
+      "description": "A project exploring power generation using temperature difference (Seebeck effect) for energy harvesting applications.",
+      "stack": ["Energy", "Thermoelectric", "Engineering"]
     },
     {
       "title": "Portfolio Interface (JARVIS World)",
       "description": "A futuristic 3D world portfolio with an assistant console and voice greeting for a premium first impression.",
-      "stack": ["Three.js", "Web Speech API", "HTML", "CSS"],
-      "links": { "live": "#", "github": "#" }
+      "stack": ["Three.js", "Web Speech API", "HTML", "CSS"]
     }
   ],
 
