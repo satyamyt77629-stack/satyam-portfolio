@@ -15,10 +15,12 @@
 </head>
 
 <body>
+  <!-- 3D World -->
   <canvas id="world" aria-hidden="true"></canvas>
   <div class="scanlines" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
 
+  <!-- ENTER GATE -->
   <section id="gate" class="gate" aria-label="Enter interface">
     <div class="gate-card">
       <div class="gate-top">
@@ -44,11 +46,12 @@
       </div>
 
       <div class="gate-hint">
-        Tip: Type commands like <b>projects</b>, <b>contact</b>, <b>mute</b>.
+        Tip: Type commands like <b>projects</b>, <b>contact</b>, <b>certifications</b>.
       </div>
     </div>
   </section>
 
+  <!-- HUD -->
   <div id="hud" class="hud hidden">
     <header class="topbar">
       <div class="brand">
@@ -80,6 +83,7 @@
     </header>
 
     <main class="main">
+      <!-- LEFT NAV -->
       <aside class="nav panel">
         <div class="panel-title">NAV</div>
 
@@ -87,6 +91,7 @@
         <button class="navbtn" data-view="skills">SKILLS</button>
         <button class="navbtn" data-view="projects">PROJECTS</button>
         <button class="navbtn" data-view="experience">EXPERIENCE</button>
+        <button class="navbtn" data-view="certifications">CERTIFICATIONS</button>
         <button class="navbtn" data-view="contact">CONTACT</button>
 
         <div class="divider"></div>
@@ -96,6 +101,7 @@
           <div class="chips">
             <button class="chip" data-cmd="help">help</button>
             <button class="chip" data-cmd="projects">projects</button>
+            <button class="chip" data-cmd="certifications">certifications</button>
             <button class="chip" data-cmd="contact">contact</button>
             <button class="chip" data-cmd="mute">mute</button>
           </div>
@@ -107,26 +113,28 @@
           <div class="mini-title">CONTACT</div>
           <div class="linkcol">
             <span class="muted">Email:</span>
-            <a href="mailto:satya.myt77629@gmail.com">satya.myt77629@gmail.com</a>
+            <a class="contact-link" href="mailto:satya.myt77629@gmail.com">satya.myt77629@gmail.com</a>
 
             <span class="muted" style="margin-top:8px;">LinkedIn:</span>
-            <a id="navLinkedIn" href="#" target="_blank" rel="noopener">Open Profile</a>
+            <a id="navLinkedIn" class="contact-link" href="#" target="_blank" rel="noopener">Open Profile</a>
           </div>
         </div>
       </aside>
 
+      <!-- CENTER CONTENT -->
       <section class="content panel">
         <div class="panel-title" id="viewTitle">ABOUT</div>
         <div id="view" class="view"></div>
       </section>
 
+      <!-- RIGHT CONSOLE -->
       <aside class="console panel">
         <div class="panel-title">ASSISTANT CONSOLE</div>
 
         <div id="consoleFeed" class="feed" aria-label="Console output"></div>
 
         <div class="cmdrow">
-          <input id="cmdInput" class="cmd" placeholder="Type command… (help, projects, contact, mute)" />
+          <input id="cmdInput" class="cmd" placeholder="Type command… (help, projects, contact, certifications, mute)" />
           <button id="cmdRun" class="btn small primary">RUN</button>
         </div>
 
@@ -138,9 +146,7 @@
             <button id="repeatBtn" class="btn small ghost" type="button">REPEAT WELCOME</button>
             <button id="muteBtn" class="btn small ghost" type="button">MUTE</button>
           </div>
-          <div class="note">
-            Voice works after Enter (browser rule).
-          </div>
+          <div class="note">Voice works after Enter (browser rule).</div>
         </div>
       </aside>
     </main>
@@ -151,7 +157,10 @@
     </footer>
   </div>
 
+  <!-- Three.js -->
   <script defer src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+
+  <!-- App -->
   <script type="module" src="./js/main.js"></script>
 </body>
 </html>
