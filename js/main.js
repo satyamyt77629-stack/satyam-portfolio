@@ -53,12 +53,9 @@ function pickIndianFemaleVoice() {
   const voices = window.speechSynthesis?.getVoices?.() || [];
   if (!voices.length) return null;
 
-  // Strong preference: en-IN voices, female-ish names if available
   const enIN = voices.filter(v => /en-IN/i.test(v.lang));
-
   const femaleHint = (v) => {
     const n = (v.name || "").toLowerCase();
-    // not perfect, but helps choose a softer/assistant-like voice
     return /(female|woman|zira|siri|google)/i.test(n);
   };
 
@@ -83,8 +80,6 @@ function speak(text) {
     window.speechSynthesis.cancel();
 
     const utter = new SpeechSynthesisUtterance(text);
-
-    // Sweet tone
     utter.rate = 0.95;
     utter.pitch = 1.15;
     utter.volume = 1;
@@ -196,6 +191,9 @@ function applyData(data) {
 
   $("#gateTitle").textContent = data.interfaceTitle || "SATYAM INTERFACE";
   $("#gateSub").textContent = `${data.assistantName || "JARVIS"} • Voice greeting on Enter`;
+
+  const navLinkedIn = document.getElementById("navLinkedIn");
+  if (navLinkedIn) navLinkedIn.href = data.profile.linkedin;
 
   log(`<span class="k">SYS:</span> Interface ready. Type <b>help</b> for commands.`);
 }
