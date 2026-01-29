@@ -95,7 +95,28 @@ export function renderView(viewKey, data) {
     `;
   }
 
-  // contact (email + linkedin only)
+  if (viewKey === "certifications") {
+    const certs = data.certifications || [];
+    return `
+      <div class="h1">Certifications</div>
+      <p class="p">Verified learning and training credentials.</p>
+
+      ${certs.map(c => `
+        <div class="card" style="margin-bottom:12px;">
+          <div class="card-title">${escapeHtml(c.title)}</div>
+          <p class="p"><span class="small-muted">Issuer:</span> ${escapeHtml(c.issuer)}</p>
+          <p class="p"><span class="small-muted">Issued:</span> ${escapeHtml(c.issued)}</p>
+          <p class="p"><span class="small-muted">Credential ID:</span> ${escapeHtml(c.credentialId)}</p>
+          ${c.url && c.url !== "#"
+            ? `<div class="card-links"><a class="contact-link" target="_blank" rel="noopener" href="${escapeHtml(c.url)}">See credential</a></div>`
+            : `<div class="small-muted">See credential: add link</div>`
+          }
+        </div>
+      `).join("")}
+    `;
+  }
+
+  // Contact (email + linkedin only)
   return `
     <div class="h1">Contact</div>
     <p class="p">You can contact me via email or LinkedIn.</p>
@@ -105,7 +126,7 @@ export function renderView(viewKey, data) {
         <div class="card-title">EMAIL</div>
         <p class="p"><b>${escapeHtml(p.email)}</b></p>
         <div class="card-links">
-          <a href="mailto:${encodeURIComponent(p.email)}">Send Email</a>
+          <a class="contact-link" href="mailto:${encodeURIComponent(p.email)}">Send Email</a>
         </div>
       </div>
 
@@ -113,7 +134,7 @@ export function renderView(viewKey, data) {
         <div class="card-title">LINKEDIN</div>
         <p class="p">Professional profile</p>
         <div class="card-links">
-          <a target="_blank" rel="noopener" href="${escapeHtml(p.linkedin)}">Open LinkedIn</a>
+          <a class="contact-link" target="_blank" rel="noopener" href="${escapeHtml(p.linkedin)}">Open LinkedIn</a>
         </div>
       </div>
     </div>
